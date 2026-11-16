@@ -1,0 +1,46 @@
+{
+  "task": "localized10d_observation_noise_sweep",
+  "protocol_version": 1,
+  "base_config": "configs/experiments/localized10d_scientific.json",
+  "base_config_sha256": "6c91a338cb5da9b1241cea6d37cad4eb5abe083a4de232eb14ed49afddb21879",
+  "clean_reference_records": "outputs/validation/localized10d_scientific/sweeps-20261022T181151Z/records.json",
+  "clean_reference_sha256": "317f0014f23371f88f18f2d382be12c1b9e859858c7d357be2b062311bc589bf",
+  "observation_noise_values": [0.0, 0.001, 0.003, 0.005, 0.01, 0.03],
+  "nominal_observation_noise": 0.005,
+  "nominal_rationale": "At observation step h=0.02 and process noise sigma=0.05, sigma_obs=sigma*sqrt(h/2)=0.005 makes the forward-difference observation-noise scale sqrt(2)*sigma_obs/h equal to the process-increment scale sigma/sqrt(h). It is also approximately one percent of the initial coordinate scale.",
+  "repetitions": 20,
+  "observation_noise_seeds": {
+    "training_start": 15000000,
+    "validation_start": 16000000,
+    "repetition_stride": 103
+  },
+  "strong_form": {
+    "target_count": 64,
+    "target_seed_start": 14000000,
+    "response": "forward_position_difference_divided_by_observation_step",
+    "source_average": "all_500_particles",
+    "solver": "raw_numpy_minimum_norm_lstsq",
+    "regularization": false,
+    "intercept": false,
+    "standardization": false,
+    "coefficient_thresholding": false
+  },
+  "weak_form": {
+    "pairs": 10000,
+    "lasso_selection": "independent_validation_weak_residual_mse_separately_at_each_noise_level",
+    "truth_used_for_selection": false,
+    "test_used_for_selection": false
+  },
+  "metric": {
+    "coefficient_error": "||theta_hat-theta_star||_2/||theta_star||_2",
+    "drift_error": "relative_latent_heldout_drift_error",
+    "profile_error": "relative_radial_profile_error",
+    "primary_summary": "root_mean_square_across_all_predeclared_repetitions",
+    "secondary_summary": "mean_median_and_interquartile_range",
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 20261024
+  },
+  "pairing_policy": "Within each repetition, every observation-noise level uses the same latent training, validation, and test trajectories; the same standard-normal training and validation observation-error arrays scaled by sigma_obs; the same weak pair samples; the same data-dependent test construction rule; and the same strong-form target subset.",
+  "failure_policy": "Retain every predeclared repetition, nonconverged path candidate, boundary selection, rank deficiency, nonfinite coefficient, and missing metric. Do not rerun to improve ordering or monotonicity.",
+  "manuscript_policy": "Keep the existing noise-free-observation 10D result as a clean baseline. Do not modify the manuscript until the complete sweep and revised cross-example table have been reviewed."
+}

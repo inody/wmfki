@@ -1,0 +1,47 @@
+{
+  "task": "localized10d_fixed_noise_robustness",
+  "protocol_version": 1,
+  "base_config": "configs/experiments/localized10d_scientific.json",
+  "base_config_sha256": "6c91a338cb5da9b1241cea6d37cad4eb5abe083a4de232eb14ed49afddb21879",
+  "nominal_config": "configs/experiments/localized10d_observation_noise_001.json",
+  "nominal_config_sha256": "d387b3bbba14e47e1e12064c59e5203d8f3916718c96afea5a0376d1961038d3",
+  "nominal_reference_records": "outputs/validation/localized10d_observation_noise/sweeps-20261023T123755Z/records.json",
+  "nominal_reference_sha256": "a31bb1975918b5c456fc0003c672e5842975803f51c442fe1f50603276df35bc",
+  "observation_noise": 0.01,
+  "repetitions": 20,
+  "observation_noise_seeds": {
+    "training_start": 15000000,
+    "validation_start": 16000000,
+    "repetition_stride": 103
+  },
+  "spatial_test_construction": "data_dependent_from_each_observed_training_or_validation_array",
+  "sweeps": {
+    "process_sigma": [
+      0.0,
+      0.05,
+      0.075,
+      0.1,
+      0.15
+    ],
+    "particle_number": [
+      100,
+      200,
+      350,
+      500
+    ],
+    "sampled_pairs": [
+      3000,
+      5000,
+      10000,
+      20000,
+      30000
+    ]
+  },
+  "pair_penalty_policy": "absolute_alpha_selected_at_Pmax_by_independent_validation_then_fixed_across_all_P_within_repetition",
+  "pairing_policy": "Within each repetition, process-noise conditions share standard-normal training and validation observation-error arrays. Particle-number conditions use the corresponding prefixes of arrays generated at N=500. Pair-count conditions share the same observed trajectories and nested pair samples. Training, validation, and latent test trajectories remain separate.",
+  "selection_policy": "Weak LASSO uses only the independent validation weak residual. Truth, latent test metrics, and reported errors are excluded from fitting and selection. Weak OLS is the raw minimum-norm solution on the identical training system.",
+  "failure_policy": "Retain every prespecified repetition, nonconverged path candidate, boundary selection, rank deficiency, nonfinite coefficient, and missing metric. Do not rerun to improve a result.",
+  "baseline_parity_policy": "At N=500, process sigma=0.05, and P=10000, weak LASSO and weak OLS must reproduce the independently verified fixed sigma_obs=0.01 nominal records.",
+  "manuscript_policy": "Use this fixed sigma_obs=0.01 run for the representative 10D fit, coupled rollout, and process-noise, particle-number, and pair-count appendix results so that Appendix E.4 and the main-text comparison table share one nominal observation-noise condition.",
+  "protocol_variant": "common_nominal_observation_noise_0.01"
+}

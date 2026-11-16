@@ -1,0 +1,42 @@
+{
+  "protocol_version": 1,
+  "stage": "nested_repetitions",
+  "simulation": {
+    "N": 1000,
+    "horizon": 2.0,
+    "dt": 0.005,
+    "sigma": 0.1,
+    "sigma_obs": 0.0
+  },
+  "true_kernel": {"mode": "qanr", "eps": 1e-8, "r_max": 3.0},
+  "seeds": {
+    "train": [60000, 60010, 60020, 60030, 60040, 60050, 60060, 60070, 60080, 60090, 60100, 60110, 60120, 60130, 60140, 60150, 60160, 60170, 60180, 60190],
+    "validation": [60002, 60012, 60022, 60032, 60042, 60052, 60062, 60072, 60082, 60092, 60102, 60112, 60122, 60132, 60142, 60152, 60162, 60172, 60182, 60192],
+    "test": [60004, 60014, 60024, 60034, 60044, 60054, 60064, 60074, 60084, 60094, 60104, 60114, 60124, 60134, 60144, 60154, 60164, 60174, 60184, 60194]
+  },
+  "basis": {
+    "type": "hat", "sizes": [9, 17, 33, 65], "radius_max": 4.0,
+    "knot_spacing": "uniform", "extrapolation": "constant"
+  },
+  "baseline": {"basis": "qanr_exp", "M": 6, "ell_grid": [0.25, 0.5, 1.0, 2.0], "eps": 1e-8},
+  "pair_mode": "full",
+  "pair_chunk_size": 2048,
+  "estimator": {
+    "method": "lasso", "standardize": false, "fit_intercept": false,
+    "alpha_count": 60, "alpha_min_ratio": 1e-7,
+    "max_iter": 200000, "tol": 1e-8, "selection": "cyclic",
+    "report_nonzero_threshold": 1e-8
+  },
+  "estimator_status": "lasso_author_approved",
+  "selection_rule": "Minimum independent-validation weak residual MSE among converged candidates; never use the true kernel or test trajectories. Ties choose the larger alpha.",
+  "fallback": "OLS is a secondary diagnostic if LASSO is unsuccessful, not the primary estimator.",
+  "replication": {
+    "count": 20,
+    "unit": "independent_train_validation_test_triplet",
+    "bootstrap_samples": 10000,
+    "bootstrap_seed": 730000,
+    "stop_rule": "Run all 20 declared triplets, irrespective of observed monotonicity; record all failures.",
+    "primary_metrics": ["force_error_weighted_rel", "trajectory_error_rel", "drift_error_rel"],
+    "plot": "Individual paired repetitions and arithmetic means with pointwise percentile bootstrap 95% intervals."
+  }
+}

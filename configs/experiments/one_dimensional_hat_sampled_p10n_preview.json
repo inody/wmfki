@@ -1,0 +1,23 @@
+{
+  "task": "one_dimensional_hat_sampled_p10n_preview",
+  "protocol_version": 1,
+  "source_batch": "outputs/validation/one_dimensional_hat/dictionary-grid-R100-20261021T170800698717Z",
+  "dictionary_sizes": [9, 11, 14, 17, 22, 27, 33, 42, 52, 65],
+  "pair_ratio": 10,
+  "pair_sampling": {
+    "ordered": true,
+    "exclude_diagonal": true,
+    "with_replacement": true,
+    "resample_each_time": true,
+    "shared_across_tests_and_atoms": true,
+    "independent_training_validation": true
+  },
+  "scientific_repetitions": 100,
+  "smoke_repetitions": 2,
+  "pair_seed_start": 30000000,
+  "pair_seed_stride": 1000,
+  "training_pair_seed_offset": 0,
+  "validation_pair_seed_offset": 1,
+  "evaluation": "unchanged full held-out force, drift, and trajectory metrics",
+  "production_artifacts_unchanged": true
+}

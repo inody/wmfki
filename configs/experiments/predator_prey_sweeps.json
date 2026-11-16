@@ -1,0 +1,87 @@
+{
+  "task": "predator_prey_robustness_sweeps",
+  "smoke_only": false,
+  "model": {
+    "dimension": 2,
+    "prey_particles": 100,
+    "a": 1.0,
+    "b": 0.2,
+    "c": 0.4,
+    "p": 3.0,
+    "delta": 0.05,
+    "prey_initial_box": [-0.5, 0.5],
+    "predator_initial_box": [-0.5, 0.5],
+    "solver": "rk4"
+  },
+  "observation": {
+    "training_trajectories": 4,
+    "validation_trajectories": 4,
+    "test_trajectories": 1,
+    "horizon": 3.0,
+    "dt": 0.01,
+    "observation_noise": 0.001
+  },
+  "sweeps": {
+    "observation_noise": [0.0, 0.0003, 0.001, 0.003, 0.01],
+    "observation_dt": [0.04, 0.02, 0.01, 0.005],
+    "prey_particles": [25, 50, 100, 200]
+  },
+  "dictionary": {
+    "prey_exponential_scales": [0.25, 0.5, 1.0, 2.0],
+    "predator_inverse_powers": [1.0, 2.0, 3.0, 4.0, 5.0],
+    "prey_prey_true": [1.0, -1.0, 0.0, 0.0, 0.0, 0.0],
+    "prey_predator_true": [0.2, 0.0, 0.0, 0.0, 0.0, 0.0],
+    "predator_prey_true": [0.0, 0.0, 0.4, 0.0, 0.0]
+  },
+  "weak_tests": {
+    "spatial_type": "gaussian",
+    "grid_coordinates": [-1.5, -0.75, 0.0, 0.75, 1.5],
+    "prey_width": 0.5,
+    "predator_width": 0.7,
+    "temporal_type": "bump",
+    "temporal_count": 8,
+    "temporal_support_factor": 1.8,
+    "normalize_rows": true
+  },
+  "estimator": {
+    "method": "raw_lasso",
+    "alpha_count": 60,
+    "alpha_min_ratio": 1e-7,
+    "max_iter": 200000,
+    "tol": 1e-8,
+    "fit_intercept": false,
+    "standardize": false,
+    "selection": "cyclic",
+    "selection_metric": "independent_validation_weak_residual_mse",
+    "truth_used_for_selection": false,
+    "test_error_used_for_selection": false,
+    "post_lasso_refit": false,
+    "coefficient_thresholding": false,
+    "report_nonzero_threshold": 1e-8
+  },
+  "evaluation": {
+    "scientific_repetitions": 20,
+    "profile_radius_min": 0.0,
+    "profile_radius_max": 2.0,
+    "profile_grid_size": 500,
+    "drift_evaluation_interval": 0.05,
+    "species_balance": "equal_relative_energy_weight"
+  },
+  "pairing": {
+    "dt_common_fine": 0.005,
+    "dt_trajectory_policy": "simulate_once_at_common_fine_dt_and_subsample",
+    "observation_noise_policy": "shared_latent_trajectory_and_shared_unit_noise",
+    "particle_policy": "shared_seed_with_nested_initial_prey_and_observation_noise",
+    "training_start": 42000,
+    "validation_offset": 10000,
+    "test_offset": 20000,
+    "repetition_stride": 97
+  },
+  "smoke": {
+    "repetitions": 1,
+    "training_trajectories": 1,
+    "validation_trajectories": 1,
+    "test_trajectories": 1,
+    "horizon": 0.4
+  }
+}

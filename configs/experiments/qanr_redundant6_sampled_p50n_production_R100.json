@@ -1,0 +1,101 @@
+{
+  "task": "qanr_redundant6_sampled_p50n_production_R100",
+  "protocol_version": 1,
+  "run_class": "production_candidate_full_figure",
+  "base_protocol": "configs/experiments/qanr_redundant6_lasso_sweeps_R100.json",
+  "time_step_protocol": "configs/experiments/qanr_redundant6_time_step_paired_R100.json",
+  "matched_full_pair_batch": "outputs/validation/qanr_redundant6_lasso_R100/sweeps-20261022T052958Z",
+  "matched_full_pair_time_step_batch": "outputs/validation/qanr_redundant6_time_step_paired_R100/sweeps-20261023T141936Z",
+  "repetitions": 100,
+  "ratios": [50],
+  "validation_seed_offset": 1000000,
+  "pair_seed_start": 5000000,
+  "pair_validation_seed_offset": 1000000,
+  "sampling": {
+    "mode": "nested_prefix_resample_each_time",
+    "with_replacement": true,
+    "exclude_diagonal": true,
+    "training_validation_independent": true,
+    "time_independent": true,
+    "common_indices_across_tests_and_atoms": true,
+    "pairs_per_condition": "P=50N",
+    "penalty_selection": "independent_sampled_validation_at_P=50N"
+  },
+  "grids": {
+    "selection": "complete_current_Figure_2_a_to_d_grids",
+    "observation_noise": [0.0, 0.0003, 0.001, 0.003, 0.01, 0.03, 0.1],
+    "process_noise": [0.01, 0.05, 0.1, 0.2, 0.4],
+    "particle_number": [50, 100, 200, 400],
+    "time_step": [0.1, 0.05, 0.02, 0.01, 0.005, 0.002]
+  },
+  "nominal_conditions": {
+    "observation_noise": 0.01,
+    "process_noise": 0.1,
+    "particle_number": 100,
+    "time_step": 0.01,
+    "drift_evaluation_samples": 200
+  },
+  "heldout_table": {
+    "panel": "observation_noise",
+    "value": 0.01,
+    "evaluation_seed_rule": "training_seed_of_repetition_zero_plus_twice_validation_seed_offset",
+    "drift_target_time_samples": 2000,
+    "drift_sampling_seed_offset": 17,
+    "methods": ["weak_lasso", "weak_ols", "strong_forward_difference_ols"]
+  },
+  "slope_windows": {
+    "observation_noise": "positive_values",
+    "process_noise": "all_values",
+    "particle_number": "all_values",
+    "time_step": "values_at_most_0.02"
+  },
+  "time_step_rate_target": {
+    "pair_sampling_mean_square_term": "O(Delta_t/P)",
+    "coefficient_mse_log_log_slope": 1.0,
+    "coefficient_rmse_log_log_slope": 0.5,
+    "rmse_tolerance": 0.15,
+    "paired_bootstrap_resamples": 10000,
+    "bootstrap_seed": 505001
+  },
+  "pair_count": {
+    "particles": 200,
+    "horizon": 2.0,
+    "dt": 0.01,
+    "sigma": 0.1,
+    "training_seed": 20260,
+    "values": [100, 300, 1000, 3000, 10000, 30000],
+    "repetitions": 100,
+    "nominal_selection_pairs": 10000,
+    "pair_mode": "nested_prefix_resample_each_time",
+    "penalty_policy": "per_pair_repetition_absolute_alpha_selected_at_nominal_P0_by_independent_sampled_validation_then_fixed_across_all_P_and_used_for_the_all_pair_reference",
+    "expected_mean_square_slope": -1.0
+  },
+  "timing": {
+    "particles": [100, 200, 400, 800, 1600],
+    "repetitions": 10,
+    "steps": 20,
+    "sampled_ratio": 50,
+    "modes": ["full", "resample_each_time"],
+    "metric": "feature_design_assembly_seconds",
+    "process_isolation": true
+  },
+  "comparison": {
+    "matched_full_reference": true,
+    "coefficient_inflation_threshold": 1.25,
+    "current_claim_reference": "frozen_current_R100_summary",
+    "failure_policy": "retain_all_predeclared_repetitions_and_diagnostics"
+  },
+  "protected_paths": [
+    "configs/experiments/l4dc_current_figures.json",
+    "latex/L4DC/body.tex",
+    "latex/L4DC/appendix_numerics.tex",
+    "latex/L4DC/figures/validation_sweeps.pdf",
+    "outputs/validation/qanr_sampled_ratio_confirmation/R20-20261025T073109Z",
+    "outputs/validation/qanr_redundant6_lasso_R100/sweeps-20261022T052958Z",
+    "outputs/validation/qanr_redundant6_time_step_paired_R100/sweeps-20261023T141936Z"
+  ],
+  "output": {
+    "figure_stem": "qanr_sampled_p50n_production_R100",
+    "watermark": "P=50N sampled-pair R=100 production candidate; current manuscript unchanged"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "protocol_version": 1,
+  "stage": "hat_dictionary_grid_ten_sizes_total_100_repetitions",
+  "source_four_size_batch": "outputs/validation/one_dimensional_hat/dictionary-size-R100-20261021T162620648176Z",
+  "dictionary_sizes": [9, 11, 14, 17, 22, 27, 33, 42, 52, 65],
+  "reused_sizes": [9, 17, 33, 65],
+  "newly_fitted_sizes": [11, 14, 22, 27, 42, 52],
+  "repetitions": 100,
+  "new_jobs": 100,
+  "new_models": 600,
+  "reused_models": 400,
+  "grid_rationale": "A nearly geometric ten-point grid over the previously fixed interval [9,65], with 34 snapped to the already evaluated M=33. The four previously evaluated sizes are retained and the six additions were fixed before running this extension.",
+  "representative_policy": "Use existing baseline repetition index 0 (train seed 60000, validation seed 60002, test seed 60004) at M=17 for the interaction and trajectory panels. Never select the representative from errors or visual quality.",
+  "bootstrap": {
+    "samples": 10000,
+    "seed": 980000
+  },
+  "fixed_conditions": "N=1000, T=2, dt=0.005, sigma=0.1, sigma_obs=0, QANR true kernel with eps=1e-8, Gaussian-mixture initial law, fixed weak tests, full ordered pairs, trapezoidal quadrature, 1/sqrt(200) row scaling, raw cyclic LASSO, and independent-validation selection are identical for every dictionary size and repetition.",
+  "selection_policy": "For each dictionary and repetition, select among the same 60 logarithmic penalties by minimum independent-validation weak residual over converged candidates. Never consult the true kernel or test trajectory. Do not standardize, threshold, refit, or impose a support size.",
+  "reporting": {
+    "primary_metric": "force_error_weighted_rel",
+    "secondary_metrics": ["trajectory_error_rel", "drift_error_rel", "trajectory_rmse"],
+    "summaries": ["all_individual_values", "arithmetic_mean", "sample_sd", "median", "iqr", "paired_percentile_bootstrap_mean_ci95", "minimum", "maximum"]
+  },
+  "stopping_rule": "Run all 100 repetitions for all six added sizes irrespective of intermediate trends. Do not add, remove, or select sizes or seeds based on outcomes.",
+  "failure_policy": "Retain every failed job, unconverged candidate, alpha-grid boundary selection, divergent rollout, and basis-domain excursion. If any planned metric is missing, its all-run mean and interval are null; never average only successful repetitions.",
+  "manuscript_instruction": "Regenerate and inspect the three-panel practical-use figure. Do not edit the manuscript in this stage."
+}

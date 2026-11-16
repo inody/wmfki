@@ -1,0 +1,32 @@
+{
+  "protocol_version": 1,
+  "stage": "hat_dictionary_size_total_100_repetitions",
+  "source_existing_batch": "outputs/validation/one_dimensional_hat/sweeps-R20-20261020T202111Z",
+  "source_new_reference_batch": "outputs/validation/one_dimensional_hat/M17-R100-20261020T220747Z",
+  "dictionary_sizes": [9, 17, 33, 65],
+  "newly_fitted_sizes": [9, 33, 65],
+  "existing_repetitions": 20,
+  "new_repetitions": 80,
+  "total_repetitions": 100,
+  "new_jobs": 80,
+  "new_models": 240,
+  "existing_models": 80,
+  "reused_new_M17_models": 80,
+  "representative_policy": "Use existing baseline repetition index 0 (train seed 60000, validation seed 60002, test seed 60004) for the interaction and trajectory panels. Never select the representative from errors or visual quality.",
+  "bootstrap": {
+    "samples": 10000,
+    "total_seed": 970000,
+    "new_only_seed": 970001,
+    "existing_only_seed": 970002
+  },
+  "fixed_conditions": "N=1000, T=2, dt=0.005, sigma=0.1, sigma_obs=0, true kernel, initial law, fixed weak tests, full ordered pairs, trapezoidal quadrature, 1/sqrt(200) row scaling, raw cyclic LASSO, and independent-validation selection are identical for every dictionary size and repetition.",
+  "selection_policy": "For each dictionary and repetition, select among the same 60 logarithmic penalties by minimum independent-validation weak residual over converged candidates. Never consult the true kernel or test trajectory. Do not standardize, threshold, refit, or impose a support size.",
+  "reporting": {
+    "primary_metric": "force_error_weighted_rel",
+    "secondary_metrics": ["trajectory_error_rel", "drift_error_rel", "trajectory_rmse"],
+    "summaries": ["all_individual_values", "arithmetic_mean", "sample_sd", "median", "iqr", "pointwise_percentile_bootstrap_mean_ci95", "minimum", "maximum"]
+  },
+  "stopping_rule": "Run all 80 new triplets for M=9,33,65 irrespective of intermediate dictionary-size trends. Do not add, remove, or select seeds based on outcomes.",
+  "failure_policy": "Retain every failed job, unconverged candidate, alpha-grid boundary selection, divergent rollout, and basis-domain excursion. If any planned metric is missing, its all-run mean and interval are null; never average only successful repetitions.",
+  "manuscript_instruction": "Generate and inspect the three-panel practical-use figure first. Do not edit the manuscript in this stage."
+}

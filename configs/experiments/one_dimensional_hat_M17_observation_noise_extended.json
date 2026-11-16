@@ -1,0 +1,23 @@
+{
+  "protocol_version": 1,
+  "stage": "m17_observation_noise_extension",
+  "source_total100_batch": "outputs/validation/one_dimensional_hat/M17-R100-20261020T220747Z",
+  "dictionary_size": 17,
+  "repetitions": 100,
+  "existing_values": [0.0, 0.0003, 0.001, 0.003, 0.01, 0.03, 0.1],
+  "added_values": [0.2, 0.4, 0.8, 1.0],
+  "full_values": [0.0, 0.0003, 0.001, 0.003, 0.01, 0.03, 0.1, 0.2, 0.4, 0.8, 1.0],
+  "new_jobs": 400,
+  "seed_policy": {
+    "repetitions_1_to_20": "Reuse the immutable original trajectory triplets and their observation-noise seeds (trajectory seed + 1000000).",
+    "repetitions_21_to_100": "Reuse the immutable M17 extension trajectory triplets and their observation-noise seeds (trajectory seed + 10000000).",
+    "common_noise_across_levels": "Within each repetition and split, use the same standard-normal observation draw at every positive sigma_obs value."
+  },
+  "bootstrap": {"samples": 10000, "seed": 940000},
+  "fixed_conditions": "Preserve M=17, N=1000, T=2, dt=0.005, sigma=0.1, the true kernel, initial law, 25x8 fixed weak tests, exact full pairs, trapezoidal quadrature, 1/sqrt(200) row scaling, raw cyclic LASSO and independent-validation selection. Only sigma_obs changes.",
+  "stopping_rule": "Run all 100 predeclared repetitions at all four added values, irrespective of monotonicity or intermediate results. Do not add, remove or select seeds based on outcomes.",
+  "failure_policy": "Retain every failed job, unconverged candidate, boundary selection, divergent rollout and basis-domain excursion. If any planned metric is missing, report the all-repetition mean and interval as null.",
+  "plotting": "Connect zero and positive values on a symlog horizontal axis with linthresh=0.0003. Use a logarithmic vertical axis only for positive metrics and place explicit numerical tick labels within every panel's displayed range.",
+  "manuscript_instruction": "Do not edit the manuscript in this stage. Preserve the instruction to present M=17 only in later manuscript work.",
+  "scope_exclusions": ["other physical sweeps", "other dictionary sizes", "pair-count sweep", "timing sweep", "OLS", "oracle diagnostics", "predator-prey", "manuscript editing"]
+}

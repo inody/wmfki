@@ -1,0 +1,64 @@
+{
+  "task": "cross_example_metric_table",
+  "protocol_version": 2,
+  "source_records": "outputs/validation/cross_example_nominal_comparison/nominal-20261023T125644Z/records.json",
+  "source_records_sha256": "c4a1a5d2cc4a6d044736cb558b87546bc74d39977368160b1c692e38de7f4ded",
+  "methods": [
+    "weak_lasso",
+    "weak_ols",
+    "strong_forward_difference_ols"
+  ],
+  "coefficient_summary": "root_mean_square_across_all_repetitions",
+  "drift_summary": "root_mean_square_across_all_repetitions",
+  "trajectory_summary": "diagnostic_only_for_the_first_predeclared_repetition",
+  "uncertainty_summary": "one_delta_method_standard_error_of_each_root_mean_square",
+  "one_dimensional": {
+    "config": "configs/experiments/qanr_redundant6_lasso_sweeps_R100.json",
+    "config_sha256": "a3c1c2407298c80392820d2c6a8b16ff039a08e853d018e71904896a8440875e",
+    "evaluation_seed_rule": "training_seed_of_repetition_zero_plus_twice_validation_seed_offset",
+    "drift_target_time_samples": 2000,
+    "drift_sampling_seed_offset": 17
+  },
+  "predator_prey": {
+    "config": "configs/experiments/predator_prey_application_common_noise_001.json",
+    "config_sha256": "d93b1d1cc6247e129a172fed3cfbdec7691e584d33b15d8845a6b52658c8a238",
+    "drift_source": "same_display_trajectory_as_the_repetition_zero_rollout",
+    "trajectory_seed_rule": "existing_display_seed",
+    "trajectory_particles": 100,
+    "trajectory_horizon": 8.0,
+    "fit_source": "exact_sigma_obs_0.01_sweep_extraction"
+  },
+  "localized_10d": {
+    "config": "outputs/validation/localized10d_noisy_robustness/sweeps-20261023T123949Z/frozen_protocol.json",
+    "config_sha256": "67ef4ded1f95ce7a1aaf8fe1085e8ada1ce015915a9964105f463328df5d57d8",
+    "drift_source": "latent_test_trajectory_of_repetition_zero",
+    "trajectory_seed_rule": "same_test_seed_as_the_repetition_zero_drift_evaluation"
+  },
+  "failure_policy": "retain_nonfinite_drift_or_divergent_rollout_as_a_reported_failure",
+  "selection_policy": "no_refit_no_retuning_no_seed_selection",
+  "common_observation_noise": 0.01,
+  "comparison_policy": "Weak estimators use the P=50N production outputs at sigma_obs=0.01; strong FD--OLS is unchanged because it does not use the weak pair design.",
+  "source_artifacts": {
+    "one_dimensional_table": {
+      "path": "outputs/validation/qanr_sampled_p50n_production/R100-20261025T084348Z/nominal_table_metrics.json",
+      "sha256": "65565a9d444c590b29c009a2e735ba6ce795f6ef05fdee09d248394581818b84"
+    },
+    "predator_nominal_records": {
+      "path": "outputs/validation/predator_prey_sampled_pair_production_P50/scientific-20261025T093020Z/nominal_application/records.json",
+      "sha256": "d925bfe151b8fa18e5c2a00bc25d34d00f8519b7487df4d83e1618ee8d8e2dac"
+    },
+    "predator_protocol": {
+      "path": "outputs/validation/predator_prey_sampled_pair_production_P50/scientific-20261025T093020Z/effective_protocol.json",
+      "sha256": "913f8f3a855c5b8dccce2110dc2e9b4673a69e846364d0c2098fdb2e4cc098b1"
+    },
+    "localized_records": {
+      "path": "outputs/validation/localized10d_sampled_pair_production/P50-R20-20261025T084500Z/records.json",
+      "sha256": "b271fea754ed6fc6b8ff244c3b964505d1b4f44d1bd8ec9771e4ccabe9274915"
+    },
+    "legacy_strong_records": {
+      "path": "outputs/validation/cross_example_nominal_comparison/nominal-20261023T125644Z/records.json",
+      "sha256": "c4a1a5d2cc4a6d044736cb558b87546bc74d39977368160b1c692e38de7f4ded"
+    }
+  },
+  "source_records_role": "legacy strong-FD baseline only under protocol_version 2"
+}

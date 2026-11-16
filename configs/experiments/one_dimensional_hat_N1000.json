@@ -1,0 +1,66 @@
+{
+  "protocol_version": 1,
+  "stage": "lasso_pilot",
+  "simulation": {
+    "N": 1000,
+    "horizon": 2.0,
+    "dt": 0.005,
+    "sigma": 0.1,
+    "sigma_obs": 0.0
+  },
+  "true_kernel": {
+    "mode": "qanr",
+    "eps": 1e-08,
+    "r_max": 3.0
+  },
+  "seeds": {
+    "train": [
+      40000
+    ],
+    "validation": [
+      41000
+    ],
+    "test": [
+      42000
+    ]
+  },
+  "basis": {
+    "type": "hat",
+    "sizes": [
+      8,
+      16,
+      32,
+      64
+    ],
+    "radius_max": 4.0,
+    "knot_spacing": "uniform",
+    "extrapolation": "constant"
+  },
+  "baseline": {
+    "basis": "qanr_exp",
+    "M": 6,
+    "ell_grid": [
+      0.25,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "eps": 1e-08
+  },
+  "pair_mode": "full",
+  "pair_chunk_size": 2048,
+  "estimator": {
+    "method": "lasso",
+    "standardize": false,
+    "fit_intercept": false,
+    "alpha_count": 60,
+    "alpha_min_ratio": 1e-07,
+    "max_iter": 200000,
+    "tol": 1e-08,
+    "selection": "cyclic",
+    "report_nonzero_threshold": 1e-08
+  },
+  "estimator_status": "lasso_author_approved",
+  "selection_rule": "Minimum independent-validation weak residual MSE among converged candidates; never use the true kernel or test trajectories. Ties choose the larger alpha.",
+  "fallback": "OLS is a secondary diagnostic if LASSO is unsuccessful, not the primary estimator."
+}

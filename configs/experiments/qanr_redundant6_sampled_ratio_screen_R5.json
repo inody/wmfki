@@ -1,0 +1,56 @@
+{
+  "task": "qanr_redundant6_sampled_ratio_screen_R5",
+  "protocol_version": 1,
+  "run_class": "exploratory_ratio_screen",
+  "smoke_only": false,
+  "base_protocol": "configs/experiments/qanr_redundant6_lasso_sweeps_R100.json",
+  "time_step_protocol": "configs/experiments/qanr_redundant6_time_step_paired_R100.json",
+  "matched_full_pair_batch": "outputs/validation/qanr_redundant6_lasso_R100/sweeps-20261022T052958Z",
+  "matched_full_pair_time_step_batch": "outputs/validation/qanr_redundant6_time_step_paired_R100/sweeps-20261023T141936Z",
+  "repetitions": 5,
+  "ratios": [20, 30, 50, 75],
+  "validation_seed_offset": 1000000,
+  "pair_seed_start": 3000000,
+  "pair_validation_seed_offset": 1000000,
+  "sampling": {
+    "mode": "nested_prefix_resample_each_time",
+    "with_replacement": true,
+    "exclude_diagonal": true,
+    "training_validation_independent": true,
+    "time_independent": true,
+    "common_indices_across_tests_and_atoms": true,
+    "pairs_per_condition": "P=ratio*N",
+    "penalty_selection": "independent_sampled_validation_at_the_same_ratio"
+  },
+  "grids": {
+    "selection": "representative_endpoints_and_nominal_points_from_current_Figure_2_grids",
+    "observation_noise": [0.0, 0.01, 0.1],
+    "process_noise": [0.01, 0.1, 0.4],
+    "particle_number": [50, 100, 200],
+    "time_step": [0.01, 0.02, 0.1],
+    "limitations": [
+      "particle-number endpoint N=400 is deferred from this first R=5 screen",
+      "time-step points below 0.01 are deferred from this first R=5 screen",
+      "reported slopes are representative-grid slopes rather than replacements for the frozen R=100 slopes"
+    ]
+  },
+  "nominal_conditions": {
+    "observation_noise": 0.01,
+    "process_noise": 0.1,
+    "particle_number": 100,
+    "time_step": 0.01,
+    "drift_evaluation_samples": 200
+  },
+  "acceptance": {
+    "max_lasso_rmse_inflation_over_paired_full": 1.25,
+    "require_full_endpoint_direction_for_every_sweep": true,
+    "require_lasso_better_than_ols_at_every_displayed_condition": true,
+    "require_lasso_better_than_strong_fd_ols_in_observation_noise": true,
+    "major_nonconvergence_policy": "no_missing_selection_no_nonfinite_selected_coefficients",
+    "minimum_passing_ratio_policy": "smallest_ratio_meeting_all_checks_on_the_representative_grid"
+  },
+  "output": {
+    "figure_stem": "qanr_sampled_ratio_screen_R5",
+    "watermark": "R=5 exploratory sampled-pair ratio screen; not a manuscript result"
+  }
+}

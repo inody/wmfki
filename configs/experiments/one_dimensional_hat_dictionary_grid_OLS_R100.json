@@ -1,0 +1,36 @@
+{
+  "protocol_version": 1,
+  "stage": "hat_dictionary_grid_ten_sizes_ols_total_100_repetitions",
+  "source_lasso_grid_batch": "outputs/validation/one_dimensional_hat/dictionary-grid-R100-20261021T170800698717Z",
+  "dictionary_sizes": [9, 11, 14, 17, 22, 27, 33, 42, 52, 65],
+  "repetitions": 100,
+  "jobs": 100,
+  "models": 1000,
+  "estimator": {
+    "name": "raw_minimum_norm_ols",
+    "implementation": "numpy.linalg.lstsq",
+    "rcond": null,
+    "column_standardization": false,
+    "intercept": false,
+    "column_removal": false,
+    "coefficient_thresholding": false,
+    "post_fit_refit": false
+  },
+  "data_use": "Fit every coefficient vector from the training weak system only. Freeze all ten vectors before reading validation or test arrays. Validation residuals are audit diagnostics and do not select or modify a model. Test trajectories and the true kernel are used only for final evaluation.",
+  "rank_deficiency_policy": "Retain rank-deficient systems and use the minimum-Euclidean-norm least-squares solution returned by numpy.linalg.lstsq with rcond=None. Do not remove zero or dependent columns and do not tune rcond from validation or test results.",
+  "representative_policy": "For visualization only, identify the dictionary size with the smallest reported 100-repetition mean held-out force error, then use global repetition 0 at that size without seed selection. Record this as a post-hoc visualization choice and show all N=1000 particles.",
+  "bootstrap": {
+    "samples": 10000,
+    "seed": 990000
+  },
+  "fixed_conditions": "N=1000, T=2, dt=0.005, sigma=0.1, sigma_obs=0, QANR true kernel with eps=1e-8, Gaussian-mixture initial law, fixed weak tests, full ordered pairs, trapezoidal quadrature, and 1/sqrt(200) row scaling are identical to the LASSO ten-size experiment.",
+  "reporting": {
+    "primary_metric": "force_error_weighted_rel",
+    "secondary_metrics": ["trajectory_error_rel", "drift_error_rel", "trajectory_rmse"],
+    "fit_diagnostics": ["rank", "singular_values", "train_mse", "validation_mse", "test_mse", "coefficient_l1", "coefficient_l2"],
+    "summaries": ["all_individual_values", "arithmetic_mean", "sample_sd", "median", "iqr", "paired_percentile_bootstrap_mean_ci95", "minimum", "maximum"]
+  },
+  "stopping_rule": "Run all 100 repetitions and all ten dictionary sizes irrespective of intermediate trends. Do not add, remove, or select sizes or seeds based on outcomes.",
+  "failure_policy": "Retain every rank deficiency, nonfinite fit, divergent rollout, basis-domain excursion, and missing metric. If any planned metric is missing, its all-run mean and interval are null; never average only successful repetitions.",
+  "manuscript_instruction": "Generate and inspect a separate OLS three-panel figure. Do not edit the manuscript in this stage."
+}

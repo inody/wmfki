@@ -1,0 +1,28 @@
+{
+  "artifact_sha256": {
+    "effective_protocol.json": "48e5a3f910ae4eb4b19f5542801427742029b9daff02a71dd15ac2735642ab86",
+    "pairing_check.json": "fb7e1a2af5f9860dce26f6129a18b6119c2e010971e06e5a53caf04e41cf8a38",
+    "quality_report.json": "7395409b67b0f6b409bec836c8a4d889ae4980021f9baf2a78b5cf0e1008739e",
+    "records.json": "b3a9df06fd9571e4caa2973e5400a943e25d6d85ecc9891c129a1128107aee9a",
+    "requested_protocol.json": "0af85674837e2fa07b818d1d7c5cdc700c09da5537184fbb18a758976ffe4b0c",
+    "summary.json": "09013f51ec279526ba1c08845427f5b44bc08a5c809ef0b9cfc6387b5a5f5af6"
+  },
+  "created_utc": "2026-11-13T06:22:10.379207+00:00",
+  "elapsed_seconds": 173.81705479195807,
+  "pairing_passed": true,
+  "record_count": 100,
+  "smoke": false,
+  "source_sha256": {
+    "configs/experiments/predator_prey_strong_lasso_observation_noise_common_noise_001.json": "0af85674837e2fa07b818d1d7c5cdc700c09da5537184fbb18a758976ffe4b0c",
+    "configs/experiments/predator_prey_sweeps_common_noise_001.json": "658795ade576907570f444016a64878279134336261fa09f98906c8b4fa9bbe7",
+    "features.py": "678833b5563190087fecf0cf99db64b4347f63bbbbd2211d854fd37db2318966",
+    "kernels.py": "dc93a89a53b4199c40c06336bea837b311690c708156f20bffd1353227be5dfb",
+    "predator_prey.py": "5ddfa7ab6ddb89de3afc867678c15ab7a7bc2d1a407bb54192387843e4a36483",
+    "scripts/run_cross_example_nominal_comparison.py": "7f66a69c769d600492c3c754c71bc4c3de30db99b5e92cda04a17fba89f36831",
+    "scripts/run_predator_prey_strong_lasso_observation_noise.py": "56ee16dc83e459d9ba1769a2d0d60d9a8fe9076fa88bc9794626e9e251cd0131",
+    "scripts/run_predator_prey_sweeps.py": "c947eed5166e955b9f5bbb39cae337ee15cfa8aaad31dcb6c973179b40847bee",
+    "scripts/run_regularized_baseline_exploration.py": "c33c1d86920f644e099dc6ec2753cfa6f2c52a92bad962b2533dfdc92e21aecc"
+  },
+  "status": "scientific_complete",
+  "task": "predator_prey_strong_lasso_observation_noise"
+}

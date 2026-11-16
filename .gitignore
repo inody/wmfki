@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+outputs/
+
+# Legacy local manuscript-build caches are not release payload.
+latex/L4DC/build/
+latex/L4DC/l4dc2027.cls
+latex/L4DC/*.aux
+latex/L4DC/*.bbl
+latex/L4DC/*.blg
+latex/L4DC/*.fdb_latexmk
+latex/L4DC/*.fls
+latex/L4DC/*.log
+latex/L4DC/*.out
+latex/L4DC/*.pdf
+latex/L4DC/*.synctex.gz

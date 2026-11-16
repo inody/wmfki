@@ -1,0 +1,22 @@
+{
+  "task": "sweep",
+  "_comment": "Theory dt-sweep: Euler solver + full pairs + sigma_div=6 (IBP fix) + N-1/N normalization fix. Should show O(dt) convergence from Euler-Maruyama trajectory error.",
+  "sweep": {
+    "out_dir": "outputs/qanr/theory_dt_euler_fixed",
+    "Ns": [200],
+    "Rs": [3],
+    "sigmas": [0.0],
+    "alphas": [0],
+    "dts": [0.1, 0.05, 0.02, 0.01, 0.005, 0.002],
+    "T_total": 10.0,
+    "powers": [1, 2],
+    "reg_method": "ridge",
+    "pair_replacement": false,
+    "fit_pairs": 39800,
+    "solver": "euler",
+    "time_s_factor": 1.8,
+    "distance_pairs": 39800,
+    "support_threshold": 1e-3,
+    "seed": 1234
+  }
+}

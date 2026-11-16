@@ -1,0 +1,57 @@
+{
+  "simulation": {
+    "N": 500,
+    "T": 2000,
+    "dt": 0.01,
+    "R": 1,
+    "sigma": 0.1,
+    "d": 10,
+    "init": "normal",
+    "init_scale": 0.5,
+    "seed": 1234,
+    "interaction": {
+      "mode": "morse_r",
+      "a": 2.0,
+      "b": 1.0,
+      "l1": 1.0,
+      "l2": 2.0
+    }
+  },
+  "space_tests": {
+    "type": "gaussian",
+    "L": 25,
+    "s_factor": 1.5,
+    "layout": "random",
+    "seed": 1234,
+    "quantiles": [0.01, 0.99]
+  },
+  "time_tests": {
+    "type": "bump",
+    "K": 8,
+    "s_factor": 1.8
+  },
+  "pair_sampling": {
+    "total_pairs": 5000,
+    "with_replacement": true,
+    "exclude_diagonal": true,
+    "seed": 1234
+  },
+  "kernel_basis": {
+    "M": 8,
+    "basis": "exp_r",
+    "ell_grid": [0.600, 0.787, 1.032, 1.353, 1.774, 2.326, 3.050, 4.000]
+  },
+  "regression": {
+    "method": "lasso",
+    "standardize": false,
+    "alpha": 2.92e-10,
+    "max_iter": 500000000,
+    "tol": 1e-8
+  },
+  "diagnostics": {
+    "method": null
+  },
+  "output": {
+    "save_plots": false
+  }
+}

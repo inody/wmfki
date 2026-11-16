@@ -1,0 +1,119 @@
+{
+  "drift_target_time_samples": 2000,
+  "evaluation_seed": 2040000,
+  "groups": [
+    {
+      "coefficient": {
+        "ci95": [
+          1.3190157440393693,
+          3.615257087413603
+        ],
+        "count": 100,
+        "rmse": 2.467136415726486,
+        "standard_error": 0.5857758529015903
+      },
+      "heldout_drift": {
+        "ci95": [
+          0.03960856616141864,
+          0.04921380007690611
+        ],
+        "count": 100,
+        "rmse": 0.044411183119162374,
+        "standard_error": 0.0024503147743590464
+      },
+      "method": "weak_lasso",
+      "repetitions": 100
+    },
+    {
+      "coefficient": {
+        "ci95": [
+          14.763671205449883,
+          18.1427500546216
+        ],
+        "count": 100,
+        "rmse": 16.45321063003574,
+        "standard_error": 0.862009910502989
+      },
+      "heldout_drift": {
+        "ci95": [
+          0.10074197283996923,
+          0.12284016978300501
+        ],
+        "count": 100,
+        "rmse": 0.11179107131148712,
+        "standard_error": 0.005637295138529536
+      },
+      "method": "weak_ols",
+      "repetitions": 100
+    },
+    {
+      "coefficient": {
+        "ci95": [
+          22.7855717920047,
+          30.39988015121894
+        ],
+        "count": 100,
+        "rmse": 26.59272597161182,
+        "standard_error": 1.9424256018403685
+      },
+      "heldout_drift": {
+        "ci95": [
+          0.5100259447544877,
+          0.5256985278773691
+        ],
+        "count": 100,
+        "rmse": 0.5178622363159284,
+        "standard_error": 0.003998107939510562
+      },
+      "method": "strong_forward_difference_ols",
+      "repetitions": 100
+    },
+    {
+      "coefficient": {
+        "ci95": [
+          1.2046474219178878,
+          3.351531994766078
+        ],
+        "count": 100,
+        "rmse": 2.278089708341983,
+        "standard_error": 0.5476746359306608
+      },
+      "heldout_drift": {
+        "ci95": [
+          0.03959986365154362,
+          0.04831106925839621
+        ],
+        "count": 100,
+        "rmse": 0.043955466454969915,
+        "standard_error": 0.002222246328278724
+      },
+      "method": "matched_full_weak_lasso_reference",
+      "repetitions": 100
+    },
+    {
+      "coefficient": {
+        "ci95": [
+          14.490869630099311,
+          17.764684356182705
+        ],
+        "count": 100,
+        "rmse": 16.12777699314101,
+        "standard_error": 0.8351568178784171
+      },
+      "heldout_drift": {
+        "ci95": [
+          0.09935023816502167,
+          0.11916558128820043
+        ],
+        "count": 100,
+        "rmse": 0.10925790972661105,
+        "standard_error": 0.005054934470198659
+      },
+      "method": "matched_full_weak_ols_reference",
+      "repetitions": 100
+    }
+  ],
+  "panel": "observation_noise",
+  "selection_excluded_from_evaluation": true,
+  "value": 0.01
+}

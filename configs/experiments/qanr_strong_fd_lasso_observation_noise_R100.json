@@ -1,0 +1,55 @@
+{
+  "task": "qanr_strong_fd_lasso_observation_noise_R100",
+  "protocol_version": 1,
+  "study_status": "manuscript_current",
+  "base_config": "configs/experiments/qanr_redundant6_lasso_sweeps_R100.json",
+  "base_config_sha256": "a3c1c2407298c80392820d2c6a8b16ff039a08e853d018e71904896a8440875e",
+  "production_config": "configs/experiments/qanr_redundant6_sampled_p50n_production_R100.json",
+  "production_config_sha256": "8a5ff21211efd065eda8d7bc0ac648c8700e4663fccc7e8b568a567ab9543d57",
+  "current_summary": "outputs/validation/qanr_sampled_p50n_production/R100-20261025T084348Z/summary_a_to_d.json",
+  "current_summary_sha256": "61333afe27f5c1802b49f9261960a0f1c56d8e008454f46059f429644b0e4771",
+  "observation_noise_values": [
+    0.0,
+    0.0003,
+    0.001,
+    0.003,
+    0.01,
+    0.03,
+    0.1
+  ],
+  "repetitions": 100,
+  "truth": [
+    1.0,
+    -1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "estimator": {
+    "method": "raw_lasso",
+    "alpha_count": 60,
+    "alpha_min_ratio": 1e-09,
+    "max_iter": 200000,
+    "tol": 1e-08,
+    "fit_intercept": false,
+    "standardize": false,
+    "selection": "cyclic",
+    "report_nonzero_threshold": 1e-08,
+    "selection_metric": "independent_validation_forward_difference_residual_mse",
+    "truth_used_for_selection": false,
+    "test_error_used_for_selection": false,
+    "post_lasso_refit": false,
+    "coefficient_thresholding": false
+  },
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 20261114,
+    "unit": "matched_repetition"
+  },
+  "output_policy": {
+    "root": "outputs/validation/qanr_strong_fd_lasso_observation_noise",
+    "modify_existing_outputs": false,
+    "modify_manuscript": false
+  }
+}

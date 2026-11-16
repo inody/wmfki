@@ -1,0 +1,76 @@
+{
+  "task": "qanr_redundant6_sampled_p10n_smoke_preview",
+  "protocol_version": 1,
+  "smoke_only": true,
+  "base_protocol": "configs/experiments/qanr_redundant6_lasso_sweeps_R100.json",
+  "repetitions": 1,
+  "validation_seed_offset": 1000000,
+  "pair_seed_offset": 2000000,
+  "pair_validation_seed_offset": 1000000,
+  "pair_sampling": {
+    "panels_a_to_d_policy": "P_equals_10N_for_training_and_independent_validation",
+    "ratio": 10,
+    "mode": "resample_each_time",
+    "with_replacement": true,
+    "exclude_diagonal": true,
+    "time_independent": true,
+    "common_indices_across_all_tests_and_atoms": true
+  },
+  "observation_noise": {
+    "particles": 100,
+    "horizon": 2.0,
+    "dt": 0.005,
+    "sigma": 0.1,
+    "values": [0.0, 0.01, 0.1],
+    "training_seed_start": 40000,
+    "training_seed_stride": 10
+  },
+  "process_noise": {
+    "particles": 100,
+    "horizon": 2.0,
+    "dt": 0.001,
+    "values": [0.05, 0.1, 0.4],
+    "training_seed_start": 1234,
+    "training_seed_stride": 1000,
+    "solver": "rk4"
+  },
+  "particle_number": {
+    "values": [50, 100],
+    "horizon": 2.0,
+    "dt": 0.001,
+    "sigma": 0.1,
+    "training_seed_start": 1234,
+    "training_seed_stride": 1000,
+    "solver": "rk4"
+  },
+  "time_step": {
+    "particles": 200,
+    "horizon": 10.0,
+    "values": [0.05, 0.01],
+    "sigma": 0.0,
+    "stacked_trajectories": 1,
+    "training_seed_start": 1234,
+    "training_seed_stride": 1000,
+    "solver": "euler"
+  },
+  "pair_count": {
+    "particles": 200,
+    "horizon": 2.0,
+    "dt": 0.01,
+    "sigma": 0.1,
+    "training_seed": 20260,
+    "nominal_selection_pairs": 2000,
+    "values": [100, 300, 1000, 3000, 10000, 30000],
+    "pair_repetitions": 2,
+    "penalty_policy": "one_absolute_alpha_selected_at_nominal_P0_from_independent_sampled_validation_then_fixed_for_every_P_and_pair_repetition",
+    "reference_policy": "full_pair_training_fit_at_the_same_fixed_alpha"
+  },
+  "timing": {
+    "runtime_csv": "data/manuscript/R05/random_pair/runtime_scaling.csv",
+    "sampled_policy": "retain_existing_P_equals_10N_panel_f_data"
+  },
+  "preview": {
+    "filename_stem": "figure2_sampled_p10n_smoke_preview",
+    "watermark": "SMOKE PREVIEW: sampled weak systems; not a manuscript result"
+  }
+}

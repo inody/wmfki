@@ -1,0 +1,53 @@
+{
+  "task": "cross_example_nominal_method_comparison",
+  "protocol_version": 1,
+  "metric": {
+    "name": "relative_coefficient_error",
+    "definition": "||theta_hat-theta_star||_2/||theta_star||_2",
+    "primary_summary": "root_mean_square_across_predeclared_repetitions",
+    "secondary_summary": "median_and_interquartile_range",
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 20261023
+  },
+  "methods": [
+    "weak_lasso",
+    "weak_ols",
+    "strong_forward_difference_ols"
+  ],
+  "one_dimensional": {
+    "source_records": "outputs/validation/qanr_redundant6_lasso_R100/sweeps-20261022T052958Z/observation_lasso.csv",
+    "source_sha256": "ef7f3d0818f3138cb576a43a73e08a6927772829443f326d2fdf19a29ac61878",
+    "sigma_obs": 0.001,
+    "truth": [1.0, -1.0, 0.0, 0.0, 0.0, 0.0],
+    "repetitions": 100,
+    "nominal_rationale": "Pre-existing nonzero observation-noise level from the frozen 100-repetition one-dimensional sweep."
+  },
+  "predator_prey": {
+    "config": "configs/experiments/predator_prey_application.json",
+    "source_records": "outputs/validation/predator_prey/application-metric-20261022T200946Z/records.json",
+    "source_sha256": "d3bafb6dcc035acdecb04412bc08325012c4bc72b02e646a6457ca2122ed2b5f",
+    "repetitions": 20,
+    "nominal_rationale": "Frozen nominal application protocol already used in the manuscript."
+  },
+  "localized_10d": {
+    "config": "configs/experiments/localized10d_scientific.json",
+    "source_records": "outputs/validation/localized10d_scientific/sweeps-20261022T181151Z/records.json",
+    "source_sha256": "317f0014f23371f88f18f2d382be12c1b9e859858c7d357be2b062311bc589bf",
+    "baseline_sweep": "process_sigma",
+    "baseline_value": 0.05,
+    "strong_target_count": 64,
+    "strong_target_seed_start": 14000000,
+    "repetitions": 20,
+    "nominal_rationale": "Frozen N=500, sigma=0.05, P=10000 baseline already used in the manuscript; strong-form OLS uses 64 predeclared target particles and all 500 sources."
+  },
+  "strong_form_policy": {
+    "response": "forward_position_difference_divided_by_observation_step",
+    "solver": "raw_numpy_minimum_norm_lstsq",
+    "regularization": false,
+    "intercept": false,
+    "standardization": false,
+    "coefficient_thresholding": false,
+    "failure_exclusion": false
+  },
+  "table_policy": "Generate draft Markdown and LaTeX tables outside the manuscript. Do not alter manuscript text or layout until the comparison is reviewed."
+}

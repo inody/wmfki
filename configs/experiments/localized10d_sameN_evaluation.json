@@ -1,0 +1,11 @@
+{
+  "task": "localized10d_same_population_evaluation",
+  "protocol_version": 1,
+  "source_run": "outputs/validation/localized10d_scientific/sweeps-20261022T181151Z",
+  "display_repetition": 0,
+  "rollout_particles": 500,
+  "rollout_horizon": 5.0,
+  "trajectory_metric": "relative_frobenius_position_error",
+  "coupling": "same_initial_positions_and_brownian_increments",
+  "policy": "Use the same particle count as fitting; do not refit or retune coefficients."
+}

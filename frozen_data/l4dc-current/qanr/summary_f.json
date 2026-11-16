@@ -1,0 +1,110 @@
+{
+  "conditions": [
+    {
+      "N": 100,
+      "count": 10,
+      "iqr_seconds": [
+        0.03417297941632569,
+        0.03766488574910909
+      ],
+      "median_seconds": 0.03542662505060434,
+      "mode": "full"
+    },
+    {
+      "N": 100,
+      "count": 10,
+      "iqr_seconds": [
+        0.01838096894789487,
+        0.01925954211037606
+      ],
+      "median_seconds": 0.01913770823739469,
+      "mode": "resample_each_time"
+    },
+    {
+      "N": 200,
+      "count": 10,
+      "iqr_seconds": [
+        0.13284940575249493,
+        0.14341956237331033
+      ],
+      "median_seconds": 0.14012249954976141,
+      "mode": "full"
+    },
+    {
+      "N": 200,
+      "count": 10,
+      "iqr_seconds": [
+        0.0337047497741878,
+        0.035317791160196066
+      ],
+      "median_seconds": 0.035024291602894664,
+      "mode": "resample_each_time"
+    },
+    {
+      "N": 400,
+      "count": 10,
+      "iqr_seconds": [
+        0.5624936666572466,
+        0.5707383747212589
+      ],
+      "median_seconds": 0.5672343126498163,
+      "mode": "full"
+    },
+    {
+      "N": 400,
+      "count": 10,
+      "iqr_seconds": [
+        0.0678364688064903,
+        0.07299464580137283
+      ],
+      "median_seconds": 0.07048812508583069,
+      "mode": "resample_each_time"
+    },
+    {
+      "N": 800,
+      "count": 10,
+      "iqr_seconds": [
+        2.222979187499732,
+        2.311559083056636
+      ],
+      "median_seconds": 2.265846354654059,
+      "mode": "full"
+    },
+    {
+      "N": 800,
+      "count": 10,
+      "iqr_seconds": [
+        0.13738897861912847,
+        0.14886319811921567
+      ],
+      "median_seconds": 0.14437843742780387,
+      "mode": "resample_each_time"
+    },
+    {
+      "N": 1600,
+      "count": 10,
+      "iqr_seconds": [
+        8.782584749744274,
+        9.09133282280527
+      ],
+      "median_seconds": 9.026523875305429,
+      "mode": "full"
+    },
+    {
+      "N": 1600,
+      "count": 10,
+      "iqr_seconds": [
+        0.281620875117369,
+        0.28744262526743114
+      ],
+      "median_seconds": 0.2819295204244554,
+      "mode": "resample_each_time"
+    }
+  ],
+  "maximum_N": 1600,
+  "runtime_slopes": {
+    "full": 2.0001674839673496,
+    "resample_each_time": 0.980511665379533
+  },
+  "speedup_at_maximum_N": 32.016951831492
+}

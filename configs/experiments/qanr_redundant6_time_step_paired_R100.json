@@ -1,0 +1,52 @@
+{
+  "task": "qanr_redundant6_time_step_paired_R100",
+  "protocol_version": 2,
+  "run_class": "production",
+  "authoritative_candidate_for": "Figure 2(d) exact-position time-step sweep",
+  "supersedes_numerically": "outputs/validation/qanr_redundant6_time_step_R100/sweeps-20261022T200836Z",
+  "base_protocol": "configs/experiments/qanr_redundant6_lasso_sweeps_R100.json",
+  "true_theta": [1.0, -1.0, 0.0, 0.0, 0.0, 0.0],
+  "time_step": {
+    "particles": 200,
+    "horizon": 10.0,
+    "values": [0.1, 0.05, 0.02, 0.01, 0.005, 0.002],
+    "sigma": 0.0,
+    "stacked_trajectories": 3,
+    "repetitions": 100,
+    "training_seed_start": 1234,
+    "training_seed_stride": 1000,
+    "validation_seed_offset": 1000000,
+    "solver": "euler",
+    "pair_mode": "full",
+    "trajectory_seed_policy": {
+      "name": "seedsequence_master_trajectory_namespace_v1",
+      "namespace": 1363234386,
+      "derivation": "SeedSequence([split_master_seed, trajectory_index, namespace]).generate_state(1, uint64)",
+      "paired_across_time_steps": true,
+      "separate_training_validation_master_seeds": true
+    }
+  },
+  "uncertainty": {
+    "metric": "relative_coefficient_rmse",
+    "interval": "delta_method_95_percent_on_mean_squared_relative_error",
+    "paired_across_time_steps": true,
+    "bitwise_paired_initial_states_across_time_steps": true,
+    "failure_policy": "retain_all_repetitions_and_diagnostics"
+  },
+  "estimator": {
+    "method": "raw_lasso",
+    "alpha_count": 60,
+    "alpha_min_ratio": 1e-7,
+    "max_iter": 200000,
+    "tol": 1e-8,
+    "fit_intercept": false,
+    "standardize": false,
+    "selection": "cyclic",
+    "report_nonzero_threshold": 1e-8,
+    "selection_metric": "independent_validation_weak_residual_mse",
+    "truth_used_for_selection": false,
+    "test_error_used_for_selection": false,
+    "post_lasso_refit": false,
+    "coefficient_thresholding": false
+  }
+}

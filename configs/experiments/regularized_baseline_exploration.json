@@ -1,0 +1,163 @@
+{
+  "task": "regularized_baseline_exploration",
+  "protocol_version": 2,
+  "study_status": "manuscript_current",
+  "observation_noise": 0.01,
+  "methods": [
+    "weak_lasso",
+    "weak_ols",
+    "strong_forward_difference_ols",
+    "weak_ridge_validation_selected",
+    "strong_forward_difference_lasso_validation_selected",
+    "strong_forward_difference_ridge_validation_selected"
+  ],
+  "regularization": {
+    "raw_columns": true,
+    "fit_intercept": false,
+    "standardize": false,
+    "weak_ridge": {
+      "alpha_count": 60,
+      "include_zero_candidate": true,
+      "alpha_min_ratio_to_spectral_scale": 1e-10,
+      "alpha_max_ratio_to_spectral_scale": 100.0,
+      "solver": "svd",
+      "selection_metric": "independent_validation_residual_mse"
+    },
+    "strong_forward_difference_ridge": {
+      "alpha_count": 60,
+      "include_zero_candidate": true,
+      "alpha_min_ratio_to_spectral_scale": 1e-10,
+      "alpha_max_ratio_to_spectral_scale": 100.0,
+      "solver": "svd",
+      "selection_metric": "independent_validation_forward_difference_residual_mse"
+    },
+    "strong_forward_difference_lasso": {
+      "method": "raw_lasso",
+      "alpha_count": 60,
+      "alpha_min_ratio": 1e-09,
+      "max_iter": 200000,
+      "tol": 1e-08,
+      "fit_intercept": false,
+      "standardize": false,
+      "selection": "cyclic",
+      "selection_metric": "independent_validation_forward_difference_residual_mse",
+      "truth_used_for_selection": false,
+      "test_error_used_for_selection": false,
+      "post_lasso_refit": false,
+      "coefficient_thresholding": false,
+      "report_nonzero_threshold": 1e-08
+    }
+  },
+  "one_dimensional": {
+    "repetitions": 100,
+    "production_config": "configs/experiments/qanr_redundant6_sampled_p50n_production_R100.json",
+    "production_config_sha256": "8a5ff21211efd065eda8d7bc0ac648c8700e4663fccc7e8b568a567ab9543d57",
+    "base_config": "configs/experiments/qanr_redundant6_lasso_sweeps_R100.json",
+    "base_config_sha256": "a3c1c2407298c80392820d2c6a8b16ff039a08e853d018e71904896a8440875e",
+    "baseline_records": "outputs/validation/qanr_sampled_p50n_production/R100-20261025T084348Z/nominal_table_records.csv",
+    "baseline_records_sha256": "b454cd4de5e20a8c3a4f008e3a6c03a474740b960f2f52dc3e7a9aacffb600e5",
+    "pair_ratio": 50,
+    "truth": [
+      1.0,
+      -1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "predator_prey": {
+    "repetitions": 20,
+    "production_config": "configs/experiments/predator_prey_sampled_pair_production_P50_R20.json",
+    "production_config_sha256": "98d3eacfaacce244c0eb8c24f67574f3d488e305ee465cb2302a83a412fe0a9c",
+    "base_config": "configs/experiments/predator_prey_sweeps_common_noise_001.json",
+    "base_config_sha256": "658795ade576907570f444016a64878279134336261fa09f98906c8b4fa9bbe7",
+    "baseline_records": "outputs/validation/predator_prey_sampled_pair_production_P50/scientific-20261025T093020Z/nominal_application/records.json",
+    "baseline_records_sha256": "d925bfe151b8fa18e5c2a00bc25d34d00f8519b7487df4d83e1618ee8d8e2dac",
+    "strong_baseline_records": "outputs/validation/cross_example_nominal_comparison/nominal-20261023T125644Z/records.json",
+    "strong_baseline_records_sha256": "c4a1a5d2cc4a6d044736cb558b87546bc74d39977368160b1c692e38de7f4ded",
+    "nominal_condition_id": "observation_noise-04",
+    "pair_ratio": 50,
+    "channel_penalty_policy": "select_prey_system_and_predator_system_penalties_separately"
+  },
+  "localized_10d": {
+    "repetitions": 20,
+    "production_config": "configs/experiments/localized10d_sampled_pair_production_P50_R20.json",
+    "production_config_sha256": "81650a64a2f4a3d888a20fd186f055b80a8f3953cdd13b599bbd44fed6d9b567",
+    "frozen_protocol": "outputs/validation/localized10d_noisy_robustness/sweeps-20261023T123949Z/frozen_protocol.json",
+    "frozen_protocol_sha256": "67ef4ded1f95ce7a1aaf8fe1085e8ada1ce015915a9964105f463328df5d57d8",
+    "baseline_records": "outputs/validation/localized10d_sampled_pair_production/P50-R20-20261025T084500Z/records.json",
+    "baseline_records_sha256": "b271fea754ed6fc6b8ff244c3b964505d1b4f44d1bd8ec9771e4ccabe9274915",
+    "strong_baseline_records": "outputs/validation/cross_example_nominal_comparison/nominal-20261023T125644Z/records.json",
+    "strong_baseline_records_sha256": "c4a1a5d2cc4a6d044736cb558b87546bc74d39977368160b1c692e38de7f4ded",
+    "nominal_particles": 500,
+    "nominal_process_sigma": 0.05,
+    "nominal_pairs": 25000,
+    "strong_target_count": 64,
+    "strong_training_target_seed_start": 14000000,
+    "strong_validation_target_seed_offset": 1000000
+  },
+  "protocol_parity": {
+    "coefficient_relative_tolerance": 1e-08,
+    "coefficient_absolute_tolerance": 1e-10,
+    "prediction_relative_tolerance": 1e-09,
+    "metric_relative_tolerance": 1e-08,
+    "metric_absolute_tolerance": 1e-10,
+    "strong_unique_system_smoke_policy": "hard_failure_on_mismatch"
+  },
+  "paired_comparisons": {
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 20261113,
+    "difference_definition": "right_method_error_minus_left_method_error",
+    "rmse_ratio_definition": "right_method_rmse_divided_by_left_method_rmse",
+    "comparisons": [
+      [
+        "weak_lasso",
+        "weak_ridge_validation_selected"
+      ],
+      [
+        "weak_lasso",
+        "strong_forward_difference_lasso_validation_selected"
+      ],
+      [
+        "weak_ridge_validation_selected",
+        "weak_ols"
+      ],
+      [
+        "strong_forward_difference_lasso_validation_selected",
+        "strong_forward_difference_ols"
+      ],
+      [
+        "weak_ridge_validation_selected",
+        "strong_forward_difference_ridge_validation_selected"
+      ],
+      [
+        "strong_forward_difference_lasso_validation_selected",
+        "strong_forward_difference_ridge_validation_selected"
+      ],
+      [
+        "strong_forward_difference_ridge_validation_selected",
+        "strong_forward_difference_ols"
+      ]
+    ]
+  },
+  "summary": {
+    "primary": "root_mean_square_across_predeclared_repetitions",
+    "secondary": [
+      "mean",
+      "median",
+      "interquartile_range"
+    ],
+    "metrics": [
+      "coefficient_error_relative",
+      "heldout_drift_error_relative"
+    ]
+  },
+  "output_policy": {
+    "root": "outputs",
+    "modify_existing_outputs": false,
+    "modify_manuscript": false,
+    "full_scientific_run_requires_explicit_followup": false,
+    "manuscript_integration": "performed_by_separate_table_and_figure_generators"
+  }
+}

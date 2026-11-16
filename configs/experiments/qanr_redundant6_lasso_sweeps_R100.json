@@ -1,0 +1,150 @@
+{
+  "task": "qanr_redundant6_lasso_sweeps",
+  "smoke_only": false,
+  "true_theta": [
+    1.0,
+    -1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "dictionary": {
+    "basis": "qanr_exp",
+    "M": 6,
+    "ell_grid": [
+      0.25,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "eps": 1e-08,
+    "contains_true_qanr_atoms": true
+  },
+  "estimator": {
+    "method": "raw_lasso",
+    "alpha_count": 60,
+    "alpha_min_ratio": 1e-07,
+    "max_iter": 200000,
+    "tol": 1e-08,
+    "fit_intercept": false,
+    "standardize": false,
+    "selection": "cyclic",
+    "report_nonzero_threshold": 1e-08,
+    "selection_metric": "independent_validation_weak_residual_mse",
+    "truth_used_for_selection": false,
+    "test_error_used_for_selection": false,
+    "post_lasso_refit": false,
+    "coefficient_thresholding": false
+  },
+  "validation_seed_offset": 1000000,
+  "observation_noise": {
+    "particles": 100,
+    "horizon": 2.0,
+    "dt": 0.005,
+    "sigma": 0.1,
+    "repetitions": 100,
+    "training_seed_start": 40000,
+    "training_seed_stride": 10,
+    "sigma_obs_values": [
+      0.0,
+      0.0003,
+      0.001,
+      0.003,
+      0.01,
+      0.03,
+      0.1
+    ],
+    "pair_mode": "full"
+  },
+  "process_noise": {
+    "particles": 100,
+    "horizon": 2.0,
+    "dt": 0.001,
+    "values": [
+      0.01,
+      0.05,
+      0.1,
+      0.2,
+      0.4
+    ],
+    "repetitions": 100,
+    "training_seed_start": 1234,
+    "training_seed_stride": 1000,
+    "solver": "rk4",
+    "pair_mode": "full"
+  },
+  "particle_number": {
+    "values": [
+      50,
+      100,
+      200,
+      400
+    ],
+    "horizon": 2.0,
+    "dt": 0.001,
+    "sigma": 0.1,
+    "repetitions": 100,
+    "training_seed_start": 1234,
+    "training_seed_stride": 1000,
+    "solver": "rk4",
+    "pair_mode": "full"
+  },
+  "time_step": {
+    "particles": 200,
+    "horizon": 10.0,
+    "values": [
+      0.1,
+      0.05,
+      0.02,
+      0.01,
+      0.005,
+      0.002
+    ],
+    "sigma": 0.0,
+    "stacked_trajectories": 3,
+    "training_seed": 1234,
+    "solver": "euler",
+    "pair_mode": "full"
+  },
+  "pair_count": {
+    "particles": 200,
+    "horizon": 2.0,
+    "dt": 0.01,
+    "sigma": 0.1,
+    "training_seed": 20260,
+    "values": [
+      100,
+      300,
+      1000,
+      3000,
+      10000,
+      30000
+    ],
+    "repetitions": 100,
+    "pair_mode": "resample_each_time",
+    "penalty_policy": "absolute_alpha_selected_by_independent_full_pair_validation_then_fixed_across_P"
+  },
+  "fixed_tests": {
+    "spatial_type": "gaussian",
+    "spatial_count": 25,
+    "spatial_interval": [
+      0.0,
+      4.0
+    ],
+    "spatial_width": 0.25,
+    "temporal_type": "bump",
+    "temporal_count": 8,
+    "temporal_support_factor": 1.8
+  },
+  "archived_ols_sources": {
+    "observation_noise": "data/manuscript/R05/observation_noise/sindy_vs_weak.csv",
+    "stochastic": "data/manuscript/R05/full_pair/stochastic_scaling.csv",
+    "time_step": "data/manuscript/R05/full_pair/dt_scaling.csv",
+    "pair_count": "data/manuscript/R05/random_pair/p_scaling.csv"
+  },
+  "protocol_variant": "uniform_trajectory_R100",
+  "parent_protocol": "configs/experiments/qanr_matched_lasso_sweeps_R100.json",
+  "dictionary_provenance": "Former six-atom overcomplete QANR experiment derived from Messenger--Bortz; first two atoms are the true interaction and four exponential atoms are redundant.",
+  "comparison_policy": "Raw minimum-norm OLS and independently validation-selected raw LASSO on identical systems; no standardization, thresholding, refit, seed selection, or failure exclusion."
+}

@@ -1,0 +1,97 @@
+{
+  "simulation": {
+    "N": 500,
+    "T": 200,
+    "dt": 0.01,
+    "R": 5,
+    "sigma": 0.1,
+    "d": 1,
+    "init": "uniform",
+    "init_scale": 1.0,
+    "seed": 1234,
+    "interaction": {
+      "mode": "morse_r",
+      "r_max": 2.0,
+      "a": 0.5,
+      "b": 2.0,
+      "l1": 0.5,
+      "l2": 1.5
+    },
+    "external_drift_fn": null
+  },
+  "time_tests": {
+    "type": "gaussian",
+    "K": 8,
+    "s_factor": 2.0
+  },
+  "pair_sampling": {
+    "total_pairs": 50000,
+    "with_replacement": true,
+    "exclude_diagonal": true,
+    "seed": 1234
+  },
+  "space_tests": {
+    "type": "gaussian",
+    "L": 25,
+    "s_factor": 1.5,
+    "layout": "grid",
+    "seed": 1234,
+    "quantiles": [
+      0.01,
+      0.99
+    ]
+  },
+  "kernel_basis": {
+    "M": 32,
+    "basis": "exp_r",
+    "ell_grid": [
+      0.1,
+      0.11605324,
+      0.13468355,
+      0.15630463,
+      0.1813966,
+      0.21051664,
+      0.24431139,
+      0.28353129,
+      0.32904726,
+      0.38187002,
+      0.44317255,
+      0.5,
+      0.51431612,
+      0.59688054,
+      0.69269923,
+      0.80389993,
+      0.93295194,
+      1.082721,
+      1.25653284,
+      1.45824713,
+      1.5,
+      1.6923431,
+      1.96401906,
+      2.27930784,
+      2.64521069,
+      3.06985282,
+      3.56266378,
+      4.13458689,
+      4.79832222,
+      5.5686086,
+      6.46255093,
+      7.5
+    ]
+  },
+  "regression": {
+    "method": "lasso",
+    "standardize": true,
+    "alpha": 0.002
+  },
+  "diagnostics": {
+    "method": "l2w",
+    "total_pairs": 50000,
+    "bins": 200,
+    "seed": 1234
+  },
+  "output": {
+    "prefix": "output",
+    "save_plots": true
+  }
+}

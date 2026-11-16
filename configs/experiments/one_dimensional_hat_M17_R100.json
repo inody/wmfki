@@ -1,0 +1,45 @@
+{
+  "protocol_version": 1,
+  "stage": "m17_total_100_repetitions",
+  "source_config": "configs/experiments/one_dimensional_hat_sweeps.json",
+  "source_batch": "outputs/validation/one_dimensional_hat/sweeps-R20-20261020T202111Z",
+  "dictionary_size": 17,
+  "existing_repetitions": 20,
+  "new_repetitions": 80,
+  "total_repetitions": 100,
+  "new_seed_formula": {
+    "train": "8000000 + 10*k",
+    "validation": "8000002 + 10*k",
+    "test": "8000004 + 10*k",
+    "brownian": "trajectory seed + 1",
+    "k_range": [0, 79]
+  },
+  "observation_seed_offset": 10000000,
+  "sweeps": {
+    "sigma_obs": [0.0, 0.0003, 0.001, 0.003, 0.01, 0.03, 0.1],
+    "sigma": [0.01, 0.05, 0.1, 0.2, 0.4],
+    "N": [50, 100, 200, 400, 1000],
+    "dt": [0.002, 0.005, 0.01, 0.02, 0.05, 0.1]
+  },
+  "unique_physical_conditions": 20,
+  "new_jobs": 1600,
+  "existing_records": 400,
+  "bootstrap": {
+    "samples": 10000,
+    "total_seed": 930000,
+    "new_only_seed": 930001,
+    "existing_only_seed": 930002
+  },
+  "reporting": {
+    "primary": "All 100 repetitions per condition: the immutable existing 20 plus 80 newly declared repetitions.",
+    "independent_replication": "Also report the newly declared 80 repetitions separately.",
+    "metrics": ["force_error_weighted_rel", "trajectory_error_rel", "drift_error_rel", "trajectory_rmse"],
+    "summaries": ["arithmetic_mean", "sample_sd", "median", "iqr", "pointwise_percentile_bootstrap_mean_ci95", "minimum", "maximum"],
+    "retain": ["all_individual_values", "candidate_nonconvergence", "alpha_boundary", "rollout_divergence", "basis_domain_excursion"]
+  },
+  "fixed_conditions": "Except for the plotted parameter, preserve N=1000, T=2, dt=0.005, sigma=0.1, sigma_obs=0, the true kernel, initial law, tests, full pairs, trapezoidal quadrature, 1/sqrt(200) row scaling, raw cyclic LASSO and independent-validation selection.",
+  "stopping_rule": "Run all 80 newly declared triplets at all 20 unique conditions, irrespective of monotonicity or intermediate results. Do not add, remove or select seeds based on outcomes.",
+  "failure_policy": "Retain every failed job, unconverged candidate, boundary selection, divergent rollout and domain excursion. If any planned value for a condition and metric is missing, its all-run mean and interval are null; never average only successful repetitions.",
+  "manuscript_instruction": "Do not edit the manuscript in this stage. For later manuscript work, present only the M=17 curves; do not add a four-dictionary comparison or a narrative about selecting M=17 from four dictionaries unless the author explicitly reverses this instruction.",
+  "scope_exclusions": ["pair-count sweep", "assembly timing sweep", "OLS", "best-approximation oracle", "predator-prey", "manuscript editing"]
+}

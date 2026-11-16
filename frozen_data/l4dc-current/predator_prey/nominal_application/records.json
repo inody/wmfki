@@ -1,0 +1,4962 @@
+[
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.08059788535935479,
+            "coefficient_error_relative": 0.20149471339838695,
+            "coefficients": [
+              0.0031320978336505626,
+              0.0,
+              0.3353008387030919,
+              0.047454412914908914,
+              -0.0069502740908638
+            ],
+            "profile_error_relative": 2.396153950706773
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.4491689895966532,
+            "coefficient_error_relative": 2.2458449479832656,
+            "coefficients": [
+              0.21225110356934593,
+              0.00242039104813935,
+              -0.44899536009160007,
+              -0.0,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.04072332709101418
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.4163649636120488,
+            "coefficient_error_relative": 0.2944144892185698,
+            "coefficients": [
+              0.9659453327519884,
+              -1.0123109525888099,
+              0.0,
+              0.41478729851412516,
+              0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.02795721698885565
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 2.105575732343747,
+          "predator_relative": 0.45807719722001766,
+          "predator_truth": 10.034448761682812,
+          "prey_error": 0.13471482180646344,
+          "prey_relative": 0.01629895408905304,
+          "prey_truth": 507.10268274374147,
+          "species_balanced_relative": 0.3241144662903401
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.3442397441676977e-08,
+          "validation_weak_residual_mse": 1.3221787683259824e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 8.557478324314335e-10,
+          "validation_weak_residual_mse": 9.463600690928547e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 1.5723931490321825e-09,
+            "alpha_over_max": 1.795714494371641e-05,
+            "candidate_count": 60,
+            "convergence_warnings": 5,
+            "nonconverged_candidates": 5,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 3.7486107215979596e-14,
+            "selected_index": 40,
+            "selected_iterations": 22189,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          },
+          "prey": {
+            "alpha": 5.584436195219154e-12,
+            "alpha_over_max": 8.895134973108237e-07,
+            "candidate_count": 60,
+            "convergence_warnings": 9,
+            "nonconverged_candidates": 9,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.3724806510170443e-14,
+            "selected_index": 51,
+            "selected_iterations": 109586,
+            "selected_nonzero_exact": 6,
+            "selected_nonzero_reported": 6
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.5041015217661117,
+            "coefficient_error_relative": 1.2602538044152791,
+            "coefficients": [
+              0.24433609163086134,
+              -0.4147157024685904,
+              0.5495505093917997,
+              0.006709981532880187,
+              -0.00432735345565684
+            ],
+            "profile_error_relative": 1.9180693546815801
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 31.851276588066373,
+            "coefficient_error_relative": 159.25638294033183,
+            "coefficients": [
+              0.26531173566521377,
+              -3.2159712020783484,
+              -7.5592886180484165,
+              14.131906140055316,
+              -22.306085660938187,
+              15.80322786074701
+            ],
+            "profile_error_relative": 0.23786435869653086
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 186.84574054923493,
+            "coefficient_error_relative": 132.11989017818632,
+            "coefficients": [
+              -0.031490096532380246,
+              9.102475678251627,
+              95.64368817874235,
+              -99.1386587133741,
+              109.40860315617674,
+              -62.143186193161824
+            ],
+            "profile_error_relative": 0.610144534776121
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 1.4475551835287233,
+          "predator_relative": 0.37981385632787723,
+          "predator_truth": 10.034448761682812,
+          "prey_error": 12.033346740119711,
+          "prey_relative": 0.15404416820373024,
+          "prey_truth": 507.10268274374147,
+          "species_balanced_relative": 0.2898173314488218
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.466406963100347,
+            0.10716670020023784,
+            0.018797162693729497,
+            0.0022890952234701153,
+            0.0002912858328460527
+          ],
+          "training_weak_residual_mse": 1.3404504468308963e-08,
+          "validation_weak_residual_mse": 1.3583252830440344e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.3147117236745351,
+            0.04569017744324586,
+            0.021330972765664476,
+            0.011126866510389001,
+            0.0011138799075886103,
+            0.0006862591031996432,
+            7.811705821268533e-05,
+            6.070750992521282e-05,
+            9.708244294150016e-06,
+            7.348110541643082e-06,
+            6.817311251804886e-07,
+            3.475435480996279e-07
+          ],
+          "training_weak_residual_mse": 7.562085107242492e-10,
+          "validation_weak_residual_mse": 8.812060369903483e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "380bc8386f166f4407eb95250a3903ed508cc47cf6896f111cd939a349220992",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 932000,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "27719a62fb2bf03d00308cba5efcfbc2b66cfac0b5fbe5d9256c7f699ebc758d",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1932000,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 0,
+    "seeds": {
+      "test": 62000,
+      "training": 42000,
+      "validation": 52000
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 5034.254322541517,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 905531.7683075473,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.03629637180926758,
+            "coefficient_error_relative": 0.09074092952316894,
+            "coefficients": [
+              -0.0,
+              0.002993310504675688,
+              0.3659983219532401,
+              0.012335162570160495,
+              -0.0004431174916307436
+            ],
+            "profile_error_relative": 0.11523055622226712
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.05096833759364243,
+            "coefficient_error_relative": 0.25484168796821216,
+            "coefficients": [
+              0.19447850672907616,
+              -0.008775243778851348,
+              -0.0,
+              0.0,
+              0.04990270178798316,
+              0.0
+            ],
+            "profile_error_relative": 0.023127664122169964
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.11913678830470957,
+            "coefficient_error_relative": 0.0842424308990463,
+            "coefficients": [
+              0.9909297736343393,
+              -1.005855233490179,
+              0.0,
+              0.11864662473923286,
+              0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.007544405095930097
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.003384570248489797,
+          "predator_relative": 0.022946012415769188,
+          "predator_truth": 6.428195612639136,
+          "prey_error": 0.06012042214374673,
+          "prey_relative": 0.010622318051523177,
+          "prey_truth": 532.8235597471954,
+          "species_balanced_relative": 0.017879501203506055
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.22694928210397e-08,
+          "validation_weak_residual_mse": 9.173923012556099e-09
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 8.52077961466289e-10,
+          "validation_weak_residual_mse": 9.175517670431475e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 1.0832855119810505e-11,
+            "alpha_over_max": 1.726983290659436e-07,
+            "candidate_count": 60,
+            "convergence_warnings": 0,
+            "nonconverged_candidates": 0,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 2.5688864496234964e-14,
+            "selected_index": 57,
+            "selected_iterations": 6978,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          },
+          "prey": {
+            "alpha": 1.634358528440162e-11,
+            "alpha_over_max": 2.6529484644318946e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 12,
+            "nonconverged_candidates": 12,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.30234078795495e-14,
+            "selected_index": 47,
+            "selected_iterations": 22292,
+            "selected_nonzero_exact": 6,
+            "selected_nonzero_reported": 6
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.07477289221361062,
+            "coefficient_error_relative": 0.18693223053402652,
+            "coefficients": [
+              -0.019755163181088536,
+              0.04071706313167487,
+              0.34313981796915505,
+              0.017580371673046245,
+              -0.000830625586366363
+            ],
+            "profile_error_relative": 0.06849847057226123
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 151.52535034287752,
+            "coefficient_error_relative": 757.6267517143874,
+            "coefficients": [
+              0.32642319969204153,
+              -17.753116112184532,
+              -25.116483669190373,
+              61.164182967020515,
+              -107.79682618174769,
+              81.56403568502387
+            ],
+            "profile_error_relative": 1.2565733683811222
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 244.31365401290645,
+            "coefficient_error_relative": 172.75584148899011,
+            "coefficients": [
+              -0.10928710892764328,
+              14.151327261266136,
+              110.30635036015748,
+              -128.349459235066,
+              151.0385511111349,
+              -89.46870829517742
+            ],
+            "profile_error_relative": 0.6543951431213698
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 0.0021744522139085136,
+          "predator_relative": 0.01839206071628381,
+          "predator_truth": 6.428195612639136,
+          "prey_error": 13.281310265444803,
+          "prey_relative": 0.15788059387696537,
+          "prey_truth": 532.8235597471954,
+          "species_balanced_relative": 0.11239339353435046
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.2651646623197474,
+            0.09088542894452015,
+            0.027467298601541502,
+            0.0036314306388608945,
+            0.0003740219745699145
+          ],
+          "training_weak_residual_mse": 1.2269072572071996e-08,
+          "validation_weak_residual_mse": 9.188737562871922e-09
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.31677149876062594,
+            0.040177831797015146,
+            0.02074761939103438,
+            0.009376021577957234,
+            0.0012685413598446126,
+            0.000747542632766248,
+            8.789676436945274e-05,
+            6.899036753060118e-05,
+            1.042373786129459e-05,
+            7.664077339657141e-06,
+            8.290873985376915e-07,
+            3.0671106313270784e-07
+          ],
+          "training_weak_residual_mse": 7.030291759182663e-10,
+          "validation_weak_residual_mse": 8.597433140412695e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "07d6632bd640e2c22067eb9af09e88852bc047200325e89a361719b4d6f18484",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 933013,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "3796bbaa96c88203a34896d61e6039478771c1741c9113702f4411d07c82459b",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1933013,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 1,
+    "seeds": {
+      "test": 62097,
+      "training": 42097,
+      "validation": 52097
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 3382.5944686125795,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 1032801.019712697,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.012524081238860443,
+            "coefficient_error_relative": 0.0313102030971511,
+            "coefficients": [
+              -0.008624178657160276,
+              0.00701170931024672,
+              0.40466255384791433,
+              -0.003390986407420356,
+              0.0002718247883226109
+            ],
+            "profile_error_relative": 0.04874961150928662
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.0010628612855675679,
+            "coefficient_error_relative": 0.005314306427837839,
+            "coefficients": [
+              0.20106286128556758,
+              -0.0,
+              0.0,
+              -0.0,
+              -0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.005314306427837834
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.0009558812478928573,
+            "coefficient_error_relative": 0.0006759101123940986,
+            "coefficients": [
+              0.9991246472978675,
+              -1.0003840138108748,
+              0.0,
+              0.0,
+              0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.0009750336734311762
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.00017389592474793077,
+          "predator_relative": 0.004335922197317787,
+          "predator_truth": 9.249674350210702,
+          "prey_error": 0.00881543421124727,
+          "prey_relative": 0.0036772425233288744,
+          "prey_truth": 651.9272903628205,
+          "species_balanced_relative": 0.004020095389202302
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.1275336609161576e-08,
+          "validation_weak_residual_mse": 1.2110253776524861e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 7.984935164254865e-10,
+          "validation_weak_residual_mse": 8.338057037441614e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 2.5586918398670417e-10,
+            "alpha_over_max": 2.6529484644318946e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 3,
+            "nonconverged_candidates": 3,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 5.705771728590294e-15,
+            "selected_index": 47,
+            "selected_iterations": 128835,
+            "selected_nonzero_exact": 5,
+            "selected_nonzero_reported": 5
+          },
+          "prey": {
+            "alpha": 1.0948344931692663e-10,
+            "alpha_over_max": 1.795714494371641e-05,
+            "candidate_count": 60,
+            "convergence_warnings": 13,
+            "nonconverged_candidates": 13,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.2326751449439943e-14,
+            "selected_index": 40,
+            "selected_iterations": 152,
+            "selected_nonzero_exact": 3,
+            "selected_nonzero_reported": 3
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.8408968676563988,
+            "coefficient_error_relative": 2.1022421691409967,
+            "coefficients": [
+              -0.354282325756544,
+              0.6576929425674457,
+              0.022408489124077054,
+              0.08015838139868445,
+              -0.005554619143787479
+            ],
+            "profile_error_relative": 1.0952712527366644
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 147.81082279529284,
+            "coefficient_error_relative": 739.0541139764641,
+            "coefficients": [
+              0.11610662082551441,
+              16.163198628173692,
+              25.490157484302713,
+              -62.659912343315675,
+              105.19720698164552,
+              -77.09940471393321
+            ],
+            "profile_error_relative": 0.8638288311218364
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 111.43296780739428,
+            "coefficient_error_relative": 78.79500718435074,
+            "coefficients": [
+              0.22698994497372976,
+              5.235951028507145,
+              59.234829396623944,
+              -57.21209484865164,
+              64.79980294270605,
+              -37.37403393476365
+            ],
+            "profile_error_relative": 0.4779096805074268
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 0.044007059474619116,
+          "predator_relative": 0.06897599176096557,
+          "predator_truth": 9.249674350210702,
+          "prey_error": 6.0878248447159,
+          "prey_relative": 0.0966343419563713,
+          "prey_truth": 651.9272903628205,
+          "species_balanced_relative": 0.08395202047821629
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.8093397168807173,
+            0.13786931853297535,
+            0.028414565824321197,
+            0.0037122596653535256,
+            0.0003728164500081765
+          ],
+          "training_weak_residual_mse": 1.1141104121331911e-08,
+          "validation_weak_residual_mse": 1.2611617122754469e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.31501478051951143,
+            0.042949284360213134,
+            0.021006675796555963,
+            0.010416693496231927,
+            0.0012850845521960364,
+            0.0007392336579988069,
+            0.00010676553814111206,
+            6.861372397420624e-05,
+            1.0905846584485735e-05,
+            8.025813473796149e-06,
+            8.001310349416261e-07,
+            3.762944414931248e-07
+          ],
+          "training_weak_residual_mse": 6.73588973072033e-10,
+          "validation_weak_residual_mse": 7.671785396564337e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "1c4a02a0b44fc221d871905a5075bcc6c6bbf6e32a2d4c319186a55a2339e55b",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 934026,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "890facb346e59b1ad900ba041be606f702e679521c2fcccaa413bac9029cdb2f",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1934026,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 2,
+    "seeds": {
+      "test": 62194,
+      "training": 42194,
+      "validation": 52194
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 4853.164920273866,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 837149.7045492951,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.023364081031620028,
+            "coefficient_error_relative": 0.05841020257905006,
+            "coefficients": [
+              -0.018259150340859117,
+              0.0,
+              0.4144708293984715,
+              -0.0016423424230084037,
+              -0.0006176723791227565
+            ],
+            "profile_error_relative": 0.3701827040995171
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.0035290955641316653,
+            "coefficient_error_relative": 0.017645477820658326,
+            "coefficients": [
+              0.20037138887107397,
+              0.0035094993670345925,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.008114640270820516
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.006432031313473206,
+            "coefficient_error_relative": 0.00454813295856112,
+            "coefficients": [
+              0.9935820728451257,
+              -0.9995742796079272,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.006627425040005774
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.09607829448921747,
+          "predator_relative": 0.13510136119844787,
+          "predator_truth": 5.263878249411648,
+          "prey_error": 0.025986214977711725,
+          "prey_relative": 0.0073973767825918696,
+          "prey_truth": 474.88401068592424,
+          "species_balanced_relative": 0.09567418403346094
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.1456741280997638e-08,
+          "validation_weak_residual_mse": 1.2169451789088116e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 9.507199111206097e-10,
+          "validation_weak_residual_mse": 9.034535745405543e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 6.2888185887712484e-12,
+            "alpha_over_max": 1e-07,
+            "candidate_count": 60,
+            "convergence_warnings": 0,
+            "nonconverged_candidates": 0,
+            "selected_at_grid_boundary": true,
+            "selected_dual_gap": 3.2871063925913624e-14,
+            "selected_index": 59,
+            "selected_iterations": 17633,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          },
+          "prey": {
+            "alpha": 7.126368527780037e-10,
+            "alpha_over_max": 0.0001215474250076286,
+            "candidate_count": 60,
+            "convergence_warnings": 13,
+            "nonconverged_candidates": 13,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.1927954390284001e-14,
+            "selected_index": 33,
+            "selected_iterations": 557,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.024678613208446675,
+            "coefficient_error_relative": 0.06169653302111668,
+            "coefficients": [
+              -0.019785475423045068,
+              0.0017267687566478803,
+              0.4145058824134535,
+              -0.0019602078671780584,
+              -0.0005693350171716513
+            ],
+            "profile_error_relative": 0.35385591423328516
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 143.7326064378305,
+            "coefficient_error_relative": 718.6630321891523,
+            "coefficients": [
+              0.20626362434713744,
+              18.66632512979952,
+              13.835949570705234,
+              -52.059110674468634,
+              103.21629465956268,
+              -82.1914985405337
+            ],
+            "profile_error_relative": 1.5032961028958272
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 212.5012269772335,
+            "coefficient_error_relative": 150.26105860606353,
+            "coefficients": [
+              -0.06161603795061014,
+              12.041771043255782,
+              99.49574515323813,
+              -110.96690619968359,
+              129.88185483260588,
+              -76.8323034692269
+            ],
+            "profile_error_relative": 0.6323234789150403
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 0.08878963255228305,
+          "predator_relative": 0.12987579275577474,
+          "predator_truth": 5.263878249411648,
+          "prey_error": 10.10856369411834,
+          "prey_relative": 0.14589854216123724,
+          "prey_truth": 474.88401068592424,
+          "species_balanced_relative": 0.13811970559756356
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.1737076135194089,
+            0.11168504259300373,
+            0.020438129838858933,
+            0.0023789618465993316,
+            0.00031403807770254973
+          ],
+          "training_weak_residual_mse": 1.1456724422272536e-08,
+          "validation_weak_residual_mse": 1.2130621210450178e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.31296653667046975,
+            0.0463402085208423,
+            0.020592669426483426,
+            0.01187537792181737,
+            0.0011226119808246757,
+            0.0007666165152938115,
+            7.73774655648436e-05,
+            6.670846958142184e-05,
+            9.922434073571808e-06,
+            7.27509460253234e-06,
+            7.569401566863083e-07,
+            3.341062595098884e-07
+          ],
+          "training_weak_residual_mse": 8.017240395872729e-10,
+          "validation_weak_residual_mse": 7.936695400521949e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "714d246d08ae661519936bea703e343051fc90da3294b73db7f191d38b121afc",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 935039,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "bf1c358d5c5ba51c1510274c3eff21e32f15c8794d83b6acc5d5c10cad30d3a6",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1935039,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 3,
+    "seeds": {
+      "test": 62291,
+      "training": 42291,
+      "validation": 52291
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 3737.4691059952283,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 936727.5462889284,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.6614903393892072,
+            "coefficient_error_relative": 1.653725848473018,
+            "coefficients": [
+              0.21624766218560532,
+              -0.49455613012562666,
+              0.7688910998286523,
+              -0.10037208281542706,
+              0.008090322501200654
+            ],
+            "profile_error_relative": 1.8253231248810389
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.017844067828056278,
+            "coefficient_error_relative": 0.08922033914028138,
+            "coefficients": [
+              0.19644106150007395,
+              0.007671802740393893,
+              -0.0,
+              -0.01571267501472941,
+              -0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.0204450300653135
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.42426434252602835,
+            "coefficient_error_relative": 0.30000019361580677,
+            "coefficients": [
+              0.9603789379968348,
+              -1.0051250888806753,
+              0.0,
+              0.4223791392206173,
+              0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.032835674707466206
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 5.333772776557,
+          "predator_relative": 0.521484089911131,
+          "predator_truth": 19.61337737257313,
+          "prey_error": 0.07831321219507566,
+          "prey_relative": 0.011800588585254625,
+          "prey_truth": 562.3771921636794,
+          "species_balanced_relative": 0.36883933488810483
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.2929504771569352e-08,
+          "validation_weak_residual_mse": 8.189977555112606e-09
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 8.625262838190111e-10,
+          "validation_weak_residual_mse": 1.1779370449432396e-09
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 1.6853154626881315e-11,
+            "alpha_over_max": 2.2695105366946685e-07,
+            "candidate_count": 60,
+            "convergence_warnings": 0,
+            "nonconverged_candidates": 0,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 3.141784119004714e-14,
+            "selected_index": 56,
+            "selected_iterations": 111722,
+            "selected_nonzero_exact": 5,
+            "selected_nonzero_reported": 5
+          },
+          "prey": {
+            "alpha": 1.2124953940023909e-11,
+            "alpha_over_max": 2.018760254679039e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 11,
+            "nonconverged_candidates": 11,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.2539793175293808e-14,
+            "selected_index": 48,
+            "selected_iterations": 87540,
+            "selected_nonzero_exact": 6,
+            "selected_nonzero_reported": 6
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.7792396036128723,
+            "coefficient_error_relative": 1.9480990090321806,
+            "coefficients": [
+              0.2652563835870522,
+              -0.5869759406493688,
+              0.8237123609743473,
+              -0.11269160231850552,
+              0.009005211173864528
+            ],
+            "profile_error_relative": 2.0218166942777587
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 97.59457077178837,
+            "coefficient_error_relative": 487.97285385894185,
+            "coefficients": [
+              0.2536878690833461,
+              -11.809586703867684,
+              -14.126501631421004,
+              38.203405299880416,
+              -69.69256506143272,
+              53.56415941592523
+            ],
+            "profile_error_relative": 0.8538849321812924
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 214.25039674167863,
+            "coefficient_error_relative": 151.49790840794913,
+            "coefficients": [
+              0.032637053139124225,
+              12.485346541585168,
+              95.2425154907226,
+              -112.24222286808426,
+              133.27410414239466,
+              -79.30322789913413
+            ],
+            "profile_error_relative": 0.5740610919970709
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 6.556876616127315,
+          "predator_relative": 0.5781923129822779,
+          "predator_truth": 19.61337737257313,
+          "prey_error": 7.727903456244674,
+          "prey_relative": 0.11722412356607108,
+          "prey_truth": 562.3771921636794,
+          "species_balanced_relative": 0.41716174677073997
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.3713397113462689,
+            0.10028375180257378,
+            0.02227217522324645,
+            0.0028073097009001517,
+            0.000447390998239633
+          ],
+          "training_weak_residual_mse": 1.2925970927009229e-08,
+          "validation_weak_residual_mse": 8.194817723861538e-09
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.31518832884208153,
+            0.043108165742890746,
+            0.020644564838666175,
+            0.010402055739104507,
+            0.0012534609955678414,
+            0.0007632589276798967,
+            8.821473296788585e-05,
+            6.653950998627413e-05,
+            9.958802402951345e-06,
+            7.762176928732723e-06,
+            7.807156851326296e-07,
+            3.1430707820917976e-07
+          ],
+          "training_weak_residual_mse": 7.689367240024458e-10,
+          "validation_weak_residual_mse": 1.0596587748488574e-09
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "7c8c71c0603c859efa6e9245d5d8feff8eaf63e47ed97b32f0a98660876ec6cb",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 936052,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "e84a66df4f0934199324c434ea3fcdd8e6469bcef43fd039975b5d15f288ee42",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1936052,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 4,
+    "seeds": {
+      "test": 62388,
+      "training": 42388,
+      "validation": 52388
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 3065.1929000407545,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 1002803.7886958283,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.06331076935098345,
+            "coefficient_error_relative": 0.15827692337745863,
+            "coefficients": [
+              0.03447736263199507,
+              0.0,
+              0.3509258835697189,
+              0.02020778270161992,
+              -0.001715108342542037
+            ],
+            "profile_error_relative": 0.3764898503525796
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.07375090121048354,
+            "coefficient_error_relative": 0.36875450605241766,
+            "coefficients": [
+              0.2004890443023069,
+              0.015449500420627175,
+              -0.0,
+              -0.07211289206363813,
+              -0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.024881052268058024
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.3463622925071382,
+            "coefficient_error_relative": 0.24491512577911595,
+            "coefficients": [
+              0.9713121291893315,
+              -1.0108569110828558,
+              0.0,
+              0.3450014075636355,
+              0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.023624321427396813
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.004205039056966634,
+          "predator_relative": 0.02765112538492956,
+          "predator_truth": 5.499768520325768,
+          "prey_error": 0.04719432341297056,
+          "prey_relative": 0.00856807570361515,
+          "prey_truth": 642.8700216681801,
+          "species_balanced_relative": 0.02046944865300451
+        },
+        "predator": {
+          "training_weak_residual_mse": 8.361571387223198e-09,
+          "validation_weak_residual_mse": 1.2662108596563674e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 8.513704004209075e-10,
+          "validation_weak_residual_mse": 9.825666612721902e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 7.80905725051007e-09,
+            "alpha_over_max": 0.0001215474250076286,
+            "candidate_count": 60,
+            "convergence_warnings": 1,
+            "nonconverged_candidates": 1,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 2.6397095205802346e-14,
+            "selected_index": 33,
+            "selected_iterations": 21358,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          },
+          "prey": {
+            "alpha": 1.2199342606355519e-11,
+            "alpha_over_max": 2.018760254679039e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 11,
+            "nonconverged_candidates": 11,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.26885406954827e-14,
+            "selected_index": 48,
+            "selected_iterations": 20092,
+            "selected_nonzero_exact": 6,
+            "selected_nonzero_reported": 6
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.6154166245820951,
+            "coefficient_error_relative": 1.5385415614552378,
+            "coefficients": [
+              -0.1437338199363736,
+              0.44558114536921856,
+              0.01658809311734054,
+              0.11151902405414746,
+              -0.009719601050776096
+            ],
+            "profile_error_relative": 2.3888982970393524
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 213.12836370967804,
+            "coefficient_error_relative": 1065.6418185483901,
+            "coefficients": [
+              0.1891805416360322,
+              26.04038603052502,
+              25.54806949913669,
+              -82.30736442559413,
+              152.90239898584554,
+              -118.06459200979094
+            ],
+            "profile_error_relative": 1.818682351216351
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 203.75009265971195,
+            "coefficient_error_relative": 144.07307218706973,
+            "coefficients": [
+              -0.022117868062181845,
+              11.215832335983501,
+              96.03097008078605,
+              -107.01566177005267,
+              124.07992681423625,
+              -72.75782883840591
+            ],
+            "profile_error_relative": 0.6090613575766738
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 0.38226404770533057,
+          "predator_relative": 0.2636389186372025,
+          "predator_truth": 5.499768520325768,
+          "prey_error": 12.190302611430408,
+          "prey_relative": 0.1377037147854328,
+          "prey_truth": 642.8700216681801,
+          "species_balanced_relative": 0.21031855895985654
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.3002303999319247,
+            0.09839371193025878,
+            0.016635833299017473,
+            0.0024847602043349113,
+            0.0002989209202972252
+          ],
+          "training_weak_residual_mse": 8.136687095308288e-09,
+          "validation_weak_residual_mse": 1.4109315591912082e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.31603324954568945,
+            0.04035114533717814,
+            0.020384183900427736,
+            0.009304119235137118,
+            0.0010628678463069456,
+            0.0006539825472370517,
+            8.574564897118639e-05,
+            6.218891223595608e-05,
+            9.675522233880966e-06,
+            7.903207983387071e-06,
+            7.548340701074687e-07,
+            3.0511767050275825e-07
+          ],
+          "training_weak_residual_mse": 7.169482835224149e-10,
+          "validation_weak_residual_mse": 9.067180078171493e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "3c9fff6560dbeae44c5c0f0418e2ad7a0a8c03ac7b0d12b09867909068f4e69d",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 937065,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "41be6a083492e898f75f615f60066d1f93ce5510ec6153932ae569e2794237e8",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1937065,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 5,
+    "seeds": {
+      "test": 62485,
+      "training": 42485,
+      "validation": 52485
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 4349.74707905713,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 1035774.9815831555,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.0706399607376337,
+            "coefficient_error_relative": 0.17659990184408425,
+            "coefficients": [
+              0.023440774942383932,
+              0.0,
+              0.3404339300809005,
+              0.029714633868069554,
+              -0.0030753815364045894
+            ],
+            "profile_error_relative": 0.8322613040519241
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 1.7136512220226856,
+            "coefficient_error_relative": 8.568256110113426,
+            "coefficients": [
+              0.2532374750099302,
+              -0.013411669366722185,
+              -1.7127715577738931,
+              -0.0,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.1743960315780797
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.7120086527868891,
+            "coefficient_error_relative": 0.5034661466491072,
+            "coefficients": [
+              0.9272277417100705,
+              -1.0018297172981045,
+              0.0,
+              0.7082776095581403,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.06091987933607336
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.002457495482748531,
+          "predator_relative": 0.12230847884065019,
+          "predator_truth": 0.16427807247380952,
+          "prey_error": 1.0981589025387013,
+          "prey_relative": 0.043174456234358394,
+          "prey_truth": 589.1304001346147,
+          "species_balanced_relative": 0.091715314063264
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.1447731061376971e-08,
+          "validation_weak_residual_mse": 1.1073414221796046e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 7.620610151124447e-10,
+          "validation_weak_residual_mse": 8.957252399591645e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 5.647841141282058e-09,
+            "alpha_over_max": 5.355666917706897e-05,
+            "candidate_count": 60,
+            "convergence_warnings": 8,
+            "nonconverged_candidates": 8,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 4.1151784484525853e-14,
+            "selected_index": 36,
+            "selected_iterations": 25420,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          },
+          "prey": {
+            "alpha": 9.422812194682296e-12,
+            "alpha_over_max": 1.5361749466718265e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 12,
+            "nonconverged_candidates": 12,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.2997307105483762e-14,
+            "selected_index": 49,
+            "selected_iterations": 48181,
+            "selected_nonzero_exact": 6,
+            "selected_nonzero_reported": 6
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 1.32976706797003,
+            "coefficient_error_relative": 3.3244176699250745,
+            "coefficients": [
+              0.6128690987697253,
+              -1.0484514341258655,
+              0.9325166265091208,
+              -0.09903466281442955,
+              0.006300092284113268
+            ],
+            "profile_error_relative": 1.1487078112512468
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 85.4836594445195,
+            "coefficient_error_relative": 427.41829722259746,
+            "coefficients": [
+              0.2905390390850869,
+              -12.483498266775438,
+              -8.472145694285258,
+              26.988568156710542,
+              -60.78177413542147,
+              51.5463478324935
+            ],
+            "profile_error_relative": 1.370432346466891
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 193.26486520396458,
+            "coefficient_error_relative": 136.65889675082738,
+            "coefficients": [
+              0.054877744596107225,
+              10.82953069658287,
+              87.54312726691921,
+              -101.53499277115858,
+              119.51649353101018,
+              -70.37848360875857
+            ],
+            "profile_error_relative": 0.5715792709217633
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 0.004763272842504961,
+          "predator_relative": 0.17027972109265022,
+          "predator_truth": 0.16427807247380952,
+          "prey_error": 11.092334970871564,
+          "prey_relative": 0.13721632107758486,
+          "prey_truth": 589.1304001346147,
+          "species_balanced_relative": 0.15463424941690246
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.661295371522757,
+            0.11098293143804727,
+            0.018284550895908774,
+            0.00266852075325706,
+            0.0003265593726824402
+          ],
+          "training_weak_residual_mse": 1.1132286213653467e-08,
+          "validation_weak_residual_mse": 1.2279071239226546e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.31548615293909127,
+            0.043765351997985064,
+            0.02042734801137132,
+            0.009500691296980905,
+            0.0010890874967315878,
+            0.0005719051105685622,
+            8.83043436330844e-05,
+            6.530432110310966e-05,
+            8.836934553009046e-06,
+            7.70400410752517e-06,
+            7.43419621278697e-07,
+            2.7520656324875056e-07
+          ],
+          "training_weak_residual_mse": 6.59251005550926e-10,
+          "validation_weak_residual_mse": 8.777231889384723e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "a3037b5d8bfbc3314f62f1f249fe97dfab24dbf5c009ee8e0ad33e3d485cd9fb",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 938078,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "1bd64d78a8d64c3788d609b06e1eb3d6f16de328fa9cbff4fb921ac86167ea95",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1938078,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 6,
+    "seeds": {
+      "test": 62582,
+      "training": 42582,
+      "validation": 52582
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 5087.268994536774,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 1146361.2975462847,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.05451213998456689,
+            "coefficient_error_relative": 0.13628034996141722,
+            "coefficients": [
+              0.0,
+              0.0,
+              0.3508914902126857,
+              0.023571042798325455,
+              -0.0020817333080336443
+            ],
+            "profile_error_relative": 0.4678229704905357
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.003671779322723829,
+            "coefficient_error_relative": 0.018358896613619145,
+            "coefficients": [
+              0.19744830140589503,
+              0.0026402268235181867,
+              -0.0,
+              -0.0,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.012279955501309711
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.09176309384808663,
+            "coefficient_error_relative": 0.06488630592263962,
+            "coefficients": [
+              0.9863405068813472,
+              -0.9961262251532228,
+              0.0,
+              0.09065802506535596,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.011954037067363841
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.07509000564257735,
+          "predator_relative": 0.09251273457024167,
+          "predator_truth": 8.77362565079583,
+          "prey_error": 0.032597505569094125,
+          "prey_relative": 0.007833643079618029,
+          "prey_truth": 531.1984608084413,
+          "species_balanced_relative": 0.0656504837056165
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.095897381102006e-08,
+          "validation_weak_residual_mse": 1.1669822783206681e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 8.966370901710149e-10,
+          "validation_weak_residual_mse": 8.14585990104199e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 1.793549050074686e-08,
+            "alpha_over_max": 0.00020991037201085544,
+            "candidate_count": 60,
+            "convergence_warnings": 7,
+            "nonconverged_candidates": 7,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 6.522758255153886e-15,
+            "selected_index": 31,
+            "selected_iterations": 5256,
+            "selected_nonzero_exact": 3,
+            "selected_nonzero_reported": 3
+          },
+          "prey": {
+            "alpha": 2.07972212302728e-11,
+            "alpha_over_max": 3.4863652276780807e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 12,
+            "nonconverged_candidates": 12,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.2440817835981309e-14,
+            "selected_index": 46,
+            "selected_iterations": 14860,
+            "selected_nonzero_exact": 5,
+            "selected_nonzero_reported": 5
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 1.4126884227317233,
+            "coefficient_error_relative": 3.531721056829308,
+            "coefficients": [
+              0.7002947426248679,
+              -1.1259155896528426,
+              0.8837986763470995,
+              -0.05939685263366674,
+              0.0008903993009589299
+            ],
+            "profile_error_relative": 0.647450946809539
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 4.200930224157937,
+            "coefficient_error_relative": 21.004651120789685,
+            "coefficients": [
+              0.19298903386560534,
+              -1.0437403664426095,
+              1.6076256244908143,
+              -1.1433188893810615,
+              -1.8304030752571934,
+              3.052270956650106
+            ],
+            "profile_error_relative": 0.22323521896899914
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 76.09837639733031,
+            "coefficient_error_relative": 53.809677987838576,
+            "coefficients": [
+              0.22688506476851739,
+              2.2661158171586346,
+              49.5596295464784,
+              -37.472710583230025,
+              38.60007704396636,
+              -20.721264537589246
+            ],
+            "profile_error_relative": 0.48823929010971867
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 0.10094350425863763,
+          "predator_relative": 0.1072629256820041,
+          "predator_truth": 8.77362565079583,
+          "prey_error": 5.384302026043833,
+          "prey_relative": 0.10067839943116003,
+          "prey_truth": 531.1984608084413,
+          "species_balanced_relative": 0.10402277476082662
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.443571293468219,
+            0.07413698428646365,
+            0.02222427455109001,
+            0.0024015019862854534,
+            0.0002326550476031506
+          ],
+          "training_weak_residual_mse": 9.890953912654999e-09,
+          "validation_weak_residual_mse": 1.2981764443111986e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.3159015859916023,
+            0.041427168488686626,
+            0.02026880007023248,
+            0.009353481279064295,
+            0.0011551981468261618,
+            0.0006673046732092172,
+            8.668465537041116e-05,
+            6.185289889683342e-05,
+            9.885211284358533e-06,
+            8.001064802219533e-06,
+            8.439194307352987e-07,
+            3.2809586943035704e-07
+          ],
+          "training_weak_residual_mse": 7.701719194426061e-10,
+          "validation_weak_residual_mse": 7.567083556669546e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "44d439a78ba1d43c8a146507e365cb4eec9b6cb4b16b43dbe863b030221b1584",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 939091,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "46d2ef27031678185779a8baf4718e63f1a5d9b6b4ec56b5399dae578d76b095",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1939091,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 7,
+    "seeds": {
+      "test": 62679,
+      "training": 42679,
+      "validation": 52679
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 6204.7710047132905,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 962833.1698904752,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.05647044714668118,
+            "coefficient_error_relative": 0.14117611786670295,
+            "coefficients": [
+              0.0,
+              0.02162854087434634,
+              0.35250894225365315,
+              0.021445341289777285,
+              -0.002411304976763191
+            ],
+            "profile_error_relative": 0.7132183159401269
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.024177226833645832,
+            "coefficient_error_relative": 0.12088613416822916,
+            "coefficients": [
+              0.19759481636357254,
+              0.011311511839284088,
+              -0.0,
+              -0.0,
+              -0.021232123985846577,
+              -0.0
+            ],
+            "profile_error_relative": 0.01727226844520442
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.28429374574448985,
+            "coefficient_error_relative": 0.20102603546485293,
+            "coefficients": [
+              0.9708042234169811,
+              -0.9990547771128638,
+              0.0,
+              0.28278905044722064,
+              0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.0244462042050784
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.42930320503216507,
+          "predator_relative": 0.21929126026948606,
+          "predator_truth": 8.927327842502185,
+          "prey_error": 0.04964663177137482,
+          "prey_relative": 0.008825297275568366,
+          "prey_truth": 637.427950604463,
+          "species_balanced_relative": 0.15518785825988712
+        },
+        "predator": {
+          "training_weak_residual_mse": 9.177661649641563e-09,
+          "validation_weak_residual_mse": 9.500252142506367e-09
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 8.904374905560079e-10,
+          "validation_weak_residual_mse": 9.101427739968552e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 1.1732954037425292e-08,
+            "alpha_over_max": 0.0001215474250076286,
+            "candidate_count": 60,
+            "convergence_warnings": 0,
+            "nonconverged_candidates": 0,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 3.450161026913621e-14,
+            "selected_index": 33,
+            "selected_iterations": 8141,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          },
+          "prey": {
+            "alpha": 2.1044616272593265e-11,
+            "alpha_over_max": 3.4863652276780807e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 13,
+            "nonconverged_candidates": 13,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.2695423027305716e-14,
+            "selected_index": 46,
+            "selected_iterations": 68118,
+            "selected_nonzero_exact": 6,
+            "selected_nonzero_reported": 6
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 1.5204199352795071,
+            "coefficient_error_relative": 3.801049838198768,
+            "coefficients": [
+              -0.6487366074118436,
+              1.2018074806275623,
+              -0.25610802721163506,
+              0.12623362929671741,
+              -0.007981276199915337
+            ],
+            "profile_error_relative": 1.4081980044449838
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 428.65697521997635,
+            "coefficient_error_relative": 2143.284876099882,
+            "coefficients": [
+              0.02389237797402824,
+              49.748965517607054,
+              63.378941792385234,
+              -173.3402216810999,
+              306.4552847852526,
+              -230.85330305799644
+            ],
+            "profile_error_relative": 3.0930359113014574
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 154.25550543537716,
+            "coefficient_error_relative": 109.07511392871353,
+            "coefficients": [
+              0.13684150019574243,
+              8.750104724615051,
+              71.81002013824686,
+              -79.31010456340626,
+              95.02890206485316,
+              -56.759910734792605
+            ],
+            "profile_error_relative": 0.5320181183564424
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 1.5936916910134098,
+          "predator_relative": 0.4225143000180571,
+          "predator_truth": 8.927327842502185,
+          "prey_error": 13.138565075451275,
+          "prey_relative": 0.14356825333880638,
+          "prey_truth": 637.427950604463,
+          "species_balanced_relative": 0.31553936132161425
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.7683065156546782,
+            0.13719614072483863,
+            0.02078490403235178,
+            0.005417301247624017,
+            0.00044724378971550984
+          ],
+          "training_weak_residual_mse": 8.38142568366788e-09,
+          "validation_weak_residual_mse": 1.2380585077103848e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.31522421138347145,
+            0.04335239150354476,
+            0.020442907953138682,
+            0.010012295937053318,
+            0.00105468970152914,
+            0.0006009558912732089,
+            8.486789314180852e-05,
+            6.314652136525608e-05,
+            9.54961192801983e-06,
+            7.388062486777814e-06,
+            7.997470863762641e-07,
+            3.443785718602629e-07
+          ],
+          "training_weak_residual_mse": 7.323497929580575e-10,
+          "validation_weak_residual_mse": 8.92484061898586e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "ba70a648fd7a820147c8af37da019426a44d2d37397cf348b329ed87a116f2f3",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 940104,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "875fa6a6c1aac7cbc83cd4c81de2215c2e000efe4de45d0e163291c839ebb361",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1940104,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 8,
+    "seeds": {
+      "test": 62776,
+      "training": 42776,
+      "validation": 52776
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 3953.78662894233,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 915342.1180670282,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.035409988659626544,
+            "coefficient_error_relative": 0.08852497164906635,
+            "coefficients": [
+              -0.028785072725844508,
+              0.019708736861077072,
+              0.40173799254838743,
+              -0.005697372487083674,
+              0.0011712834963051454
+            ],
+            "profile_error_relative": 0.4648611088657995
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.005822841577815796,
+            "coefficient_error_relative": 0.029114207889078973,
+            "coefficients": [
+              0.20126074115736045,
+              -0.005684717739209028,
+              0.0,
+              0.0,
+              0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.011681981034591867
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.0035795478320247375,
+            "coefficient_error_relative": 0.002531122545606297,
+            "coefficients": [
+              1.0015862444292107,
+              -0.9967911074663444,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.0024668700861265806
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.0910640894161804,
+          "predator_relative": 0.4210571554581693,
+          "predator_truth": 0.5136473418307969,
+          "prey_error": 0.011311362487547275,
+          "prey_relative": 0.004337869659698024,
+          "prey_truth": 601.121031511222,
+          "species_balanced_relative": 0.297748169831243
+        },
+        "predator": {
+          "training_weak_residual_mse": 8.194245679202113e-09,
+          "validation_weak_residual_mse": 1.272192045198376e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 1.0017073812491192e-09,
+          "validation_weak_residual_mse": 9.383919419005424e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 1.6753670955591578e-11,
+            "alpha_over_max": 1e-07,
+            "candidate_count": 60,
+            "convergence_warnings": 0,
+            "nonconverged_candidates": 0,
+            "selected_at_grid_boundary": true,
+            "selected_dual_gap": 1.8669739861321494e-14,
+            "selected_index": 59,
+            "selected_iterations": 86575,
+            "selected_nonzero_exact": 5,
+            "selected_nonzero_reported": 5
+          },
+          "prey": {
+            "alpha": 9.9435841157967e-10,
+            "alpha_over_max": 0.0001597312280060254,
+            "candidate_count": 60,
+            "convergence_warnings": 13,
+            "nonconverged_candidates": 13,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.3203761167189187e-14,
+            "selected_index": 32,
+            "selected_iterations": 846,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.07128144235504313,
+            "coefficient_error_relative": 0.17820360588760784,
+            "coefficients": [
+              -0.04677745975480095,
+              0.051553373988232856,
+              0.3849085966180987,
+              -0.0025375117084557052,
+              0.000986656894212815
+            ],
+            "profile_error_relative": 0.4378826135667063
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 150.6252581526486,
+            "coefficient_error_relative": 753.1262907632429,
+            "coefficients": [
+              0.19891316461039593,
+              18.577672303632962,
+              17.239851128485864,
+              -57.66966838075158,
+              108.11193896935582,
+              -83.85489859488067
+            ],
+            "profile_error_relative": 1.3316125135228492
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 158.93216460162222,
+            "coefficient_error_relative": 112.38201133846364,
+            "coefficients": [
+              0.2079133620185525,
+              9.277353661708132,
+              70.06567804275825,
+              -82.0938090164778,
+              99.62768275624681,
+              -59.82402239587789
+            ],
+            "profile_error_relative": 0.4849105177722115
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 0.08418503652753896,
+          "predator_relative": 0.4048414110194469,
+          "predator_truth": 0.5136473418307969,
+          "prey_error": 4.513886651055421,
+          "prey_relative": 0.08665514696278379,
+          "prey_truth": 601.121031511222,
+          "species_balanced_relative": 0.2927504761493637
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            2.744172217382916,
+            0.1620581256307155,
+            0.03076187731205488,
+            0.006757998006398444,
+            0.00048649310730120303
+          ],
+          "training_weak_residual_mse": 8.19374765234445e-09,
+          "validation_weak_residual_mse": 1.2698753577224595e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.3164652578653366,
+            0.041763929463132926,
+            0.020610679049312488,
+            0.009224029518056696,
+            0.0013640961069356665,
+            0.0007384632505412611,
+            0.0001112011178738042,
+            6.452757140673335e-05,
+            1.2789100959931402e-05,
+            7.581344730964126e-06,
+            8.056068281567296e-07,
+            4.179990894232776e-07
+          ],
+          "training_weak_residual_mse": 8.475910372083921e-10,
+          "validation_weak_residual_mse": 8.262811884766911e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "4e5ed30595f54217fe1d730f65da7cb128fc6964998585a2cbaf33938876a4ec",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 941117,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "375f4d232c2fd817326bea0f0992d44a5702fef815f4488e93b5b802072c6ada",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1941117,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 9,
+    "seeds": {
+      "test": 62873,
+      "training": 42873,
+      "validation": 52873
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 5640.721679709047,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 757095.5676051121,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.04450195355065047,
+            "coefficient_error_relative": 0.11125488387662615,
+            "coefficients": [
+              0.005186147751256757,
+              -0.0,
+              0.36241742217259815,
+              0.023103636486431094,
+              -0.0027017709518974403
+            ],
+            "profile_error_relative": 0.8008809488511317
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.0020568731688201778,
+            "coefficient_error_relative": 0.010284365844100887,
+            "coefficients": [
+              0.19882581496512675,
+              0.0016887915017822738,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.005870228350248347
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.008362551199963692,
+            "coefficient_error_relative": 0.0059132166615140265,
+            "coefficients": [
+              0.9931609125556949,
+              -0.9951876050140119,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.0067878208778236
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.035150259510181664,
+          "predator_relative": 0.07753411900607815,
+          "predator_truth": 5.847130983122137,
+          "prey_error": 0.02190239189277696,
+          "prey_relative": 0.006478370256250194,
+          "prey_truth": 521.8672152227577,
+          "species_balanced_relative": 0.055015947193635395
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.1310945819408758e-08,
+          "validation_weak_residual_mse": 1.5062381976009217e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 8.598669428603856e-10,
+          "validation_weak_residual_mse": 9.797470471474378e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 1.2484997801300562e-11,
+            "alpha_over_max": 2.2695105366946685e-07,
+            "candidate_count": 60,
+            "convergence_warnings": 3,
+            "nonconverged_candidates": 3,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 2.6892587898605408e-14,
+            "selected_index": 56,
+            "selected_iterations": 6873,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          },
+          "prey": {
+            "alpha": 1.396288215935775e-10,
+            "alpha_over_max": 2.3598334667821938e-05,
+            "candidate_count": 60,
+            "convergence_warnings": 8,
+            "nonconverged_candidates": 8,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.2266115801949704e-14,
+            "selected_index": 39,
+            "selected_iterations": 641,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.14720678749918945,
+            "coefficient_error_relative": 0.36801696874797357,
+            "coefficients": [
+              0.06753819280400221,
+              -0.12373824117084745,
+              0.4422838331405541,
+              0.002896113551527875,
+              -0.0009840994790037986
+            ],
+            "profile_error_relative": 0.3762671381553724
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 95.8782899854266,
+            "coefficient_error_relative": 479.39144992713295,
+            "coefficients": [
+              0.06121094056070845,
+              9.090006047641785,
+              22.491442900246668,
+              -44.18966770882376,
+              67.14640154239237,
+              -46.2900425808495
+            ],
+            "profile_error_relative": 0.4638958241683476
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 156.39675600364995,
+            "coefficient_error_relative": 110.58920672575877,
+            "coefficients": [
+              0.1444320582033745,
+              7.740993322656906,
+              78.45074114879708,
+              -82.65622213993312,
+              92.58535980904347,
+              -53.14310521115494
+            ],
+            "profile_error_relative": 0.5094086849910219
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 0.008594384623058412,
+          "predator_relative": 0.03833857631321055,
+          "predator_truth": 5.847130983122137,
+          "prey_error": 8.893511107901482,
+          "prey_relative": 0.1305439106987684,
+          "prey_truth": 521.8672152227577,
+          "species_balanced_relative": 0.09620696194728293
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.0998964386920183,
+            0.09276293455491881,
+            0.023503323719014195,
+            0.0025433057600373265,
+            0.0003004576528231916
+          ],
+          "training_weak_residual_mse": 1.1308007715523952e-08,
+          "validation_weak_residual_mse": 1.5044201192573285e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.3154076104662773,
+            0.04124433072206117,
+            0.020656812795262904,
+            0.01032803721040203,
+            0.0010300376325224833,
+            0.0007057246176187876,
+            7.822879657607486e-05,
+            6.389434962145931e-05,
+            9.699537521265279e-06,
+            7.351116865794683e-06,
+            8.441329030485956e-07,
+            3.252181178020249e-07
+          ],
+          "training_weak_residual_mse": 7.388627130800702e-10,
+          "validation_weak_residual_mse": 8.71572579820382e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "6586a84adeaf256277f4f1180e9297226663eff39fbd572d83207f04632ddb33",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 942130,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "54d45a83ae54e2dc8dfc3556bc171a98111c75719af10e086006d8c28612fba6",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1942130,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 10,
+    "seeds": {
+      "test": 62970,
+      "training": 42970,
+      "validation": 52970
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 3660.7369736036226,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 969834.0688948946,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.03743894906774438,
+            "coefficient_error_relative": 0.09359737266936093,
+            "coefficients": [
+              -0.0,
+              -0.0,
+              0.36708384000772376,
+              0.017773176205728575,
+              -0.0015216853223162577
+            ],
+            "profile_error_relative": 0.3188874878043662
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.016857407961993597,
+            "coefficient_error_relative": 0.08428703980996796,
+            "coefficients": [
+              0.19567320665608853,
+              0.0,
+              0.0,
+              0.013317191420086813,
+              0.009386345147976104,
+              0.0
+            ],
+            "profile_error_relative": 0.018608145508829846
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.052633659058058425,
+            "coefficient_error_relative": 0.037217617238613866,
+            "coefficients": [
+              0.9911754203059,
+              -0.9967387698575038,
+              0.0,
+              0.05178603322344827,
+              0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.007825425644446661
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.04240248287525824,
+          "predator_relative": 0.07596418279821907,
+          "predator_truth": 7.348074436161092,
+          "prey_error": 0.04641461836205828,
+          "prey_relative": 0.00917943083037387,
+          "prey_truth": 550.8372184415238,
+          "species_balanced_relative": 0.05410554046754759
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.0606634058898523e-08,
+          "validation_weak_residual_mse": 1.1839926716100642e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 8.485953184572635e-10,
+          "validation_weak_residual_mse": 1.0297885346165133e-09
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 1.0526053055032244e-09,
+            "alpha_over_max": 1.3664483492953244e-05,
+            "candidate_count": 60,
+            "convergence_warnings": 8,
+            "nonconverged_candidates": 8,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 4.787579380383317e-15,
+            "selected_index": 41,
+            "selected_iterations": 2966,
+            "selected_nonzero_exact": 3,
+            "selected_nonzero_reported": 3
+          },
+          "prey": {
+            "alpha": 1.616456426397042e-11,
+            "alpha_over_max": 2.6529484644318946e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 12,
+            "nonconverged_candidates": 12,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.2926458837467364e-14,
+            "selected_index": 47,
+            "selected_iterations": 46089,
+            "selected_nonzero_exact": 6,
+            "selected_nonzero_reported": 6
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.9175566212695528,
+            "coefficient_error_relative": 2.293891553173882,
+            "coefficients": [
+              0.3334687621699976,
+              -0.7077651238403143,
+              0.8646705701326564,
+              -0.11726997026593822,
+              0.01030934984031318
+            ],
+            "profile_error_relative": 2.657306457174068
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 88.25193050657717,
+            "coefficient_error_relative": 441.25965253288575,
+            "coefficients": [
+              0.18875862875847607,
+              -11.995966772651562,
+              -7.124080661641194,
+              30.404104759199495,
+              -63.282046481791426,
+              51.620929617289725
+            ],
+            "profile_error_relative": 1.073335704261438
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 263.02450813578287,
+            "coefficient_error_relative": 185.98641332106828,
+            "coefficients": [
+              -0.15037317442346756,
+              15.300626625745668,
+              117.93405504334068,
+              -138.63592199427853,
+              162.7893644820823,
+              -96.36451991572655
+            ],
+            "profile_error_relative": 0.6737877529707317
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 2.624198293834301,
+          "predator_relative": 0.59760132381197,
+          "predator_truth": 7.348074436161092,
+          "prey_error": 11.418584036021077,
+          "prey_relative": 0.14397745347724075,
+          "prey_truth": 550.8372184415238,
+          "species_balanced_relative": 0.43465897513545604
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.344782478816941,
+            0.09887672732947418,
+            0.019056145023793727,
+            0.002864047302790025,
+            0.0003340135264820297
+          ],
+          "training_weak_residual_mse": 1.0419919676587013e-08,
+          "validation_weak_residual_mse": 1.8377054619611387e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.3155486163107708,
+            0.042538469470286305,
+            0.02066064850990697,
+            0.009815076753448337,
+            0.0010796713065245552,
+            0.0005801972806910728,
+            8.463815183357541e-05,
+            6.253501899485603e-05,
+            8.74257640800063e-06,
+            7.776495506421e-06,
+            7.785924427525299e-07,
+            2.6498313551521724e-07
+          ],
+          "training_weak_residual_mse": 7.011491191551857e-10,
+          "validation_weak_residual_mse": 8.487007254756156e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "268475eb072f9a77d79bfe39c795a9f460aa8f8efab81a028ec0f0b6a35edf19",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 943143,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "1fd3ee6d64b8b974bc0452c0d3719cba2fca8959fd9bb426d723d29080835731",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1943143,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 11,
+    "seeds": {
+      "test": 63067,
+      "training": 43067,
+      "validation": 53067
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 4026.131794663391,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 1190825.2791153563,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.08330612978972263,
+            "coefficient_error_relative": 0.20826532447430654,
+            "coefficients": [
+              0.0454518095596441,
+              0.0,
+              0.33538589752732056,
+              0.026330180379430627,
+              -0.00240491811350863
+            ],
+            "profile_error_relative": 0.5849726321862785
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.0018310472858206195,
+            "coefficient_error_relative": 0.009155236429103096,
+            "coefficients": [
+              0.1981689527141794,
+              -0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.009155236429103101
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.0035645912334619258,
+            "coefficient_error_relative": 0.0025205466333390477,
+            "coefficients": [
+              1.0004435342667877,
+              -0.9964631104037787,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.0017400145828238777
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.01227463452410692,
+          "predator_relative": 0.07360285582027722,
+          "predator_truth": 2.265787825850137,
+          "prey_error": 0.019068452431258317,
+          "prey_relative": 0.005928677532549971,
+          "prey_truth": 542.5000584413011,
+          "species_balanced_relative": 0.05221364573646184
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.1148527403666367e-08,
+          "validation_weak_residual_mse": 1.0463989962458534e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 8.897870161277227e-10,
+          "validation_weak_residual_mse": 9.692678913464577e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 6.055088251360241e-09,
+            "alpha_over_max": 4.075392965871778e-05,
+            "candidate_count": 60,
+            "convergence_warnings": 7,
+            "nonconverged_candidates": 7,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.1171845315558983e-14,
+            "selected_index": 37,
+            "selected_iterations": 7532,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          },
+          "prey": {
+            "alpha": 2.217600328406948e-09,
+            "alpha_over_max": 0.00036251170499885317,
+            "candidate_count": 60,
+            "convergence_warnings": 12,
+            "nonconverged_candidates": 12,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.2875080640565424e-14,
+            "selected_index": 29,
+            "selected_iterations": 200,
+            "selected_nonzero_exact": 3,
+            "selected_nonzero_reported": 3
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 1.4663333268610548,
+            "coefficient_error_relative": 3.6658333171526367,
+            "coefficients": [
+              0.7588324879577907,
+              -1.151484263183204,
+              0.8929902553137163,
+              -0.07307562272685482,
+              0.0033516941136352988
+            ],
+            "profile_error_relative": 0.2996796324033341
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 285.03721556647855,
+            "coefficient_error_relative": 1425.1860778323926,
+            "coefficients": [
+              0.1067766000444326,
+              34.2145266067239,
+              39.295639787617255,
+              -112.3289520542856,
+              203.87298975111514,
+              -156.04305498924387
+            ],
+            "profile_error_relative": 2.370405388529393
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 166.86402722890662,
+            "coefficient_error_relative": 117.99068518965659,
+            "coefficients": [
+              0.057846658555974394,
+              8.525456942775051,
+              83.17475365829522,
+              -87.56738795367487,
+              99.35004892386983,
+              -57.406117268449805
+            ],
+            "profile_error_relative": 0.5668917378830066
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 0.003264314371487593,
+          "predator_relative": 0.03795651836060444,
+          "predator_truth": 2.265787825850137,
+          "prey_error": 7.819985954378851,
+          "prey_relative": 0.12006131392082259,
+          "prey_truth": 542.5000584413011,
+          "species_balanced_relative": 0.08903767850312926
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            2.2938692590804206,
+            0.148812575545382,
+            0.0134039014398102,
+            0.004099418595895056,
+            0.000316022215887384
+          ],
+          "training_weak_residual_mse": 1.0720109442274401e-08,
+          "validation_weak_residual_mse": 1.0909305341082865e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.31440675964031956,
+            0.04548136457133992,
+            0.020369410562087922,
+            0.010181356123463875,
+            0.0010668550698981311,
+            0.00048037409570001713,
+            8.443377606139175e-05,
+            6.041452084156945e-05,
+            9.516099793291135e-06,
+            6.953478942252448e-06,
+            7.185242970403438e-07,
+            3.0122646217793895e-07
+          ],
+          "training_weak_residual_mse": 7.385176782771766e-10,
+          "validation_weak_residual_mse": 8.363378792993386e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "720c5fd0037b1dddaeeabfae862e52978aba46f7ed3c238bed9ce7f4eb2b07c7",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 944156,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "ba0063842e30afcb8ab50c66742674de670b51e7c3ff9a1f3506f20ca2472668",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1944156,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 12,
+    "seeds": {
+      "test": 63164,
+      "training": 43164,
+      "validation": 53164
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 7258.569631376333,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 1043755.4435526151,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.2294252415214163,
+            "coefficient_error_relative": 0.5735631038035407,
+            "coefficients": [
+              0.11666798146332862,
+              -0.18228306748993992,
+              0.4754190915739477,
+              -0.010455004553356536,
+              0.0002456844325795369
+            ],
+            "profile_error_relative": 0.08458550215037837
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.04395721378187459,
+            "coefficient_error_relative": 0.2197860689093729,
+            "coefficients": [
+              0.19134628108167911,
+              -0.007758409691431245,
+              0.0,
+              0.0,
+              0.042392887037898536,
+              0.0
+            ],
+            "profile_error_relative": 0.038281318102463525
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.3590027831570025,
+            "coefficient_error_relative": 0.25385330243516013,
+            "coefficients": [
+              0.96492242584331,
+              -0.9991162175958982,
+              0.0,
+              0.3572838941715928,
+              0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.029198755340576456
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.002850438474207185,
+          "predator_relative": 0.05219028487132296,
+          "predator_truth": 1.0464833829067761,
+          "prey_error": 0.11404392337023776,
+          "prey_relative": 0.014367972244720592,
+          "prey_truth": 552.4350037837348,
+          "species_balanced_relative": 0.0382770457413768
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.2431926727163399e-08,
+          "validation_weak_residual_mse": 8.913637698275059e-09
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 8.572733919771055e-10,
+          "validation_weak_residual_mse": 8.476141299446259e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 1.1693434916678056e-11,
+            "alpha_over_max": 1e-07,
+            "candidate_count": 60,
+            "convergence_warnings": 0,
+            "nonconverged_candidates": 0,
+            "selected_at_grid_boundary": true,
+            "selected_dual_gap": 4.336591108353692e-14,
+            "selected_index": 59,
+            "selected_iterations": 114538,
+            "selected_nonzero_exact": 5,
+            "selected_nonzero_reported": 5
+          },
+          "prey": {
+            "alpha": 1.600106572541888e-11,
+            "alpha_over_max": 2.6529484644318946e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 15,
+            "nonconverged_candidates": 15,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.279620815269814e-14,
+            "selected_index": 47,
+            "selected_iterations": 60454,
+            "selected_nonzero_exact": 6,
+            "selected_nonzero_reported": 6
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.30401584821357464,
+            "coefficient_error_relative": 0.7600396205339366,
+            "coefficients": [
+              0.14909827124759523,
+              -0.24135507283331886,
+              0.5079559618273365,
+              -0.01697469443743375,
+              0.0006635874558431785
+            ],
+            "profile_error_relative": 0.034046451040330716
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 32.787814112046355,
+            "coefficient_error_relative": 163.93907056023176,
+            "coefficients": [
+              0.22683895632075624,
+              -3.265584426311474,
+              -7.097357802747009,
+              14.855300546748088,
+              -23.034922929072742,
+              16.20851244896991
+            ],
+            "profile_error_relative": 0.14601100735058625
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 163.11356619150513,
+            "coefficient_error_relative": 115.33870875753405,
+            "coefficients": [
+              0.08785067819920842,
+              8.794854263801094,
+              79.25202218210278,
+              -84.71375586707603,
+              98.48471827664076,
+              -57.90268648506556
+            ],
+            "profile_error_relative": 0.5518663140918878
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 0.0011318998432468762,
+          "predator_relative": 0.032888027854747,
+          "predator_truth": 1.0464833829067761,
+          "prey_error": 6.609514751975394,
+          "prey_relative": 0.10938158032466948,
+          "prey_truth": 552.4350037837348,
+          "species_balanced_relative": 0.08076494440813024
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.8266338916098899,
+            0.12673643383816427,
+            0.033134622038636756,
+            0.005507519567976877,
+            0.00046624673913757403
+          ],
+          "training_weak_residual_mse": 1.2430392739975112e-08,
+          "validation_weak_residual_mse": 8.87319121940026e-09
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.3141577589150106,
+            0.046071052151288226,
+            0.0208566360534365,
+            0.011561722222577607,
+            0.0012848766324856625,
+            0.0008591896133263987,
+            0.00010534047614926153,
+            6.905016389535693e-05,
+            1.279145798982769e-05,
+            7.846097908564522e-06,
+            8.723271272693976e-07,
+            4.3685709155112717e-07
+          ],
+          "training_weak_residual_mse": 7.479913173011726e-10,
+          "validation_weak_residual_mse": 7.699321091462823e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "20c0274903035d346817428ac4248ff8974ac03f497d1a3d6d2cca3ebda07812",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 945169,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "7e1c3e0c9374fff5da40fe3a4488a324def92ccb71b7eac074f885c04cf971aa",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1945169,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 13,
+    "seeds": {
+      "test": 63261,
+      "training": 43261,
+      "validation": 53261
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 3917.740840372742,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 719131.6450868311,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.04072898732417953,
+            "coefficient_error_relative": 0.1018224683104488,
+            "coefficients": [
+              9.289970268657488e-05,
+              0.01228429524338522,
+              0.3642737241896203,
+              0.015181208829460557,
+              -0.0010497540991800118
+            ],
+            "profile_error_relative": 0.1530056392017846
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.03726720680733281,
+            "coefficient_error_relative": 0.18633603403666402,
+            "coefficients": [
+              0.1966458641486459,
+              0.009985297993898867,
+              -0.0,
+              -0.03574756355171934,
+              -0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.022733432861588472
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.40171736086404514,
+            "coefficient_error_relative": 0.2840570699873297,
+            "coefficients": [
+              0.9531635501725944,
+              -0.9940447571185729,
+              0.0,
+              0.39893322758246347,
+              -0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.03982935423084649
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.00153471914804518,
+          "predator_relative": 0.019148700838002807,
+          "predator_truth": 4.185528305731012,
+          "prey_error": 0.1461081443256569,
+          "prey_relative": 0.016040298858635393,
+          "prey_truth": 567.8707683691209,
+          "species_balanced_relative": 0.01766301122767108
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.2155683680845921e-08,
+          "validation_weak_residual_mse": 1.0649857517202742e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 8.480686397492867e-10,
+          "validation_weak_residual_mse": 9.682440652185895e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 6.504408667824238e-12,
+            "alpha_over_max": 1e-07,
+            "candidate_count": 60,
+            "convergence_warnings": 0,
+            "nonconverged_candidates": 0,
+            "selected_at_grid_boundary": true,
+            "selected_dual_gap": 2.2659046066872934e-14,
+            "selected_index": 59,
+            "selected_iterations": 21232,
+            "selected_nonzero_exact": 5,
+            "selected_nonzero_reported": 5
+          },
+          "prey": {
+            "alpha": 7.101531451271599e-12,
+            "alpha_over_max": 1.1689518164985776e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 10,
+            "nonconverged_candidates": 10,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.2569369252750238e-14,
+            "selected_index": 50,
+            "selected_iterations": 44803,
+            "selected_nonzero_exact": 6,
+            "selected_nonzero_reported": 6
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.04111896582052898,
+            "coefficient_error_relative": 0.10279741455132242,
+            "coefficients": [
+              -0.00015943346911747642,
+              0.012763616718986102,
+              0.36401608311560557,
+              0.015227761087411336,
+              -0.0010521583964816492
+            ],
+            "profile_error_relative": 0.15326178916862632
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 3.350968355150022,
+            "coefficient_error_relative": 16.75484177575011,
+            "coefficients": [
+              0.24955037130889476,
+              0.41313931292075157,
+              -2.844508094295816,
+              1.2966241997113963,
+              0.23142825306649417,
+              -1.108976977186776
+            ],
+            "profile_error_relative": 0.17278407961892453
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 291.07034420559927,
+            "coefficient_error_relative": 205.81781419008175,
+            "coefficients": [
+              -0.36052380548358326,
+              16.345032977279423,
+              135.53131402702545,
+              -154.11885367835708,
+              177.56051028379227,
+              -103.77933864066635
+            ],
+            "profile_error_relative": 0.79990745060186
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 0.0015357134650049254,
+          "predator_relative": 0.019154902883218847,
+          "predator_truth": 4.185528305731012,
+          "prey_error": 15.546233163876154,
+          "prey_relative": 0.16545802335200724,
+          "prey_truth": 567.8707683691209,
+          "species_balanced_relative": 0.11777790071999696
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.2282192000960488,
+            0.10249576144282517,
+            0.022520646374323817,
+            0.005103115281268495,
+            0.0003474882787785419
+          ],
+          "training_weak_residual_mse": 1.2155683552220522e-08,
+          "validation_weak_residual_mse": 1.064979999294612e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.3165890324462085,
+            0.041072804010649604,
+            0.020082750948022296,
+            0.008822896474582207,
+            0.0011454362247693066,
+            0.0006677870388538857,
+            8.01856655862615e-05,
+            6.160332793625966e-05,
+            8.562391188345968e-06,
+            8.04583024681534e-06,
+            7.856176437865356e-07,
+            2.4652452349114984e-07
+          ],
+          "training_weak_residual_mse": 6.802550185497494e-10,
+          "validation_weak_residual_mse": 9.091139960086405e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "11f2771ca6fd6e729c8fde2147b0576f669d1bbb242bef0e2a72f0c0e22d53d3",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 946182,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "6b850e529df2b9892e682342f7c23e62a8eb64e89acab16c8f93169f2ba93cdb",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1946182,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 14,
+    "seeds": {
+      "test": 63358,
+      "training": 43358,
+      "validation": 53358
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 3534.5629625648667,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 1284209.0837975962,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.05184488413442892,
+            "coefficient_error_relative": 0.1296122103360723,
+            "coefficients": [
+              -0.0,
+              0.022067502763373634,
+              0.35907304813399754,
+              0.02263543263724892,
+              -0.003679556085092242
+            ],
+            "profile_error_relative": 1.3641169608883488
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.08568168773290051,
+            "coefficient_error_relative": 0.4284084386645025,
+            "coefficients": [
+              0.2072403680318849,
+              0.02543838444903736,
+              -0.0,
+              -0.0,
+              -0.08149734523371978,
+              -0.0
+            ],
+            "profile_error_relative": 0.038015243231933706
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.000597192184311435,
+            "coefficient_error_relative": 0.0004222786431982222,
+            "coefficients": [
+              0.9995146216478342,
+              -1.000347917174413,
+              0.0,
+              0.0,
+              0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.0005698273139647554
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 2.834374924370209,
+          "predator_relative": 0.5970523089677734,
+          "predator_truth": 7.9511973474758015,
+          "prey_error": 0.12295988862412187,
+          "prey_relative": 0.013858497615953853,
+          "prey_truth": 640.222832082981,
+          "species_balanced_relative": 0.4222934510502862
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.0902452425093304e-08,
+          "validation_weak_residual_mse": 1.3789692950355819e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 8.328432173591735e-10,
+          "validation_weak_residual_mse": 7.960097604233536e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 2.3742336468808104e-10,
+            "alpha_over_max": 2.018760254679039e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 8,
+            "nonconverged_candidates": 8,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 4.153400210921626e-14,
+            "selected_index": 48,
+            "selected_iterations": 22033,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          },
+          "prey": {
+            "alpha": 2.0819810244353466e-11,
+            "alpha_over_max": 3.4863652276780807e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 13,
+            "nonconverged_candidates": 13,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.2433772511328787e-14,
+            "selected_index": 46,
+            "selected_iterations": 107488,
+            "selected_nonzero_exact": 5,
+            "selected_nonzero_reported": 5
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 1.2287290031385896,
+            "coefficient_error_relative": 3.0718225078464734,
+            "coefficients": [
+              -0.4683100561548976,
+              0.9400648585325952,
+              -0.216662633846302,
+              0.16199993560547282,
+              -0.014897418964531135
+            ],
+            "profile_error_relative": 3.986531343174255
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 91.75854250701795,
+            "coefficient_error_relative": 458.79271253508966,
+            "coefficients": [
+              0.2124418154380967,
+              11.499609180707388,
+              9.413867169695822,
+              -34.494176662647334,
+              65.95263134054883,
+              -51.56714319641425
+            ],
+            "profile_error_relative": 0.8479042458138798
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 245.52064841600125,
+            "coefficient_error_relative": 173.60931541627266,
+            "coefficients": [
+              0.11992290418290269,
+              15.414909058262621,
+              98.95713276483526,
+              -128.47290600401584,
+              157.03699574092724,
+              -95.14066055077694
+            ],
+            "profile_error_relative": 0.5113485929762843
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 22.381910812222753,
+          "predator_relative": 1.6777695730854898,
+          "predator_truth": 7.9511973474758015,
+          "prey_error": 5.7593268453030895,
+          "prey_relative": 0.09484627602788269,
+          "prey_truth": 640.222832082981,
+          "species_balanced_relative": 1.1882564025596125
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.8803589922553297,
+            0.11895132255532803,
+            0.02932077210322657,
+            0.003563903227774602,
+            0.0003230696884299212
+          ],
+          "training_weak_residual_mse": 1.0715600513157679e-08,
+          "validation_weak_residual_mse": 1.3927310926751024e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.31435488024895747,
+            0.044481014011065856,
+            0.020264559302461533,
+            0.010447633714823953,
+            0.0013154511201234054,
+            0.000750391162144576,
+            0.0001062655227635722,
+            6.548894735624656e-05,
+            1.1890773370940098e-05,
+            7.578144813792691e-06,
+            7.903900979395592e-07,
+            4.2196305588836876e-07
+          ],
+          "training_weak_residual_mse": 7.24200779458779e-10,
+          "validation_weak_residual_mse": 7.636032706115722e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "df57ff32d0c3966dd6408d0db22cb3f8b52e731708e9aba1c9b3b6d8b3425843",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 947195,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "d04674a4447d37d602cd43041324d3958315e26e384b2abff164573e10bf1653",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1947195,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 15,
+    "seeds": {
+      "test": 63455,
+      "training": 43455,
+      "validation": 53455
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 5820.289119024576,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 744981.9975048257,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.026863586128229606,
+            "coefficient_error_relative": 0.067158965320574,
+            "coefficients": [
+              0.018608734261639066,
+              0.0,
+              0.381182057936543,
+              0.004607670340418254,
+              -0.0001473070905092023
+            ],
+            "profile_error_relative": 0.03771060468621202
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.007568467228411067,
+            "coefficient_error_relative": 0.03784233614205533,
+            "coefficients": [
+              0.19572008029443122,
+              0.006242113704620915,
+              0.0,
+              -0.0,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.021452390726086026
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.27267584975961984,
+            "coefficient_error_relative": 0.1928109424308314,
+            "coefficients": [
+              0.9754275476541706,
+              -1.0029976070255482,
+              0.0,
+              0.27154986278759763,
+              0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.020265581314073883
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.0005305736714310769,
+          "predator_relative": 0.007671494124452475,
+          "predator_truth": 9.015416217970827,
+          "prey_error": 0.04916831992714688,
+          "prey_relative": 0.009568218580621667,
+          "prey_truth": 537.0604764962831,
+          "species_balanced_relative": 0.00867186914419442
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.2267564698726636e-08,
+          "validation_weak_residual_mse": 6.434655846172519e-09
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 9.977370003456773e-10,
+          "validation_weak_residual_mse": 8.369644725081572e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 2.04025335989479e-09,
+            "alpha_over_max": 3.1011689265747754e-05,
+            "candidate_count": 60,
+            "convergence_warnings": 5,
+            "nonconverged_candidates": 5,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 3.061090585077962e-14,
+            "selected_index": 38,
+            "selected_iterations": 24430,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          },
+          "prey": {
+            "alpha": 2.1049753583682122e-11,
+            "alpha_over_max": 3.4863652276780807e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 13,
+            "nonconverged_candidates": 13,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.25272902524554e-14,
+            "selected_index": 46,
+            "selected_iterations": 18936,
+            "selected_nonzero_exact": 5,
+            "selected_nonzero_reported": 5
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.9479222508296317,
+            "coefficient_error_relative": 2.369805627074079,
+            "coefficients": [
+              -0.3145648096626245,
+              0.7146634724389206,
+              -0.11802957799517497,
+              0.14259518435678056,
+              -0.013178202524351075
+            ],
+            "profile_error_relative": 3.507934766453334
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 249.2581580181415,
+            "coefficient_error_relative": 1246.2907900907073,
+            "coefficients": [
+              0.11979399126457585,
+              30.419719778711237,
+              32.112366616479,
+              -96.44244863860462,
+              178.5720174805699,
+              -137.78224899447548
+            ],
+            "profile_error_relative": 2.1648696334244577
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 302.7966938449284,
+            "coefficient_error_relative": 214.10959553861585,
+            "coefficients": [
+              -0.34558287588214937,
+              18.203098952378085,
+              133.79157602041113,
+              -158.48549914147483,
+              188.73273928308706,
+              -112.59388114512731
+            ],
+            "profile_error_relative": 0.7965018691912177
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 0.4356004745263709,
+          "predator_relative": 0.2198119410013721,
+          "predator_truth": 9.015416217970827,
+          "prey_error": 11.498565431797129,
+          "prey_relative": 0.1463222039604509,
+          "prey_truth": 537.0604764962831,
+          "species_balanced_relative": 0.18671833972408078
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.1723081282929242,
+            0.06814523149400453,
+            0.016702960479054896,
+            0.002098824322191297,
+            0.00018252589951850347
+          ],
+          "training_weak_residual_mse": 1.2209491930552442e-08,
+          "validation_weak_residual_mse": 8.643053456711568e-09
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.31648596331412604,
+            0.0413396004626498,
+            0.019882995870031478,
+            0.008707047418147307,
+            0.0010390644812606493,
+            0.0005338945075137833,
+            7.723806697541125e-05,
+            5.9359669804589626e-05,
+            7.826380270739328e-06,
+            7.478345040808773e-06,
+            7.645347142661972e-07,
+            2.1089279260303028e-07
+          ],
+          "training_weak_residual_mse": 7.959308277674989e-10,
+          "validation_weak_residual_mse": 8.886743759382263e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "daeaf107f0982f999325dd89493b0d1ced701162d5247af852e3b936fb3100f7",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 948208,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "a5678c00669148ceef25daabb4b36b521a763e2a52aef78019b5a1a9d39199f3",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1948208,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 16,
+    "seeds": {
+      "test": 63552,
+      "training": 43552,
+      "validation": 53552
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 6422.694704616876,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 1500695.9669307289,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.019855392221368864,
+            "coefficient_error_relative": 0.04963848055342216,
+            "coefficients": [
+              -0.0,
+              -0.0,
+              0.382373342913136,
+              0.00902347089323037,
+              -0.0014541434748766746
+            ],
+            "profile_error_relative": 0.5407776516371304
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.1733775792717486,
+            "coefficient_error_relative": 0.8668878963587429,
+            "coefficients": [
+              0.2080056367363333,
+              0.016449307869870422,
+              -0.0,
+              -0.17240973013487249,
+              -0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.037674684097833616
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.31603347945433036,
+            "coefficient_error_relative": 0.22346941640413642,
+            "coefficients": [
+              0.9638527939025202,
+              -0.9955002441395604,
+              0.0,
+              0.31392720784371875,
+              0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.03066934817295884
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.0370430961468078,
+          "predator_relative": 0.1254875863528916,
+          "predator_truth": 2.352370620180393,
+          "prey_error": 0.15398366071658698,
+          "prey_relative": 0.015484329191629918,
+          "prey_truth": 642.2289058531891,
+          "species_balanced_relative": 0.08940609257536418
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.0710477241458596e-08,
+          "validation_weak_residual_mse": 1.4619429160442039e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 7.935046603475602e-10,
+          "validation_weak_residual_mse": 9.207108346945994e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 3.1084455058061538e-09,
+            "alpha_over_max": 5.355666917706897e-05,
+            "candidate_count": 60,
+            "convergence_warnings": 0,
+            "nonconverged_candidates": 0,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.853474422569844e-15,
+            "selected_index": 36,
+            "selected_iterations": 3159,
+            "selected_nonzero_exact": 3,
+            "selected_nonzero_reported": 3
+          },
+          "prey": {
+            "alpha": 1.1795048073835995e-11,
+            "alpha_over_max": 2.018760254679039e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 12,
+            "nonconverged_candidates": 12,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.1946271077810005e-14,
+            "selected_index": 48,
+            "selected_iterations": 27895,
+            "selected_nonzero_exact": 6,
+            "selected_nonzero_reported": 6
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.49275820342924664,
+            "coefficient_error_relative": 1.2318955085731165,
+            "coefficients": [
+              0.04368408113842859,
+              -0.30496757427650767,
+              0.7627947589545103,
+              -0.12707914557565594,
+              0.0113128412307769
+            ],
+            "profile_error_relative": 2.7277981139920566
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 173.5439356300994,
+            "coefficient_error_relative": 867.719678150497,
+            "coefficients": [
+              0.16926495388750448,
+              20.022841169945117,
+              24.775378662486286,
+              -70.60404193689558,
+              124.17026231660698,
+              -93.2715300150732
+            ],
+            "profile_error_relative": 1.2047266414747233
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 244.09677256149237,
+            "coefficient_error_relative": 172.60248314398166,
+            "coefficients": [
+              -0.02117241974364373,
+              14.548960672548953,
+              105.29318303656173,
+              -128.31860651125433,
+              153.11829008182605,
+              -91.33943001402176
+            ],
+            "profile_error_relative": 0.6022032310132684
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 0.6253419879583625,
+          "predator_relative": 0.5155917049504,
+          "predator_truth": 2.352370620180393,
+          "prey_error": 7.319203735269488,
+          "prey_relative": 0.10675469737846732,
+          "prey_truth": 642.2289058531891,
+          "species_balanced_relative": 0.3723112754309413
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.2556540960600475,
+            0.12223171941782708,
+            0.017933983321983593,
+            0.0027948119336476656,
+            0.00038614410579504817
+          ],
+          "training_weak_residual_mse": 1.0029806744224838e-08,
+          "validation_weak_residual_mse": 1.5615764054878262e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.31522157046907007,
+            0.04093747931737451,
+            0.01992354938746293,
+            0.009203154195294225,
+            0.0010159861813280307,
+            0.0005454516794266989,
+            7.712511693007839e-05,
+            6.240168871296283e-05,
+            8.581706599240229e-06,
+            7.31409649192563e-06,
+            8.377161604809474e-07,
+            2.7688665914703845e-07
+          ],
+          "training_weak_residual_mse": 6.796865452605737e-10,
+          "validation_weak_residual_mse": 7.686989349806869e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "84b3d18d02e61c8f39766841f4865415e6b864bc642cfe0a8bdd78089b37d46b",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 949221,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "633e332bc521ebc5e895e85b3090d7a1863afd26d7bdcd95638c4e9caa281c49",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1949221,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 17,
+    "seeds": {
+      "test": 63649,
+      "training": 43649,
+      "validation": 53649
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 3251.775897173748,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 1138449.831566909,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.14124261965138077,
+            "coefficient_error_relative": 0.35310654912845185,
+            "coefficients": [
+              0.056528054448801546,
+              0.0,
+              0.2851696479093213,
+              0.05938832958249493,
+              -0.006408838767643891
+            ],
+            "profile_error_relative": 1.7994308992524481
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.01038287001863443,
+            "coefficient_error_relative": 0.05191435009317215,
+            "coefficients": [
+              0.1953657220410074,
+              0.009291257052877889,
+              -0.0,
+              -0.0,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.025377270926543103
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.1489290691351279,
+            "coefficient_error_relative": 0.10530875470124909,
+            "coefficients": [
+              0.9828318101349486,
+              -1.0271520437473949,
+              0.0,
+              0.0,
+              0.1454231323089721,
+              0.0
+            ],
+            "profile_error_relative": 0.015088359054558513
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 2.154499128558954,
+          "predator_relative": 0.9286952412438383,
+          "predator_truth": 2.4980428423956327,
+          "prey_error": 0.06359958531129076,
+          "prey_relative": 0.010310939248732465,
+          "prey_truth": 598.2157290320228,
+          "species_balanced_relative": 0.6567271756890917
+        },
+        "predator": {
+          "training_weak_residual_mse": 8.415793991095799e-09,
+          "validation_weak_residual_mse": 1.2281111151853987e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 8.153611501710296e-10,
+          "validation_weak_residual_mse": 8.719315534042523e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 2.2521566057291323e-09,
+            "alpha_over_max": 2.3598334667821938e-05,
+            "candidate_count": 60,
+            "convergence_warnings": 2,
+            "nonconverged_candidates": 2,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.256034040245777e-14,
+            "selected_index": 39,
+            "selected_iterations": 8897,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          },
+          "prey": {
+            "alpha": 3.619199299828217e-11,
+            "alpha_over_max": 6.020894493336125e-06,
+            "candidate_count": 60,
+            "convergence_warnings": 11,
+            "nonconverged_candidates": 11,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.2420537012987705e-14,
+            "selected_index": 44,
+            "selected_iterations": 29385,
+            "selected_nonzero_exact": 5,
+            "selected_nonzero_reported": 5
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.45240827424541075,
+            "coefficient_error_relative": 1.1310206856135268,
+            "coefficients": [
+              0.260730981069591,
+              -0.35883218476780643,
+              0.487478032488953,
+              0.016347850530489937,
+              -0.003522343801594222
+            ],
+            "profile_error_relative": 1.2675578564611663
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 43.60261739317971,
+            "coefficient_error_relative": 218.01308696589854,
+            "coefficients": [
+              0.19238409811619978,
+              4.272676014499751,
+              7.776186923014672,
+              -19.74876524338753,
+              31.02860497436961,
+              -21.671993144461926
+            ],
+            "profile_error_relative": 0.11433958925586443
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 190.70135004127528,
+            "coefficient_error_relative": 134.84621779561525,
+            "coefficients": [
+              0.0026223454388887854,
+              10.173592147581536,
+              91.411442126277,
+              -100.35996976783966,
+              115.35844727897499,
+              -67.12238331492154
+            ],
+            "profile_error_relative": 0.5979367084597834
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 1.1442516930424467,
+          "predator_relative": 0.6768007645490827,
+          "predator_truth": 2.4980428423956327,
+          "prey_error": 8.488577149662817,
+          "prey_relative": 0.11912105638360222,
+          "prey_truth": 598.2157290320228,
+          "species_balanced_relative": 0.4859264867076954
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.978196062397912,
+            0.12103567283535925,
+            0.016755273102792474,
+            0.0032893526404102575,
+            0.00028210194913642976
+          ],
+          "training_weak_residual_mse": 8.37864300989777e-09,
+          "validation_weak_residual_mse": 1.2464646706531447e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.3176257005812998,
+            0.0380369300315982,
+            0.018992255138498327,
+            0.0070677577927905876,
+            0.0011702036216177348,
+            0.000526375297109998,
+            9.252537082037453e-05,
+            5.967177706298503e-05,
+            1.0460327985665255e-05,
+            7.246162896035901e-06,
+            8.178460365714233e-07,
+            2.853235968991824e-07
+          ],
+          "training_weak_residual_mse": 6.961119074184977e-10,
+          "validation_weak_residual_mse": 8.43996980336697e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "a10fc2938a413573921e1c0c43fe702d5887104def66d6b0e874ad8b60bb9e5c",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 950234,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "19926f2a23157cc8d5b38752c530bf85e678e6ee196e10985ebe4c3d32271a8c",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1950234,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 18,
+    "seeds": {
+      "test": 63746,
+      "training": 43746,
+      "validation": 53746
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 7012.344538751202,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 1113212.1704379441,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  },
+  {
+    "condition": {
+      "id": "observation_noise-04",
+      "index": 4,
+      "observation_dt": 0.01,
+      "observation_noise": 0.01,
+      "prey_particles": 100,
+      "sweep": "observation_noise",
+      "value": 0.01
+    },
+    "methods": {
+      "lasso": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.01535427865015018,
+            "coefficient_error_relative": 0.03838569662537544,
+            "coefficients": [
+              0.0,
+              0.0,
+              0.386429742037883,
+              0.007147028631081596,
+              -0.0007224634624373352
+            ],
+            "profile_error_relative": 0.1892004658714098
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 0.002361140338967337,
+            "coefficient_error_relative": 0.011805701694836685,
+            "coefficients": [
+              0.20235873586162614,
+              0.00010653091277943667,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "profile_error_relative": 0.01186300035840329
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 0.0033995409254332985,
+            "coefficient_error_relative": 0.0024038384412950766,
+            "coefficients": [
+              0.997184381623262,
+              -1.0019050384931205,
+              0.0,
+              0.0,
+              -0.0,
+              -0.0
+            ],
+            "profile_error_relative": 0.003279368820797243
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "selected",
+        "held_out_drift": {
+          "predator_error": 0.0007294721566668912,
+          "predator_relative": 0.009447959919376839,
+          "predator_truth": 8.172080488710055,
+          "prey_error": 0.047071851678353524,
+          "prey_relative": 0.009182458095451037,
+          "prey_truth": 558.268819687539,
+          "species_balanced_relative": 0.009316154875077634
+        },
+        "predator": {
+          "training_weak_residual_mse": 1.1256117038151324e-08,
+          "validation_weak_residual_mse": 1.1116773243821218e-08
+        },
+        "predator_selection_status": "selected",
+        "prey": {
+          "training_weak_residual_mse": 9.586785063540751e-10,
+          "validation_weak_residual_mse": 9.582446488039198e-10
+        },
+        "prey_selection_status": "selected",
+        "selection": {
+          "predator": {
+            "alpha": 3.486504157532808e-09,
+            "alpha_over_max": 9.249147277217334e-05,
+            "candidate_count": 60,
+            "convergence_warnings": 0,
+            "nonconverged_candidates": 0,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.0192871174782284e-15,
+            "selected_index": 34,
+            "selected_iterations": 2052,
+            "selected_nonzero_exact": 3,
+            "selected_nonzero_reported": 3
+          },
+          "prey": {
+            "alpha": 1.8321332458454136e-10,
+            "alpha_over_max": 3.1011689265747754e-05,
+            "candidate_count": 60,
+            "convergence_warnings": 12,
+            "nonconverged_candidates": 12,
+            "selected_at_grid_boundary": false,
+            "selected_dual_gap": 1.1954788179250756e-14,
+            "selected_index": 38,
+            "selected_iterations": 1149,
+            "selected_nonzero_exact": 4,
+            "selected_nonzero_reported": 4
+          }
+        }
+      },
+      "ols": {
+        "channels": {
+          "predator_prey": {
+            "coefficient_error_l2": 0.7938697674977959,
+            "coefficient_error_relative": 1.9846744187444898,
+            "coefficients": [
+              0.22932910068517695,
+              -0.5705039315277163,
+              0.8793607704305373,
+              -0.14892324762609613,
+              0.014062486483178798
+            ],
+            "profile_error_relative": 3.724390629700646
+          },
+          "prey_predator": {
+            "coefficient_error_l2": 507.43274633257386,
+            "coefficient_error_relative": 2537.163731662869,
+            "coefficients": [
+              0.06674619160804504,
+              62.10086893273718,
+              64.8547985210167,
+              -195.9061494884926,
+              363.5056923866805,
+              -280.9087105728666
+            ],
+            "profile_error_relative": 4.4322333061049655
+          },
+          "prey_prey": {
+            "coefficient_error_l2": 183.05281421116834,
+            "coefficient_error_relative": 129.43788624399835,
+            "coefficients": [
+              0.03362130473928696,
+              10.005740612187742,
+              88.28144223268471,
+              -95.54092574575488,
+              110.60296065170817,
+              -65.05056599646998
+            ],
+            "profile_error_relative": 0.5771033732871323
+          }
+        },
+        "evaluation_status": "finite",
+        "fit_status": "finite",
+        "held_out_drift": {
+          "predator_error": 0.28067961082756376,
+          "predator_relative": 0.1853271790187893,
+          "predator_truth": 8.172080488710055,
+          "prey_error": 10.074011840241697,
+          "prey_relative": 0.13433201902040978,
+          "prey_truth": 558.268819687539,
+          "species_balanced_relative": 0.16185063270985708
+        },
+        "predator": {
+          "finite": true,
+          "rank": 5,
+          "singular_values": [
+            1.0512681360124774,
+            0.08282526287621672,
+            0.022191335411327038,
+            0.002154724277666048,
+            0.00029360460140024025
+          ],
+          "training_weak_residual_mse": 1.103016836285755e-08,
+          "validation_weak_residual_mse": 1.3506747468782494e-08
+        },
+        "prey": {
+          "finite": true,
+          "rank": 12,
+          "singular_values": [
+            0.3182076317448001,
+            0.03582748814602132,
+            0.017915801218225967,
+            0.006973964478823324,
+            0.0011929413024722875,
+            0.0006343162552803255,
+            8.859673568766324e-05,
+            6.45851305687951e-05,
+            9.718483431996729e-06,
+            6.9525975747395225e-06,
+            8.163804916059497e-07,
+            2.779591424869224e-07
+          ],
+          "training_weak_residual_mse": 8.045042565488042e-10,
+          "validation_weak_residual_mse": 9.383975210209989e-10
+        }
+      }
+    },
+    "pair_ratio": 50,
+    "pair_sampling": {
+      "independent_training_validation": true,
+      "training": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "90249dcf8817274400fa7c04a6f21ee9c82823cdf6a8a234162f19d61abbffe0",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 951247,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      },
+      "validation": {
+        "draw_count": 1204,
+        "exclude_diagonal": true,
+        "indices_sha256": "895f3d92294fc0f509b31775b6c7bef1935c86a5b551df7c75c7fbdcb32d8c1d",
+        "nested_within_max_ratio": true,
+        "normalization": "(N-1)/(N*P)",
+        "observation_time_count": 301,
+        "ordered": true,
+        "pair_count_per_observation_time": 5000,
+        "particle_count": 100,
+        "ratio": 50,
+        "seed": 1951247,
+        "total_sampled_pairs": 6020000,
+        "trajectory_count": 4,
+        "with_replacement": true
+      }
+    },
+    "repetition": 19,
+    "seeds": {
+      "test": 63843,
+      "training": 43843,
+      "validation": 53843
+    },
+    "systems": {
+      "predator": {
+        "columns": 5,
+        "training_condition_number": 3580.5574265486184,
+        "training_rank": 5,
+        "training_rows": 800,
+        "validation_rows": 800
+      },
+      "prey": {
+        "columns": 12,
+        "training_condition_number": 1144800.019520032,
+        "training_rank": 12,
+        "training_rows": 800,
+        "validation_rows": 800
+      }
+    }
+  }
+]

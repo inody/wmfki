@@ -1,0 +1,66 @@
+{
+  "task": "diagnose",
+  "diagnose": {
+    "num_pairs": 50000,
+    "num_times": 48,
+    "grid_size": 1000,
+    "fit_pairs": 10000,
+    "plot_prefix": "outputs/messenger_log2d/matched/log2d_N2000_R1_sigma0.282_messengerdict_lasso"
+  },
+  "simulation": {
+    "N": 2000,
+    "T": 80,
+    "dt": 0.1,
+    "R": 1,
+    "sigma": 0.2820947918,
+    "d": 2,
+    "init": "uniform_ball",
+    "init_scale": 2.0,
+    "seed": 1234,
+    "interaction": {
+      "mode": "log_attraction",
+      "eps": 0.01
+    },
+    "external_drift_fn": null
+  },
+  "space_tests": {
+    "type": "gaussian",
+    "L": 25,
+    "s": 0.375,
+    "layout": "random",
+    "seed": 1234,
+    "quantiles": [0.01, 0.99]
+  },
+  "time_tests": {
+    "type": "bump",
+    "K": 8,
+    "support": 1.78
+  },
+  "pair_sampling": {
+    "total_pairs": 100000,
+    "with_replacement": true,
+    "exclude_diagonal": true,
+    "seed": 1234
+  },
+  "kernel_basis": {
+    "M": 8,
+    "basis": "messenger_log2d",
+    "eps": 0.01
+  },
+  "regression": {
+    "method": "lasso",
+    "standardize": false,
+    "alpha": 1.62e-8,
+    "max_iter": 100000,
+    "tol": 1e-8
+  },
+  "diagnostics": {
+    "method": "l2w",
+    "total_pairs": 50000,
+    "bins": 200,
+    "seed": 1234
+  },
+  "output": {
+    "save_plots": false
+  }
+}

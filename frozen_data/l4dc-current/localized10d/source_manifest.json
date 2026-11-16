@@ -1,0 +1,25 @@
+{
+  "sha256": {
+    "configs/experiments/localized10d_sampled_pair_production_P50_R20.json": "81650a64a2f4a3d888a20fd186f055b80a8f3953cdd13b599bbd44fed6d9b567",
+    "features.py": "678833b5563190087fecf0cf99db64b4347f63bbbbd2211d854fd37db2318966",
+    "kernels.py": "dc93a89a53b4199c40c06336bea837b311690c708156f20bffd1353227be5dfb",
+    "outputs/validation/localized10d_noisy_robustness/sweeps-20261023T123949Z/frozen_protocol.json": "67ef4ded1f95ce7a1aaf8fe1085e8ada1ce015915a9964105f463328df5d57d8",
+    "outputs/validation/localized10d_noisy_robustness/sweeps-20261023T123949Z/requested_protocol.json": "9e05ab36e203c397f6892e84577654c63449d0ecbd58738c959acc962e57b6f3",
+    "outputs/validation/localized10d_noisy_robustness/sweeps-20261023T123949Z/source/scripts/run_localized10d_observation_noise.py": "bced223895bf1f11c4d409e6f26c317f19aeaa3fff572989a0baf8bc4b34573d",
+    "outputs/validation/localized10d_noisy_robustness/sweeps-20261023T123949Z/source_manifest.json": "52377684c5b39a27e7c9ef9827f129af16a91e358d850a714bd1aaf4a08725f9",
+    "pipeline.py": "b49b2dd79c371c7cf4c86b8282aff21f18d1ca0146da618b1be3a5f65cdbd349",
+    "regression.py": "962f3772a864ad016188d4fce01af312be5d4d02d26fa821d51e300240007afa",
+    "scripts/manuscript_plot_style.py": "61ee5921912294e3fc749c39b0e0d9ff2b1b07041957343fb13a29b632ad5987",
+    "scripts/run_1d_hat_lasso.py": "4dc35ffbde2bc876b370885c9612c7116e0464e112f34ca2a7f1c9236c03eb93",
+    "scripts/run_localized10d_observation_noise.py": "2c84e149802d42b432157f9518df7562a03e7dc4beb7ca0d516cdefb67312ee0",
+    "scripts/run_localized10d_pilot.py": "51032d0b3f87a7320069d5ab2f0f5add86c5ace253a67657477a9d8aa78490cc",
+    "scripts/run_localized10d_sampled_pair_production.py": "87ca92788ddad0f6f72fc0b66bb7f92bc38d737af27b877a785dd6513d7f6146",
+    "scripts/run_morse10d_sweeps.py": "e7488922be79b48d646abdc92c466ce7c2c9d7dfadb80599d5c96ba095dfadcf",
+    "scripts/verify_localized10d_sampled_pair_production.py": "12fae8e46294e2bd5afc47f1f578bb80c7aedbcb521a0bcd7f684dcec36b56a4",
+    "simulate.py": "eae0d4aed0c5b417117e6bf251a09e9b8d95e8a247173d030619d1b5988026f2",
+    "test/test_localized10d_sampled_pair_production.py": "1d96545c270bc1f00e6a54e6f4e9c90180eeb125b1a2f8d31f7c2fda82e364d7",
+    "tests.py": "17c8f415f82ae87d506befd286aa8d922cdefd27c1f649c076afbf9c6eb0abf0",
+    "time_tests.py": "1093f8708b4bb80e08bb98e616dd3b420d596fc38771a90b5b017e2c419d6e84",
+    "utils.py": "44b9ef45dc0a0dbbdc9e38633b9690d8c511e5225ff1aab411f5b1e068d74caa"
+  }
+}

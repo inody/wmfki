@@ -1,0 +1,95 @@
+{
+  "groups": [
+    {
+      "boundary_selected_systems": 0,
+      "coefficient_error_relative": {
+        "mean": 0.11823454862028457,
+        "median": 0.11230393931037719,
+        "rmse": 0.13157376619200717
+      },
+      "nonfinite": 0,
+      "observation_noise": 0.0,
+      "repetitions": 20,
+      "species_balanced_drift_error": {
+        "mean": 0.035341906713545215,
+        "median": 0.028657561267274395,
+        "q25": 0.02353248412619082,
+        "q75": 0.03606035923388666
+      },
+      "unconverged_candidates": 343
+    },
+    {
+      "boundary_selected_systems": 0,
+      "coefficient_error_relative": {
+        "mean": 0.18837787337239692,
+        "median": 0.18238213588245877,
+        "rmse": 0.20347255654329474
+      },
+      "nonfinite": 0,
+      "observation_noise": 0.0003,
+      "repetitions": 20,
+      "species_balanced_drift_error": {
+        "mean": 0.03541705963228906,
+        "median": 0.02936752744213461,
+        "q25": 0.02406773124185167,
+        "q75": 0.037326285488739876
+      },
+      "unconverged_candidates": 350
+    },
+    {
+      "boundary_selected_systems": 0,
+      "coefficient_error_relative": {
+        "mean": 1.146626580152025,
+        "median": 1.1644635723560195,
+        "rmse": 1.1526081641891637
+      },
+      "nonfinite": 0,
+      "observation_noise": 0.001,
+      "repetitions": 20,
+      "species_balanced_drift_error": {
+        "mean": 0.03730424100810087,
+        "median": 0.03166566307139502,
+        "q25": 0.02580722145749672,
+        "q75": 0.03984491668940317
+      },
+      "unconverged_candidates": 414
+    },
+    {
+      "boundary_selected_systems": 0,
+      "coefficient_error_relative": {
+        "mean": 9.83586301539573,
+        "median": 9.904566722573101,
+        "rmse": 9.867283553023123
+      },
+      "nonfinite": 0,
+      "observation_noise": 0.003,
+      "repetitions": 20,
+      "species_balanced_drift_error": {
+        "mean": 0.10904369878314094,
+        "median": 0.09249569839590727,
+        "q25": 0.07974901834148276,
+        "q75": 0.11906449068355757
+      },
+      "unconverged_candidates": 532
+    },
+    {
+      "boundary_selected_systems": 0,
+      "coefficient_error_relative": {
+        "mean": 98.6784337358491,
+        "median": 98.68164656592188,
+        "rmse": 99.1359900110254
+      },
+      "nonfinite": 0,
+      "observation_noise": 0.01,
+      "repetitions": 20,
+      "species_balanced_drift_error": {
+        "mean": 1.0449036887291587,
+        "median": 0.9034081506473168,
+        "q25": 0.7851194882640177,
+        "q75": 1.0292710865006047
+      },
+      "unconverged_candidates": 668
+    }
+  ],
+  "observation_noise_drift_log_log_slope": 0.9661863339526814
+}

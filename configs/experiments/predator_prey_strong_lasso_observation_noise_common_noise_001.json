@@ -1,0 +1,47 @@
+{
+  "task": "predator_prey_strong_lasso_observation_noise",
+  "protocol_version": 1,
+  "study_status": "manuscript_current",
+  "base_config": "configs/experiments/predator_prey_sweeps_common_noise_001.json",
+  "base_config_sha256": "658795ade576907570f444016a64878279134336261fa09f98906c8b4fa9bbe7",
+  "weak_sweep_records": "outputs/validation/predator_prey_sweeps/scientific-20261023T114508Z/records.json",
+  "weak_sweep_records_sha256": "5b5e50f9cdcc812a84216613598a9f4f5ec79d8c0e9bafc4a3552e207b359543",
+  "observation_noise_values": [
+    0.0,
+    0.0003,
+    0.001,
+    0.003,
+    0.01
+  ],
+  "repetitions": 20,
+  "training_trajectories": 4,
+  "observation_step": 0.01,
+  "strong_form": {
+    "response": "particlewise_forward_position_difference_divided_by_observation_step",
+    "prey_system_columns": 12,
+    "predator_system_columns": 5,
+    "source_average": "all_available_source_particles",
+    "penalty_policy": "select_prey_and_predator_systems_separately",
+    "estimator": {
+      "method": "raw_lasso",
+      "alpha_count": 60,
+      "alpha_min_ratio": 1e-09,
+      "max_iter": 200000,
+      "tol": 1e-08,
+      "fit_intercept": false,
+      "standardize": false,
+      "selection": "cyclic",
+      "report_nonzero_threshold": 1e-08,
+      "selection_metric": "independent_validation_forward_difference_residual_mse",
+      "truth_used_for_selection": false,
+      "test_error_used_for_selection": false,
+      "post_lasso_refit": false,
+      "coefficient_thresholding": false
+    }
+  },
+  "pairing_policy": "For each repetition and noise level, training, validation, and test trajectories remain separate. Strong FD-LASSO uses the same observed training arrays as the weak methods and selects separate prey and predator penalties on the corresponding independent observed validation arrays.",
+  "evaluation_policy": "Evaluate every selected strong-form coefficient vector on the same latent held-out trajectory and species-balanced drift metric used by the weak-method sweep.",
+  "failure_policy": "Retain every prespecified repetition, nonconverged path candidate, boundary selection, nonfinite coefficient, and missing metric.",
+  "manuscript_policy": "Current manuscript comparison; preserve the declared protocol and independent validation selection.",
+  "protocol_variant": "common_nominal_observation_noise_0.01"
+}

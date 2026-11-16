@@ -1,0 +1,79 @@
+{
+  "task": "one_dimensional_hat_sampled_p50n_R100",
+  "protocol_version": 1,
+  "purpose": "Production candidate for Generic 1D Figure 1 with sampled ordered pairs at P=50N.",
+  "source_lasso_batch": "outputs/validation/one_dimensional_hat/dictionary-grid-R100-20261021T170800698717Z",
+  "source_lasso_hashes": {
+    "frozen_protocol.json": "ff47c28d643172167b18d6da5baf40d65cd657de96c9722d611894353e991351",
+    "batch_status.json": "1eda07d5662df65373c3bf63b3cca5d1697c7c6a4a9e365c8c41d862b67aee93",
+    "verification/verification.json": "991df22cd004ac32ab2dc98bd7ec4ac9275f6f8334a9d6ff3c3883329b0e4f29",
+    "summary/summary.json": "0f18d2efde58d29532fb2ddb560ebb1782464c14d0a9f7271f09c5e22bfff45f"
+  },
+  "source_ols_batch": "outputs/validation/one_dimensional_hat/dictionary-grid-OLS-R100-20261021T181010851830Z",
+  "source_ols_hashes": {
+    "frozen_protocol.json": "4aaf5974d1a49613f30afd09f3bfc7caa6533cb2c1c671c4838afd70268d52a9",
+    "batch_status.json": "12fa609054952df640566378c83fb9956afa9b3e243e796679aa0dbf2ee3af30",
+    "verification/verification.json": "c25316e49c381872dc06cbfffc6e7e68c24539d2cd6f8150bc2d57a18fa90dc3",
+    "summary/summary.json": "7a0aca8adb8454c5040192335962fc858869bc02610ea8fa5bb2113d2eb99f6a"
+  },
+  "dictionary_sizes": [9, 11, 14, 17, 22, 27, 33, 42, 52, 65],
+  "repetitions": 100,
+  "reference_indices": {
+    "start": 0,
+    "stop_exclusive": 100
+  },
+  "pair_ratio": 50,
+  "pair_count": 50000,
+  "pair_sampling": {
+    "ordered": true,
+    "exclude_diagonal": true,
+    "with_replacement": true,
+    "resample_each_time": true,
+    "shared_across_tests_and_atoms": true,
+    "independent_training_validation": true
+  },
+  "pair_seed_start": 51000000,
+  "repetition_seed_stride": 100,
+  "training_pair_seed_offset": 0,
+  "validation_pair_seed_offset": 1,
+  "estimators": {
+    "primary": "validation-selected raw weak LASSO with the unchanged 60-penalty path",
+    "secondary": "raw minimum-norm weak OLS from numpy.linalg.lstsq with rcond=None"
+  },
+  "selection_policy": "For each repetition and dictionary size, independently sampled validation pairs at P=50N select the converged LASSO candidate with minimum validation weak-residual MSE. Truth and held-out tests are excluded from selection.",
+  "evaluation_policy": "Reuse each repetition's frozen held-out trajectory and existing full-pair evaluation statistics across estimators. Matched full-pair LASSO and OLS records are read-only comparisons.",
+  "bootstrap": {
+    "samples": 10000,
+    "seed": 985000,
+    "unit": "matched repetition"
+  },
+  "representative_policy": "After completing all 100 repetitions, choose the dictionary size with the smallest sampled-pair LASSO mean held-out force error; display global repetition 0 at that size without selecting a seed. Mark this dictionary choice as post-hoc visualization only.",
+  "claim_checks": {
+    "aggregate_lasso_force_rms_maximum_full_pair_multiplier": 1.25,
+    "minimum_force_curve_spearman": 0.8,
+    "require_intermediate_dictionary_minimum": true,
+    "require_lasso_mean_force_below_ols_at_every_dictionary_size": true,
+    "require_no_selected_lasso_nonconvergence": true,
+    "require_no_lasso_rollout_divergence": true
+  },
+  "reporting": {
+    "metrics": ["force_error_weighted_rel", "drift_error_rel", "trajectory_error_rel", "trajectory_rmse"],
+    "summaries": ["all_values", "arithmetic_mean", "sample_sd", "median", "iqr", "rmse", "paired_percentile_bootstrap_mean_ci95", "minimum", "maximum"],
+    "diagnostics": ["selected_lambda", "selected_alpha", "selected_path_index", "selected_nonzero", "grid_boundary", "path_nonconvergence", "rank", "effective_condition_number", "trajectory_status"]
+  },
+  "artifacts": {
+    "figure1_candidate": true,
+    "full_pair_comparison_figure": true,
+    "table_metrics_json_csv": true,
+    "claim_report": true,
+    "verification": true
+  },
+  "failure_policy": "Retain every failed job, unselected or nonconverged candidate, boundary selection, rank deficiency, divergent rollout, basis-domain excursion, and missing metric. Never average only successful repetitions when an all-run statistic is declared.",
+  "current_artifact_audit": {
+    "latex/L4DC/figures/one_dimensional_hat_practical.pdf": "92d28f98b96e65eae73bb2967fe4a126c12b5d51509981066d357a094f15e5fc",
+    "latex/L4DC/body.tex": "47ece0f88f2435b046b19c87207ee091acd38e5e90a7d8ba7461d37bcb927a30",
+    "latex/L4DC/appendix_numerics.tex": "eddea6e9a4496977aa826ff3b442564e5a028a8cbad97e9e6cb215e60eed88dc"
+  },
+  "production_artifacts_unchanged": true,
+  "manuscript_instruction": "Do not modify current figures, manuscript files, or authoritative full-pair outputs in this stage."
+}

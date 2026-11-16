@@ -1,0 +1,33 @@
+{
+  "protocol_version": 1,
+  "base_config": "configs/experiments/one_dimensional_hat_nested_20.json",
+  "base_results": "outputs/validation/one_dimensional_hat/nested-N1000-R20-20261020T174050Z",
+  "backend_validation": "outputs/validation/one_dimensional_hat/prefix-parity-all-20261020T201437Z/parity.json",
+  "supersedes_attempt": "outputs/validation/one_dimensional_hat/sweeps-R20-20261020T200641Z",
+  "supersession_reason": "The initial attempt stopped during baseline arithmetic-parity checks (5/20 imports failed); no additional accuracy, pair or timing jobs ran. Keep all grids, seeds, estimator settings and strict parity tolerances unchanged. Fix only rollout arithmetic.",
+  "rollout_policy": "Compute the global Lipschitz bound L of the fitted piecewise-quadratic odd force from its coefficients and knots. If 2*max(dt)*L >= 1, use the original pairwise Euler implementation from the first step; otherwise use exact prefix-moment drift evaluation. This is a conservative arithmetic safeguard, not a stability theorem or a change to the estimator, Euler step, coefficients, or error metric.",
+  "baseline_policy": "Keep N=1000, T=2, dt=0.005, sigma=0.1, sigma_obs=0 except the plotted parameter; preserve truth, tests, initial law, solver and validation rule.",
+  "sweeps": {
+    "sigma_obs": [0.0, 0.0003, 0.001, 0.003, 0.01, 0.03, 0.1],
+    "sigma": [0.01, 0.05, 0.1, 0.2, 0.4],
+    "N": [50, 100, 200, 400, 1000],
+    "dt": [0.002, 0.005, 0.01, 0.02, 0.05, 0.1]
+  },
+  "grid_provenance": "Original Figure 2 grids, adding N=1000 as the common baseline. Runtime also includes N=1000.",
+  "pair_counts": [100, 300, 1000, 3000, 10000, 30000],
+  "runtime_particles": [100, 200, 400, 800, 1000, 1600],
+  "runtime_repetitions": 10,
+  "runtime_pair_ratio": 10,
+  "runtime_seed_base": 3000000,
+  "runtime_order_seed": 4000000,
+  "observation_seed_offset": 1000000,
+  "pair_seed_base": 2000000,
+  "pair_penalty_policy": "Use the full-pair training/validation-selected absolute alpha and the same descending absolute-alpha warm-start path from zero through its selected index. Never reselect alpha using P, truth or test data.",
+  "pair_nonconvergence_policy": "Retain every finite solver output, including nonconverged fixed-alpha endpoints, in explicitly labeled finite-iteration diagnostics; mark incomplete convergence and record all warnings. Missing/nonfinite outputs invalidate the all-run mean. Also report converged endpoint counts; do not silently average only successes.",
+  "data_policy": "Reuse the 20 declared triplets and baseline results. Same data within each dictionary comparison. Observation-noise levels share X and standardized noise. Across N or dt the same seed does not imply nested particles or coupled Brownian paths. dt is both the Euler-Maruyama integration and observation step.",
+  "evaluation_policy": "Independent true test trajectories, all times/all off-diagonal pairs, trapezoidal force/drift weights. Each physical setting has its own test measure; observation-noise and P sweeps share the baseline test measure. Freeze all dictionary coefficients before evaluation.",
+  "assembly_policy": "Exact 1D hat full-pair sums via prefix moments; sampled off-diagonal ordered pairs with replacement, redrawn at each contributing time. No standardization; 200 weak rows scaled by 1/sqrt(200).",
+  "timing_policy": "Sequential, one numerical thread, after estimation jobs finish; time complete assembly separately per dictionary including geometry and pair draws. Exclude simulation, response, fitting, diagnostics and file IO. Randomize dictionary/mode order before each timing repetition. Report medians and IQR; not a general-dimensional quadratic-cost benchmark.",
+  "failure_policy": "Run all planned cases without seed selection or outcome-based stopping. Retain failed cases, unconverged candidates, boundary selections, rollouts leaving the basis interval and numerical divergence. Do not refit, smooth, or threshold coefficients.",
+  "plot_policy": "Consistent dictionary colors/markers for M=9,17,33,65; 4:3 axes; arithmetic means with pointwise paired-bootstrap 95% intervals for errors. No theoretical rate lines. Six-panel force/trajectory/drift views plus pair-approximation diagnostics."
+}

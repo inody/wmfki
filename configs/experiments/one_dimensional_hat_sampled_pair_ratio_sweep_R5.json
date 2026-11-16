@@ -1,0 +1,53 @@
+{
+  "task": "one_dimensional_hat_sampled_pair_ratio_sweep_R5",
+  "protocol_version": 1,
+  "source_lasso_batch": "outputs/validation/one_dimensional_hat/dictionary-grid-R100-20261021T170800698717Z",
+  "source_lasso_frozen_protocol_sha256": "ff47c28d643172167b18d6da5baf40d65cd657de96c9722d611894353e991351",
+  "source_ols_batch": "outputs/validation/one_dimensional_hat/dictionary-grid-OLS-R100-20261021T181010851830Z",
+  "source_ols_frozen_protocol_sha256": "4aaf5974d1a49613f30afd09f3bfc7caa6533cb2c1c671c4838afd70268d52a9",
+  "dictionary_sizes": [9, 11, 14, 17, 22, 27, 33, 42, 52, 65],
+  "repetitions": 5,
+  "reference_indices": [0, 1, 2, 3, 4],
+  "pair_ratios": [20, 30, 50, 75, 100],
+  "pair_sampling": {
+    "ordered": true,
+    "exclude_diagonal": true,
+    "with_replacement": true,
+    "resample_each_time": true,
+    "shared_across_tests_and_atoms": true,
+    "independent_training_validation": true,
+    "independent_across_ratios": true
+  },
+  "pair_seed_start": 41000000,
+  "repetition_seed_stride": 10000,
+  "ratio_seed_stride": 100,
+  "training_pair_seed_offset": 0,
+  "validation_pair_seed_offset": 1,
+  "lasso_selection": "For every ratio, repetition, and dictionary size, select from the unchanged 60-penalty path by minimum independently sampled validation weak-residual MSE among converged candidates.",
+  "ols_estimator": {
+    "name": "raw_minimum_norm_ols",
+    "implementation": "numpy.linalg.lstsq",
+    "rcond": null,
+    "fit_from": "sampled training weak system only"
+  },
+  "evaluation": "Reuse the frozen held-out test trajectory and the existing full-pair evaluation statistics for every ratio; never resample or refit during evaluation.",
+  "acceptance": {
+    "primary_metric": "force_error_weighted_rel",
+    "aggregation": "root mean square across the 5 matched repetitions and 10 dictionary sizes",
+    "maximum_sampled_to_full_rms_ratio": 1.25,
+    "lasso_advantage": "sampled-pair LASSO aggregate primary RMSE is below sampled-pair raw OLS",
+    "dictionary_trend": {
+      "minimum_spearman_correlation": 0.6,
+      "near_optimal_full_pair_multiplier": 1.25,
+      "high_resolution_sizes": [42, 52, 65]
+    },
+    "major_failure": "Any sampled-pair LASSO fit without a selected converged candidate or any sampled-pair LASSO held-out trajectory divergence."
+  },
+  "reporting": {
+    "metrics": ["force_error_weighted_rel", "trajectory_error_rel", "drift_error_rel", "trajectory_rmse"],
+    "diagnostics": ["selected_lambda", "selected_alpha", "selected_path_index", "grid_boundary", "rank", "effective_condition_number", "convergence", "trajectory_status"],
+    "figures": ["png", "pdf"]
+  },
+  "production_artifacts_unchanged": true,
+  "manuscript_instruction": "Do not modify the manuscript or current/frozen figures. This R=5 ratio sweep is a preview, not an uncertainty estimate."
+}

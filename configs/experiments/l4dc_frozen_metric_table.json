@@ -1,0 +1,16 @@
+{
+  "generated_by": "numerical_release_exporter",
+  "methods": [
+    "weak_lasso",
+    "weak_ridge_validation_selected",
+    "weak_ols",
+    "strong_forward_difference_lasso_validation_selected",
+    "strong_forward_difference_ridge_validation_selected",
+    "strong_forward_difference_ols"
+  ],
+  "protocol_version": 3,
+  "regularized_summary": "frozen_data/l4dc-current/regularized_baselines/summary.json",
+  "regularized_summary_sha256": "bf87c530a2548e8f315b8dcd60fb5b24e5ace4853b5ec5a167285b91001a2592",
+  "source_mode": "sanitized_frozen_release_data",
+  "task": "cross_example_metric_table"
+}

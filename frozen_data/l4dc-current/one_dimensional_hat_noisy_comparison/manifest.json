@@ -1,0 +1,24 @@
+{
+  "artifact_sha256": {
+    "diagnostics.json": "6968298918fac9ab8cc2674257ec593dfaf2389578cb780e263d4e8287a9c2b5",
+    "effective_protocol.json": "d6d798b4084c8a08d8e74d91c9e08a7e19bbfbda66327534749d0fa1e2e23340",
+    "records.json": "206fac0e25764983f594a87fbabbd04ad319904ab75ac77bca2515e90e088625",
+    "requested_protocol.json": "b6c245dc7b695761ff81349a86a444b252a73d84d86728d48087a3436cd9e5bd",
+    "summary.json": "1a199cf6ccb39a346dd218a5a64a17f904378939a4126f23f4350492563f0855"
+  },
+  "created_utc": "2026-11-13T06:39:04.928568+00:00",
+  "elapsed_seconds": 1289.0592108330457,
+  "record_count": 3000,
+  "smoke": false,
+  "source_sha256": {
+    "configs/experiments/fig1c_noisy_three_method.json": "b6c245dc7b695761ff81349a86a444b252a73d84d86728d48087a3436cd9e5bd",
+    "features.py": "678833b5563190087fecf0cf99db64b4347f63bbbbd2211d854fd37db2318966",
+    "kernels.py": "dc93a89a53b4199c40c06336bea837b311690c708156f20bffd1353227be5dfb",
+    "scripts/hat_sweep_numerics.py": "3fd1f8e7a6173c7ee971d24dcc98ed4f555aa3de7693127ee553b16c2b8616b2",
+    "scripts/run_1d_hat_lasso.py": "4dc35ffbde2bc876b370885c9612c7116e0464e112f34ca2a7f1c9236c03eb93",
+    "scripts/run_fig1c_noisy_three_method.py": "7185664076557889b351b93b8712cff60eaf501b1e0fd8b0a6366570a095b815",
+    "scripts/run_fig1c_strong_fd_lasso.py": "89e08b193da7bdd2f1fa2f5cb756777cf9c33f5ad4eca0fed39948f77b6c5666"
+  },
+  "status": "scientific_complete",
+  "task": "fig1c_noisy_three_method"
+}

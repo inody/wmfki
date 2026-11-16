@@ -1,0 +1,31 @@
+{
+  "task": "hat_dictionary_grid_from_scratch_R100",
+  "protocol_version": 1,
+  "base_config": "configs/experiments/one_dimensional_hat_nested_20.json",
+  "base_config_sha256": "b62d15c9c932755a20d8b619368ab76d8322e17949749b6a9da8fbb8ce6ba444",
+  "dictionary_sizes": [9, 11, 14, 17, 22, 27, 33, 42, 52, 65],
+  "reused_sizes": [],
+  "newly_fitted_sizes": [9, 11, 14, 17, 22, 27, 33, 42, 52, 65],
+  "repetitions": 100,
+  "new_jobs": 100,
+  "new_models": 1000,
+  "reused_models": 0,
+  "seed_schedule": {
+    "first_20": "Use the train, validation, and test seed lists in the base config.",
+    "remaining_80": {
+      "train": "8000000 + 10*k",
+      "validation": "8000002 + 10*k",
+      "test": "8000004 + 10*k",
+      "k_range": [0, 79]
+    },
+    "brownian": "trajectory seed + 1"
+  },
+  "bootstrap": {
+    "samples": 10000,
+    "seed": 980000
+  },
+  "representative_policy": "Choose the dictionary size with the smallest reported 100-repetition mean held-out force error, then display global repetition 0 at that size without seed selection.",
+  "selection_policy": "For every dictionary and repetition, select among 60 logarithmic penalties by minimum independent-validation weak residual over converged candidates. Do not consult truth or test trajectories and do not standardize, threshold, or refit.",
+  "failure_policy": "Retain every failed job, unconverged candidate, boundary selection, divergent rollout, and missing metric.",
+  "purpose": "Source-independent replacement for the historical staged import chain; computes all ten dictionary sizes and all 100 repetitions from trajectories generated in this run."
+}

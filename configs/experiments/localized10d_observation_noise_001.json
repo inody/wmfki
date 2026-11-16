@@ -1,0 +1,49 @@
+{
+  "task": "localized10d_fixed_observation_noise_benchmark",
+  "protocol_version": 1,
+  "base_config": "configs/experiments/localized10d_scientific.json",
+  "base_config_sha256": "6c91a338cb5da9b1241cea6d37cad4eb5abe083a4de232eb14ed49afddb21879",
+  "clean_reference_records": "outputs/validation/localized10d_scientific/sweeps-20261022T181151Z/records.json",
+  "clean_reference_sha256": "317f0014f23371f88f18f2d382be12c1b9e859858c7d357be2b062311bc589bf",
+  "observation_noise_values": [
+    0.01
+  ],
+  "nominal_observation_noise": 0.01,
+  "nominal_rationale": "Common absolute Gaussian position-noise standard deviation fixed before the aligned 1D, 2D, and 10D comparison.",
+  "repetitions": 20,
+  "observation_noise_seeds": {
+    "training_start": 15000000,
+    "validation_start": 16000000,
+    "repetition_stride": 103
+  },
+  "spatial_test_construction": "data_dependent_from_each_observed_training_or_validation_array",
+  "strong_form": {
+    "target_count": 64,
+    "target_seed_start": 14000000,
+    "response": "forward_position_difference_divided_by_observation_step",
+    "source_average": "all_500_particles",
+    "solver": "raw_numpy_minimum_norm_lstsq",
+    "regularization": false,
+    "intercept": false,
+    "standardization": false,
+    "coefficient_thresholding": false
+  },
+  "weak_form": {
+    "pairs": 10000,
+    "lasso_selection": "independent_validation_weak_residual_mse",
+    "truth_used_for_selection": false,
+    "test_used_for_selection": false
+  },
+  "metric": {
+    "coefficient_error": "||theta_hat-theta_star||_2/||theta_star||_2",
+    "drift_error": "relative_latent_heldout_drift_error",
+    "profile_error": "relative_radial_profile_error",
+    "primary_summary": "root_mean_square_across_20_repetitions",
+    "secondary_summary": "mean_median_and_interquartile_range",
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 20261024
+  },
+  "pairing_policy": "Within each repetition, all three estimators use the same latent trajectories, the same observed training array at sigma_obs=0.01, the same held-out latent test construction, and the same strong-form target subset. Weak LASSO and weak OLS use the same sampled weak training system.",
+  "failure_policy": "Retain every repetition, nonconverged path candidate, boundary selection, rank deficiency, nonfinite coefficient, and missing metric. Do not rerun to improve the result.",
+  "manuscript_policy": "Use the fixed sigma_obs=0.01 condition for the aligned cross-example comparison and retain clean-observation records as a separate baseline."
+}

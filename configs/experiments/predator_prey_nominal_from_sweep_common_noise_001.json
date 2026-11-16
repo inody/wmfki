@@ -1,0 +1,19 @@
+{
+  "task": "predator_prey_nominal_application_from_sweep",
+  "protocol_version": 1,
+  "application_config": "configs/experiments/predator_prey_application_common_noise_001.json",
+  "application_config_sha256": "d93b1d1cc6247e129a172fed3cfbdec7691e584d33b15d8845a6b52658c8a238",
+  "sweep_protocol": "outputs/validation/predator_prey_sweeps/scientific-20261023T114508Z/requested_protocol.json",
+  "sweep_protocol_sha256": "800b5ee2bfddaec52202bfced9157138cd9e35984fef613d0a9db3b83964f947",
+  "sweep_records": "outputs/validation/predator_prey_sweeps/scientific-20261023T114508Z/records.json",
+  "sweep_records_sha256": "5b5e50f9cdcc812a84216613598a9f4f5ec79d8c0e9bafc4a3552e207b359543",
+  "condition": {
+    "sweep": "observation_noise",
+    "observation_noise": 0.01
+  },
+  "repetitions": 20,
+  "representative_repetition": 0,
+  "fit_policy": "Extract every weak LASSO and weak OLS fit exactly from the predeclared sigma_obs=0.01 point of the paired robustness sweep.",
+  "display_policy": "Simulate only the representative rollout after extracting repetition zero; do not refit or select a repetition.",
+  "failure_policy": "Retain all 20 repetitions and every recorded diagnostic without filtering."
+}

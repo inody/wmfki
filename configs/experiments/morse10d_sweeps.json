@@ -1,0 +1,90 @@
+{
+  "task": "morse10d_robustness_sweeps",
+  "protocol_version": 1,
+  "smoke_only": false,
+  "model": {
+    "dimension": 10,
+    "particles": 500,
+    "steps": 2000,
+    "dt": 0.01,
+    "observation_stride": 5,
+    "trajectories_per_split": 1,
+    "sigma": 0.1,
+    "initial_law": "normal",
+    "initial_scale": 0.5,
+    "solver": "euler",
+    "interaction": {
+      "mode": "morse_r",
+      "a": 2.0,
+      "b": 1.0,
+      "l1": 1.0,
+      "l2": 2.0
+    }
+  },
+  "dictionary": {
+    "basis": "exp_r",
+    "M": 8,
+    "ell_grid": [0.6, 0.787, 1.032, 1.353, 1.774, 2.326, 3.05, 4.0]
+  },
+  "weak_tests": {
+    "spatial_type": "gaussian",
+    "spatial_count": 25,
+    "spatial_scale_factor": 1.5,
+    "spatial_layout": "random",
+    "spatial_quantiles": [0.01, 0.99],
+    "temporal_type": "bump",
+    "temporal_count": 8,
+    "temporal_support_factor": 1.8,
+    "normalize_rows": true
+  },
+  "pair_sampling": {
+    "baseline_pairs": 5000,
+    "mode": "resample_each_time",
+    "with_replacement": true,
+    "exclude_diagonal": true
+  },
+  "sweeps": {
+    "process_sigma": [0.0, 0.025, 0.05, 0.1, 0.2],
+    "particle_number": [100, 200, 350, 500],
+    "sampled_pairs": [500, 1000, 3000, 5000, 10000]
+  },
+  "estimator": {
+    "method": "raw_lasso",
+    "alpha_count": 60,
+    "alpha_min_ratio": 1e-7,
+    "max_iter": 200000,
+    "tol": 1e-8,
+    "fit_intercept": false,
+    "standardize": false,
+    "selection": "cyclic",
+    "report_nonzero_threshold": 1e-8,
+    "selection_metric": "independent_validation_weak_residual_mse",
+    "truth_used_for_selection": false,
+    "test_error_used_for_selection": false,
+    "post_lasso_refit": false,
+    "coefficient_thresholding": false
+  },
+  "evaluation": {
+    "scientific_repetitions": 20,
+    "profile_radius": [0.05, 5.0],
+    "profile_grid_size": 400,
+    "latent_drift_time_count": 12,
+    "latent_drift_target_count": 64,
+    "rollout_particles": 16,
+    "divergence_absolute_position": 1000000.0
+  },
+  "seeds": {
+    "trajectory_start": 40000,
+    "repetition_stride": 1,
+    "validation_offset": 1000000,
+    "test_offset": 2000000,
+    "pair_start": 3040000,
+    "pair_validation_offset": 1000000,
+    "space_start": 4040000,
+    "evaluation_start": 5040000
+  },
+  "pair_penalty_policy": "absolute_alpha_selected_at_Pmax_by_independent_validation_then_fixed_across_all_P_within_repetition",
+  "data_policy": "Training, validation, and latent test trajectories are separate. Seeds are paired across conditions. The baseline N=500, sigma=0.1 trajectories are reused by the sigma, N, and P sweeps. Latent arrays are cached while a repetition is incomplete and deleted only after its self-contained job record is written; seeds and frozen sources permit exact rebuilding.",
+  "comparison_policy": "Compare validation-selected raw full-dictionary LASSO with raw minimum-norm full-dictionary OLS on the identical training weak system. Do not standardize, threshold, refit, use truth for selection, or use latent test data for selection.",
+  "output_policy": "Timestamped immutable run directory with frozen protocol, source snapshots and SHA-256 hashes, resumable per-repetition jobs, trajectory cache, JSON/CSV records, summary, manifest, and runtime report. Smoke outputs are explicitly separate from scientific outputs."
+}

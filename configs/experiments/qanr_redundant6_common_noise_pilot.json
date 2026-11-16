@@ -1,0 +1,33 @@
+{
+  "task": "qanr_redundant6_common_noise_pilot",
+  "protocol_version": 1,
+  "base_protocol": "configs/experiments/qanr_redundant6_lasso_sweeps_R100.json",
+  "observation_noise": 0.01,
+  "repetitions": 10,
+  "process_noise": {
+    "particles": 100,
+    "horizon": 2.0,
+    "dt": 0.001,
+    "values": [0.01, 0.05, 0.1, 0.2, 0.4],
+    "training_seed_start": 1234,
+    "training_seed_stride": 1000,
+    "validation_seed_offset": 1000000,
+    "solver": "rk4",
+    "stacked_trajectories": 1
+  },
+  "time_step": {
+    "particles": 200,
+    "horizon": 10.0,
+    "values": [0.1, 0.05, 0.02, 0.01, 0.005, 0.002],
+    "process_noise": 0.0,
+    "training_seed_start": 1234,
+    "training_seed_stride": 1000,
+    "validation_seed_offset": 1000000,
+    "solver": "euler",
+    "stacked_trajectories": 3,
+    "noise_pairing": "one_common_0.001_time_lattice_standard_normal_array_per_split_and_repetition_subsampled_at_shared_times"
+  },
+  "selection_policy": "same_60_point_raw_lasso_path_and_independent_validation_weak_residual_as_the_frozen_R100_protocol",
+  "retention_policy": "retain_every_predeclared_repetition_and_solver_diagnostic",
+  "purpose": "Assess whether fixing sigma_obs=0.01 preserves the process-noise and time-step trends before any full rerun or manuscript change."
+}

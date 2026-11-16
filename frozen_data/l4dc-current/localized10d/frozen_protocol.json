@@ -1,0 +1,200 @@
+{
+  "baseline_parity_policy": "At N=500, process sigma=0.05, and P=10000, weak LASSO and weak OLS must reproduce the independently verified fixed sigma_obs=0.01 nominal records.",
+  "comparison_policy": "Compare validation-selected raw full-dictionary LASSO with raw minimum-norm full-dictionary OLS on identical weak systems. Report matched-dictionary coefficient error as the primary state-recovery metric; report latent drift/profile errors secondarily and nested sampled-design error for pair quadrature.",
+  "condition_budget_policy": "Nominal and process-noise conditions use N=500 and P=25000. Particle-number conditions use P=50N. Pair-count conditions use the declared P values at N=500, including the nominal P=25000.",
+  "data_policy": "R=20 production candidate derived from the authoritative sigma_obs=0.01 protocol. Training, validation, and latent test trajectories are separate. Pair indices are redrawn at every observed time, shared across all tests and atoms at that time, and independent between training and validation.",
+  "dictionary": {
+    "M": 4,
+    "basis": "gaussian_shell",
+    "centers": [
+      1.2,
+      1.8,
+      2.4,
+      3.0
+    ],
+    "h": 0.2
+  },
+  "estimator": {
+    "alpha_count": 60,
+    "alpha_min_ratio": 1e-07,
+    "coefficient_thresholding": false,
+    "fit_intercept": false,
+    "max_iter": 200000,
+    "method": "raw_lasso",
+    "post_lasso_refit": false,
+    "report_nonzero_threshold": 1e-08,
+    "selection": "cyclic",
+    "selection_metric": "independent_validation_weak_residual_mse",
+    "standardize": false,
+    "test_error_used_for_selection": false,
+    "tol": 1e-08,
+    "truth_used_for_selection": false
+  },
+  "evaluation": {
+    "divergence_absolute_position": 1000000.0,
+    "latent_drift_target_count": 64,
+    "latent_drift_time_count": 12,
+    "profile_grid_size": 400,
+    "profile_radius": [
+      0.5,
+      3.8
+    ],
+    "rollout_horizon": 5.0,
+    "rollout_particles": 500,
+    "scientific_repetitions": 20
+  },
+  "failure_policy": "Retain every prespecified repetition, nonconverged path candidate, boundary selection, rank deficiency, nonfinite coefficient, and missing metric. Do not rerun to improve a result.",
+  "model": {
+    "dimension": 10,
+    "dt": 0.01,
+    "initial_law": "normal_scale_mixture",
+    "initial_scale": 0.5,
+    "initial_scales": [
+      0.25,
+      0.4,
+      0.55,
+      0.7
+    ],
+    "interaction": {
+      "centers": [
+        1.2,
+        1.8,
+        2.4,
+        3.0
+      ],
+      "coefficients": [
+        0.0,
+        1.5,
+        -1.0,
+        0.0
+      ],
+      "h": 0.2,
+      "mode": "gaussian_shell"
+    },
+    "observation_stride": 2,
+    "particles": 500,
+    "sigma": 0.05,
+    "solver": "euler",
+    "steps": 500,
+    "trajectories_per_split": 1
+  },
+  "observation_noise": 0.01,
+  "observation_noise_seeds": {
+    "repetition_stride": 103,
+    "training_start": 15000000,
+    "validation_start": 16000000
+  },
+  "output_policy": {
+    "exclusive_new_directory": true,
+    "modify_P10_preview": false,
+    "modify_existing_current": false,
+    "modify_frozen_results": false,
+    "modify_manuscript": false,
+    "retain_all_predeclared_repetitions_and_failures": true,
+    "snapshot_sources_and_hash_artifacts": true
+  },
+  "pair_count_penalty_policy": {
+    "reuse": "fix_selected_absolute_alpha_across_all_pair_counts_within_repetition",
+    "selection_pairs": 25000,
+    "selection_validation": "independent_sampled_validation_system_at_P0"
+  },
+  "pair_index_policy": "At every observed time, draw ordered off-diagonal pairs with replacement. Draws are independent across time. The one draw at a time is shared by all spatial tests, temporal tests, and dictionary atoms. Training and validation use independent pair seeds and therefore independent pair streams.",
+  "pair_penalty_policy": "absolute_alpha_selected_at_P0_25000_by_independent_sampled_validation_then_fixed_across_all_P_within_repetition",
+  "pair_sampling": {
+    "baseline_pairs": 25000,
+    "exclude_diagonal": true,
+    "mode": "resample_each_time",
+    "pairs_per_particle": 50,
+    "with_replacement": true
+  },
+  "pairing_policy": "Within each repetition, process-noise conditions share standard-normal training and validation observation-error arrays. Particle-number conditions use the corresponding prefixes of arrays generated at N=500. Pair-count conditions share the same observed trajectories and nested pair samples. Training, validation, and latent test trajectories remain separate.",
+  "pilot_acceptance": {
+    "direction_relative_tolerance": 0.15,
+    "maximum_baseline_lasso_coefficient_error": 0.25,
+    "maximum_baseline_lasso_drift_error": 0.15,
+    "maximum_baseline_lasso_profile_error": 0.25,
+    "maximum_first_repetition_trajectory_error": 0.05,
+    "maximum_geometric_mean_condition_A": 100000.0,
+    "require_converged_selected_path_candidate": true,
+    "require_finite_all_records": true,
+    "require_no_rank_deficiency": true,
+    "required_lasso_endpoint_directions": {
+      "particle_number": "decrease",
+      "process_sigma": "increase",
+      "sampled_pairs": "decrease"
+    }
+  },
+  "pilot_only": false,
+  "production_artifacts": {
+    "nominal_coupled_trajectory": true,
+    "nominal_profile": true,
+    "provenance": true,
+    "representative_repetition": 0,
+    "robustness_figure": true,
+    "table_metrics": [
+      "nominal_relative_coefficient_error",
+      "nominal_latent_drift_error",
+      "nominal_profile_error",
+      "representative_coupled_trajectory_error",
+      "sweep_endpoint_statistics",
+      "fit_rank_and_selection_diagnostics"
+    ],
+    "verification": true
+  },
+  "protocol_version": 1,
+  "seeds": {
+    "evaluation_start": 13000000,
+    "pair_start": 10000000,
+    "pair_validation_offset": 1000000,
+    "repetition_stride": 101,
+    "space_start": 12000000,
+    "test_offset": 2000000,
+    "trajectory_start": 7000000,
+    "validation_offset": 1000000
+  },
+  "selection_policy": "Each nominal, process-noise, and particle-number condition selects raw LASSO using its independent sampled validation weak system at the same P. The pair-count sweep selects lambda once at P0=25000 using an independent sampled validation system and fixes that absolute lambda for every P within the repetition. Truth and latent test metrics are excluded from fitting and selection.",
+  "source_frozen_protocol": "outputs/validation/localized10d_noisy_robustness/sweeps-20261023T123949Z/frozen_protocol.json",
+  "source_frozen_protocol_sha256": "67ef4ded1f95ce7a1aaf8fe1085e8ada1ce015915a9964105f463328df5d57d8",
+  "source_preservation_policy": "Copy the model, dictionary, weak tests, process-noise and particle-number grids, estimator, seeds, evaluation settings, observation-noise protocol, and R=20 from the authoritative frozen protocol. Change only sampled-pair mode/budgets, add P=25000 to the pair-count grid, and change pair-count lambda selection from Pmax to P0=25000.",
+  "source_task": "localized10d_fixed_noise_robustness",
+  "spatial_test_construction": "data_dependent_from_each_observed_training_or_validation_array",
+  "study_status": "production_candidate_distance_localized_P50_R20",
+  "sweeps": {
+    "particle_number": [
+      100,
+      200,
+      350,
+      500
+    ],
+    "process_sigma": [
+      0.0,
+      0.05,
+      0.075,
+      0.1,
+      0.15
+    ],
+    "sampled_pairs": [
+      3000,
+      5000,
+      10000,
+      20000,
+      25000,
+      30000
+    ]
+  },
+  "task": "localized10d_sampled_pair_production_P50_R20",
+  "weak_tests": {
+    "normalize_rows": true,
+    "spatial_count": 25,
+    "spatial_layout": "random",
+    "spatial_quantiles": [
+      0.01,
+      0.99
+    ],
+    "spatial_scale_factor": 1.5,
+    "spatial_type": "gaussian",
+    "temporal_count": 8,
+    "temporal_support_factor": 1.8,
+    "temporal_type": "bump"
+  }
+}

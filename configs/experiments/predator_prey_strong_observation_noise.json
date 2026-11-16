@@ -1,0 +1,27 @@
+{
+  "task": "predator_prey_strong_observation_noise",
+  "protocol_version": 1,
+  "base_config": "configs/experiments/predator_prey_sweeps.json",
+  "base_config_sha256": "9c6700635fdec1212a1be815e687ff3962b74098721f338ec83c0e4c1027e1fb",
+  "weak_sweep_records": "outputs/validation/predator_prey_sweeps/sweeps-20261022T131557Z/records.json",
+  "weak_sweep_records_sha256": "62e76b2e43f7214f017357fb7e2e611017f9a2e8bacffcc2304cb8b5134d895e",
+  "observation_noise_values": [0.0, 0.0003, 0.001, 0.003, 0.01],
+  "repetitions": 20,
+  "training_trajectories": 4,
+  "observation_step": 0.01,
+  "strong_form": {
+    "response": "particlewise_forward_position_difference_divided_by_observation_step",
+    "prey_system_columns": 12,
+    "predator_system_columns": 5,
+    "source_average": "all_available_source_particles",
+    "solver": "raw_numpy_minimum_norm_lstsq",
+    "regularization": false,
+    "intercept": false,
+    "standardization": false,
+    "coefficient_thresholding": false
+  },
+  "pairing_policy": "For each repetition, all observation-noise levels share the latent training trajectories and standard-normal position-error arrays from the existing paired sweep. Strong FD-OLS uses exactly the observed training arrays used by weak LASSO and weak OLS.",
+  "evaluation_policy": "Evaluate every frozen strong-form coefficient vector on the same latent held-out trajectory and species-balanced drift metric used by the weak-method sweep.",
+  "failure_policy": "Retain every prespecified repetition, rank deficiency, nonfinite coefficient, and missing metric. Do not rerun to improve a result.",
+  "manuscript_policy": "Add strong FD-OLS only to the observation-noise panel of the predator--prey robustness figure; retain the weak-method-only time-step and prey-count panels."
+}

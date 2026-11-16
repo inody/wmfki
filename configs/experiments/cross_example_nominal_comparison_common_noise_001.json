@@ -1,0 +1,64 @@
+{
+  "task": "cross_example_nominal_method_comparison",
+  "protocol_version": 1,
+  "metric": {
+    "name": "relative_coefficient_error",
+    "definition": "||theta_hat-theta_star||_2/||theta_star||_2",
+    "primary_summary": "root_mean_square_across_predeclared_repetitions",
+    "secondary_summary": "median_and_interquartile_range",
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 20261023
+  },
+  "methods": [
+    "weak_lasso",
+    "weak_ols",
+    "strong_forward_difference_ols"
+  ],
+  "one_dimensional": {
+    "source_records": "outputs/validation/qanr_redundant6_lasso_R100/sweeps-20261022T052958Z/observation_lasso.csv",
+    "source_sha256": "ef7f3d0818f3138cb576a43a73e08a6927772829443f326d2fdf19a29ac61878",
+    "sigma_obs": 0.01,
+    "truth": [
+      1.0,
+      -1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "repetitions": 100,
+    "nominal_rationale": "Common absolute Gaussian position-noise standard deviation fixed across all three benchmarks."
+  },
+  "predator_prey": {
+    "config": "configs/experiments/predator_prey_application_common_noise_001.json",
+    "source_records": "outputs/validation/predator_prey/application-from-sweep-20261023T120339Z/records.json",
+    "source_sha256": "ba6e2f8a80469e6c81b9f8267d9dbc4dc8779f60caf92cd54716eb556d0e5a5f",
+    "repetitions": 20,
+    "nominal_rationale": "Exact weak fits and paired strong FD--OLS fits from the predeclared sigma_obs=0.01 point of the common-noise robustness sweep.",
+    "sigma_obs": 0.01,
+    "strong_source_records": "outputs/validation/predator_prey_strong_observation_noise/scientific-20261023T122939Z/records.json",
+    "strong_source_sha256": "9b33037f1fbc8768e48a32bbf7d4a76c0bc7fb0bde5a729a3b9e36f1793052eb"
+  },
+  "localized_10d": {
+    "config": "configs/experiments/localized10d_scientific.json",
+    "source_records": "outputs/validation/localized10d_observation_noise/sweeps-20261023T123755Z/records.json",
+    "source_sha256": "a31bb1975918b5c456fc0003c672e5842975803f51c442fe1f50603276df35bc",
+    "baseline_sweep": "process_sigma",
+    "baseline_value": 0.01,
+    "strong_target_count": 64,
+    "strong_target_seed_start": 14000000,
+    "repetitions": 20,
+    "nominal_rationale": "Fixed sigma_obs=0.01 benchmark with all three methods paired within each predeclared repetition.",
+    "source_format": "fixed_observation_noise"
+  },
+  "strong_form_policy": {
+    "response": "forward_position_difference_divided_by_observation_step",
+    "solver": "raw_numpy_minimum_norm_lstsq",
+    "regularization": false,
+    "intercept": false,
+    "standardization": false,
+    "coefficient_thresholding": false,
+    "failure_exclusion": false
+  },
+  "table_policy": "Generate draft Markdown and LaTeX tables outside the manuscript. Do not alter manuscript text or layout until the comparison is reviewed."
+}

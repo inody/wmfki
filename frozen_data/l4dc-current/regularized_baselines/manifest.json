@@ -1,0 +1,37 @@
+{
+  "artifact_sha256": {
+    "diagnostics.json": "3e871bad238ca2fe5759db6edd05a5d5555a3548bb29051f234f50add11de5f5",
+    "effective_protocol.json": "17e9351f73b57363f25d6de595c99424f6a62d8c6c1055c851b2c68c7e35f932",
+    "manuscript_decision_report.md": "9eebe181caa9384b0ff9305ab1029bfca48d0bbee7ba695ffdd3793b1444ffc5",
+    "paired_comparisons.csv": "dae7b850bf9910aa74b1b1a87aeedd6c636821645d51c029aa199f0a5959f81e",
+    "paired_comparisons.json": "ce09f5fdc2cfbb57b952d7bbdfa29c10e2f4fec3657c98372f2bccfcff9522b8",
+    "paired_comparisons.md": "48056821816c9b6a0999b704a099ad3dcbd1283e2bbc5968795495c223c98e5f",
+    "protocol_parity.json": "3f98a83c7835815048918a17d3288edfca611a894ec94593eb89710d06e69618",
+    "protocol_parity.md": "a46bdbc085497c8fe65e9244aa883fd4a79da3c45edb1c70576f804a2c44d75f",
+    "records.csv": "3d7955fc92425c876c7224dad8aa2a232f3d88ce277bc410323ee322df806710",
+    "records.json": "4d8f9389acd0ea67062b770960339624a1a66aeed85f5abe5f59da1cb1ff0ea9",
+    "requested_protocol.json": "9e20c97d7981b9eea8ba228965d07a770ab2c584bbbd90f3fbfb256ba1aa8cea",
+    "selected_penalties.json": "972330d6c73fb60505b9a26c3fe07a4ecf738cb227b256f3f74cb52d19199a87",
+    "summary.json": "bf87c530a2548e8f315b8dcd60fb5b24e5ace4853b5ec5a167285b91001a2592",
+    "summary_table.csv": "1b594191458cadf9976d979e33e21159acda0f79912a29c3151501154ab9aaa4",
+    "summary_table.md": "e39520b36d659b985f3306576f4a14139e7eff81062761c147abd135c0bbaff7"
+  },
+  "created_utc": "2026-11-13T06:08:21.953538+00:00",
+  "existing_outputs_modified": false,
+  "manuscript_modified": false,
+  "new_record_count": 420,
+  "output_root_enforced": true,
+  "paired_comparison_rows": 42,
+  "protocol_parity_checks": 320,
+  "protocol_version": 2,
+  "record_count": 840,
+  "smoke": false,
+  "source_sha256": {
+    "configs/experiments/regularized_baseline_exploration.json": "9e20c97d7981b9eea8ba228965d07a770ab2c584bbbd90f3fbfb256ba1aa8cea",
+    "scripts/run_regularized_baseline_exploration.py": "c33c1d86920f644e099dc6ec2753cfa6f2c52a92bad962b2533dfdc92e21aecc",
+    "test/test_regularized_baseline_exploration.py": "de238d4b2f330039d64b13ae222842ce005887f36b6ce00e238d5c2f00e956d1"
+  },
+  "status": "scientific_complete",
+  "task": "regularized_baseline_exploration",
+  "unique_strong_parity_hard_failures": 0
+}

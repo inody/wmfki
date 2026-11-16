@@ -1,0 +1,38 @@
+{
+  "task": "cross_example_metric_table",
+  "protocol_version": 1,
+  "source_records": "outputs/validation/cross_example_nominal_comparison/noisy10d-20261023T072724Z/records.json",
+  "source_records_sha256": "0df38fea2923cb41c259e7ee28a01fa994d52538afd2bfd2957f95f50b55f6eb",
+  "methods": [
+    "weak_lasso",
+    "weak_ols",
+    "strong_forward_difference_ols"
+  ],
+  "coefficient_summary": "root_mean_square_across_all_repetitions",
+  "drift_summary": "root_mean_square_across_all_repetitions",
+  "trajectory_summary": "diagnostic_only_for_the_first_predeclared_repetition",
+  "uncertainty_summary": "one_delta_method_standard_error_of_each_root_mean_square",
+  "one_dimensional": {
+    "config": "configs/experiments/qanr_redundant6_lasso_sweeps_R100.json",
+    "config_sha256": "a3c1c2407298c80392820d2c6a8b16ff039a08e853d018e71904896a8440875e",
+    "evaluation_seed_rule": "training_seed_of_repetition_zero_plus_twice_validation_seed_offset",
+    "drift_target_time_samples": 2000,
+    "drift_sampling_seed_offset": 17
+  },
+  "predator_prey": {
+    "config": "configs/experiments/predator_prey_application.json",
+    "config_sha256": "90725f9d3652417897ac81f546713c2865cce3ee4e40d8975554effa2333d55b",
+    "drift_source": "same_display_trajectory_as_the_repetition_zero_rollout",
+    "trajectory_seed_rule": "existing_display_seed",
+    "trajectory_particles": 100,
+    "trajectory_horizon": 8.0
+  },
+  "localized_10d": {
+    "config": "outputs/validation/localized10d_noisy_robustness/sweeps-20261023T085506Z/frozen_protocol.json",
+    "config_sha256": "f3243af4a70698b4dc55ddbb0e1b63d536ff5c9bf7a940effa0a0f9b7506b5ae",
+    "drift_source": "latent_test_trajectory_of_repetition_zero",
+    "trajectory_seed_rule": "same_test_seed_as_the_repetition_zero_drift_evaluation"
+  },
+  "failure_policy": "retain_nonfinite_drift_or_divergent_rollout_as_a_reported_failure",
+  "selection_policy": "no_refit_no_retuning_no_seed_selection"
+}

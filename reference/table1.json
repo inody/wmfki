@@ -1,0 +1,151 @@
+{
+  "task": "l4dc_table1_numerical_reference",
+  "protocol_version": 1,
+  "significant_digits": 3,
+  "description": "Reported coefficient and drift RMSE values for Table 1. Wall-clock timings are not reference values.",
+  "examples": [
+    "one_dimensional",
+    "predator_prey",
+    "localized_10d"
+  ],
+  "methods": [
+    "weak_lasso",
+    "weak_ridge_validation_selected",
+    "weak_ols",
+    "strong_forward_difference_lasso_validation_selected",
+    "strong_forward_difference_ridge_validation_selected",
+    "strong_forward_difference_ols"
+  ],
+  "metrics": [
+    "coefficient_rmse_relative",
+    "drift_rmse_relative"
+  ],
+  "groups": [
+    {
+      "example": "one_dimensional",
+      "method": "weak_lasso",
+      "repetitions": 100,
+      "coefficient_rmse_relative": "2.47",
+      "drift_rmse_relative": "0.0444"
+    },
+    {
+      "example": "one_dimensional",
+      "method": "weak_ridge_validation_selected",
+      "repetitions": 100,
+      "coefficient_rmse_relative": "5.58",
+      "drift_rmse_relative": "0.0594"
+    },
+    {
+      "example": "one_dimensional",
+      "method": "weak_ols",
+      "repetitions": 100,
+      "coefficient_rmse_relative": "16.5",
+      "drift_rmse_relative": "0.112"
+    },
+    {
+      "example": "one_dimensional",
+      "method": "strong_forward_difference_lasso_validation_selected",
+      "repetitions": 100,
+      "coefficient_rmse_relative": "12.2",
+      "drift_rmse_relative": "0.501"
+    },
+    {
+      "example": "one_dimensional",
+      "method": "strong_forward_difference_ridge_validation_selected",
+      "repetitions": 100,
+      "coefficient_rmse_relative": "13.6",
+      "drift_rmse_relative": "0.502"
+    },
+    {
+      "example": "one_dimensional",
+      "method": "strong_forward_difference_ols",
+      "repetitions": 100,
+      "coefficient_rmse_relative": "26.6",
+      "drift_rmse_relative": "0.518"
+    },
+    {
+      "example": "predator_prey",
+      "method": "weak_lasso",
+      "repetitions": 20,
+      "coefficient_rmse_relative": "0.347",
+      "drift_rmse_relative": "0.224"
+    },
+    {
+      "example": "predator_prey",
+      "method": "weak_ridge_validation_selected",
+      "repetitions": 20,
+      "coefficient_rmse_relative": "134",
+      "drift_rmse_relative": "0.277"
+    },
+    {
+      "example": "predator_prey",
+      "method": "weak_ols",
+      "repetitions": 20,
+      "coefficient_rmse_relative": "193",
+      "drift_rmse_relative": "0.363"
+    },
+    {
+      "example": "predator_prey",
+      "method": "strong_forward_difference_lasso_validation_selected",
+      "repetitions": 20,
+      "coefficient_rmse_relative": "99.1",
+      "drift_rmse_relative": "1.15"
+    },
+    {
+      "example": "predator_prey",
+      "method": "strong_forward_difference_ridge_validation_selected",
+      "repetitions": 20,
+      "coefficient_rmse_relative": "1740",
+      "drift_rmse_relative": "1.19"
+    },
+    {
+      "example": "predator_prey",
+      "method": "strong_forward_difference_ols",
+      "repetitions": 20,
+      "coefficient_rmse_relative": "1810",
+      "drift_rmse_relative": "1.53"
+    },
+    {
+      "example": "localized_10d",
+      "method": "weak_lasso",
+      "repetitions": 20,
+      "coefficient_rmse_relative": "0.155",
+      "drift_rmse_relative": "0.0984"
+    },
+    {
+      "example": "localized_10d",
+      "method": "weak_ridge_validation_selected",
+      "repetitions": 20,
+      "coefficient_rmse_relative": "0.305",
+      "drift_rmse_relative": "0.142"
+    },
+    {
+      "example": "localized_10d",
+      "method": "weak_ols",
+      "repetitions": 20,
+      "coefficient_rmse_relative": "0.277",
+      "drift_rmse_relative": "0.123"
+    },
+    {
+      "example": "localized_10d",
+      "method": "strong_forward_difference_lasso_validation_selected",
+      "repetitions": 20,
+      "coefficient_rmse_relative": "0.569",
+      "drift_rmse_relative": "0.305"
+    },
+    {
+      "example": "localized_10d",
+      "method": "strong_forward_difference_ridge_validation_selected",
+      "repetitions": 20,
+      "coefficient_rmse_relative": "0.558",
+      "drift_rmse_relative": "0.301"
+    },
+    {
+      "example": "localized_10d",
+      "method": "strong_forward_difference_ols",
+      "repetitions": 20,
+      "coefficient_rmse_relative": "0.601",
+      "drift_rmse_relative": "0.314"
+    }
+  ]
+}

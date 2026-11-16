@@ -1,0 +1,49 @@
+{
+  "protocol_version": 1,
+  "stage": "m17_pair_total_100_repetitions",
+  "source_pair_batch": "outputs/validation/one_dimensional_hat/sweeps-R20-20261020T202111Z",
+  "source_reference_batch": "outputs/validation/one_dimensional_hat/M17-R100-20261020T220747Z",
+  "dictionary_size": 17,
+  "existing_repetitions": 20,
+  "new_repetitions": 80,
+  "total_repetitions": 100,
+  "pair_counts": [100, 300, 1000, 3000, 10000, 30000],
+  "existing_pair_seed_formula": "2000000 + 1000*k + 10*p_index, k=0,...,19",
+  "new_pair_seed_formula": "2000000 + 1000*(20+k) + 10*p_index, k=0,...,79",
+  "new_jobs": 480,
+  "existing_records": 120,
+  "bootstrap": {
+    "samples": 10000,
+    "total_seed": 950000,
+    "new_only_seed": 950001,
+    "existing_only_seed": 950002
+  },
+  "pair_penalty_policy": "For every repetition and P, retain the absolute alpha selected from that repetition's independent full-pair training/validation fit. Refit the same descending absolute-alpha path through the selected index on the sampled-pair training design. Never reselect alpha using P, truth, or test data.",
+  "pair_sampling_policy": "Sample off-diagonal ordered pairs with replacement and redraw them independently at each contributing observation time. Preserve the exact N^{-2} ordered-pair normalization, trapezoidal quadrature, fixed weak tests, and 1/sqrt(200) row scaling.",
+  "reporting": {
+    "primary": "All 100 repetitions per P: the immutable existing 20 plus 80 newly declared repetitions.",
+    "independent_replication": "Also report the newly declared 80 repetitions separately.",
+    "metrics": [
+      "force_error_weighted_rel",
+      "trajectory_error_rel",
+      "drift_error_rel",
+      "trajectory_rmse",
+      "coefficient_difference_sq",
+      "force_difference_sq_rel",
+      "design_difference_sq"
+    ],
+    "summaries": [
+      "arithmetic_mean",
+      "sample_sd",
+      "median",
+      "iqr",
+      "pointwise_percentile_bootstrap_mean_ci95",
+      "minimum",
+      "maximum"
+    ]
+  },
+  "fixed_conditions": "Preserve N=1000, T=2, dt=0.005, sigma=0.1, sigma_obs=0, the true kernel, initial law, tests, M=17 hat basis, full-pair validation-selected LASSO penalty, solver settings, independent test trajectories, and rollout policy.",
+  "stopping_rule": "Run all 80 newly declared triplets at all six pair counts, irrespective of intermediate results. Do not add, remove, or select seeds based on outcomes.",
+  "failure_policy": "Retain every failed job, unconverged fixed-alpha endpoint, nonfinite endpoint, divergent rollout, and basis-domain excursion. If any planned value for a condition and metric is missing, its all-run mean and interval are null; never average only successful repetitions.",
+  "manuscript_instruction": "Do not alter existing manuscript prose or figures while running this protocol. After verification, use M=17 only in a six-panel additive figure."
+}

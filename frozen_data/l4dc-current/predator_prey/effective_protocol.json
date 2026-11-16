@@ -1,0 +1,283 @@
+{
+  "confirmation": {
+    "nominal_condition_id": "observation_noise-04",
+    "retain_R5_pair_draws_for_repetitions_0_to_4": true,
+    "slope_policy": "log_log_slope_of_mean_held_out_error; omit_zero_observation_noise",
+    "strict_gate_from_R5": {
+      "lasso_advantage_policy": "sampled_lasso_mean_held_out_drift_must_be_below_sampled_ols_at_both_endpoints_of_each_sweep",
+      "major_profile_channels": [
+        "prey_prey",
+        "prey_predator",
+        "predator_prey"
+      ],
+      "nominal_lasso_drift_rmse_ratio_max": 1.25,
+      "nominal_major_profile_rmse_ratio_max": 1.25,
+      "selected_fit_policy": "no_missing_or_nonfinite_selected_lasso_fit",
+      "sweep_direction_policy": "sampled_lasso_endpoint_mean_difference_must_have_the_same_sign_as_matched_full_pair"
+    },
+    "trajectory_methods": [
+      "lasso",
+      "ols"
+    ],
+    "trajectory_metric": "equal_species_weighted_relative_position_energy_over_full_horizon",
+    "trajectory_sources": [
+      "full_pair",
+      "P20",
+      "P50"
+    ]
+  },
+  "dictionary": {
+    "predator_inverse_powers": [
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0
+    ],
+    "predator_prey_true": [
+      0.0,
+      0.0,
+      0.4,
+      0.0,
+      0.0
+    ],
+    "prey_exponential_scales": [
+      0.25,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "prey_predator_true": [
+      0.2,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "prey_prey_true": [
+      1.0,
+      -1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "estimator": {
+    "alpha_count": 60,
+    "alpha_min_ratio": 1e-07,
+    "coefficient_thresholding": false,
+    "fit_intercept": false,
+    "max_iter": 200000,
+    "method": "raw_lasso",
+    "post_lasso_refit": false,
+    "report_nonzero_threshold": 1e-08,
+    "selection": "cyclic",
+    "selection_metric": "independent_validation_weak_residual_mse",
+    "standardize": false,
+    "test_error_used_for_selection": false,
+    "tol": 1e-08,
+    "truth_used_for_selection": false
+  },
+  "evaluation": {
+    "drift_evaluation_interval": 0.05,
+    "profile_grid_size": 500,
+    "profile_radius_max": 2.0,
+    "profile_radius_min": 0.0,
+    "scientific_repetitions": 20,
+    "species_balance": "equal_relative_energy_weight"
+  },
+  "execution_provenance": {
+    "new_numerical_fit_computation": false,
+    "numerical_execution_records_sha256": "3f34ac7e2ec2c7278db5ce5eeb2b02c9caccb378e680a709022b30f2a0b00424",
+    "numerical_execution_run": "outputs/validation/predator_prey_sampled_pair_ratio_confirmation/matched-R20-20261025T073206Z",
+    "policy": "lossless_subset_materialization_from_completed_verified_matched_R20_execution",
+    "reason": "the source run already executed the identical P50 protocol for all twenty repetitions and thirteen conditions",
+    "selected_record_count": 260,
+    "selection": "pair_ratio_equals_50"
+  },
+  "model": {
+    "a": 1.0,
+    "b": 0.2,
+    "c": 0.4,
+    "delta": 0.05,
+    "dimension": 2,
+    "p": 3.0,
+    "predator_initial_box": [
+      -0.5,
+      0.5
+    ],
+    "prey_initial_box": [
+      -0.5,
+      0.5
+    ],
+    "prey_particles": 100,
+    "solver": "rk4"
+  },
+  "nominal_rationale": "Common absolute Gaussian position-noise standard deviation fixed before the aligned 1D, 2D, and 10D comparison.",
+  "observation": {
+    "dt": 0.01,
+    "horizon": 3.0,
+    "observation_noise": 0.01,
+    "test_trajectories": 1,
+    "training_trajectories": 4,
+    "validation_trajectories": 4
+  },
+  "output_policy": {
+    "exclusive_new_directory": true,
+    "modify_R5_output": false,
+    "modify_confirmation_output": false,
+    "modify_current_figures": false,
+    "modify_existing_results": false,
+    "modify_manuscript": false
+  },
+  "pair_sampling": {
+    "base_seed": 932000,
+    "condition_coupling": "same_split_seed_and_physical_time_share_pair_draws_when_particle_count_matches",
+    "cross_species_policy": "prey_predator_and_predator_prey_sums_exact",
+    "exclude_diagonal": true,
+    "index_sharing": "one_index_set_shared_by_all_spatial_tests_temporal_tests_and_dictionary_atoms_at_a_trajectory_time",
+    "lambda_selection": "sampled_validation_weak_residual_mse",
+    "ordered": true,
+    "quadratic_block": "prey_prey_only",
+    "ratio_coupling": "single_production_ratio_P_over_N_50",
+    "repetition_stride": 1013,
+    "time_policy": "independent_at_each_observation_time",
+    "training_offset": 0,
+    "training_validation_policy": "independent_pair_samples",
+    "validation_offset": 1000000,
+    "with_replacement": true
+  },
+  "pairing": {
+    "dt_common_fine": 0.005,
+    "dt_trajectory_policy": "simulate_once_at_common_fine_dt_and_subsample",
+    "observation_noise_policy": "shared_latent_trajectory_and_shared_unit_noise",
+    "particle_policy": "shared_seed_with_nested_initial_prey_and_observation_noise",
+    "repetition_stride": 97,
+    "test_offset": 20000,
+    "training_start": 42000,
+    "validation_offset": 10000
+  },
+  "production_artifacts": {
+    "nominal_application_repetitions": 20,
+    "nominal_condition_id": "observation_noise-04",
+    "profile_grid": [
+      0.0,
+      2.0,
+      500
+    ],
+    "representative_trajectory_repetition": 0,
+    "robustness_figure_methods": [
+      "lasso",
+      "ols"
+    ],
+    "table_metrics": [
+      "nominal_species_balanced_drift",
+      "nominal_channel_coefficient_error",
+      "nominal_channel_profile_error",
+      "representative_trajectory_error",
+      "sweep_endpoint_means",
+      "sweep_log_log_slopes",
+      "lasso_ols_condition_wins",
+      "fit_and_rank_diagnostics"
+    ],
+    "trajectory_methods": [
+      "lasso",
+      "ols"
+    ]
+  },
+  "protocol_variant": "common_nominal_observation_noise_0.01",
+  "protocol_version": 1,
+  "provisional_gate": {
+    "lasso_advantage_policy": "sampled_lasso_mean_held_out_drift_must_be_below_sampled_ols_at_both_endpoints_of_each_sweep",
+    "major_profile_channels": [
+      "prey_prey",
+      "prey_predator",
+      "predator_prey"
+    ],
+    "nominal_lasso_drift_rmse_ratio_max": 1.25,
+    "nominal_major_profile_rmse_ratio_max": 1.25,
+    "selected_fit_policy": "no_missing_or_nonfinite_selected_lasso_fit; path_warnings_are_reported_but_not_by_themselves_disqualifying",
+    "sweep_direction_policy": "sampled_lasso_endpoint_mean_difference_must_have_the_same_sign_as_matched_full_pair"
+  },
+  "smoke": {
+    "horizon": 0.4,
+    "repetitions": 1,
+    "test_trajectories": 1,
+    "training_trajectories": 1,
+    "validation_trajectories": 1
+  },
+  "smoke_only": false,
+  "source_base_task": "predator_prey_robustness_sweeps",
+  "study": {
+    "matched_trajectory_policy": "reuse_all_twenty_frozen_protocol_seeds_and_trajectory_generation_for_each_repetition_condition_and_split",
+    "pair_ratios": [
+      50
+    ],
+    "repetition_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "repetitions": 20,
+    "representative_trajectory_repetition": 0,
+    "run_all_sweep_conditions": true
+  },
+  "study_status": "scientific_candidate_P50_matched_R20",
+  "sweeps": {
+    "observation_dt": [
+      0.04,
+      0.02,
+      0.01,
+      0.005
+    ],
+    "observation_noise": [
+      0.0,
+      0.0003,
+      0.001,
+      0.003,
+      0.01
+    ],
+    "prey_particles": [
+      25,
+      50,
+      100,
+      200
+    ]
+  },
+  "task": "predator_prey_sampled_pair_production_P50",
+  "weak_tests": {
+    "grid_coordinates": [
+      -1.5,
+      -0.75,
+      0.0,
+      0.75,
+      1.5
+    ],
+    "normalize_rows": true,
+    "predator_width": 0.7,
+    "prey_width": 0.5,
+    "spatial_type": "gaussian",
+    "temporal_count": 8,
+    "temporal_support_factor": 1.8,
+    "temporal_type": "bump"
+  }
+}

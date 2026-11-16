@@ -1,0 +1,70 @@
+{
+  "task": "qanr_redundant6_time_step_stochastic_p50n_R100",
+  "protocol_version": 1,
+  "run_class": "production_candidate",
+  "purpose": "Replace Figure 2(d) with a stochastic fixed-simulation-step observation-interval study",
+  "base_protocol": "configs/experiments/qanr_redundant6_lasso_sweeps_R100.json",
+  "particles": 200,
+  "horizon": 10.0,
+  "simulation_step": 0.001,
+  "observation_intervals": [0.1, 0.05, 0.02, 0.01, 0.005, 0.002],
+  "process_noise": 0.1,
+  "observation_noise": 0.0,
+  "solver": "euler",
+  "stacked_training_trajectories": 3,
+  "stacked_validation_trajectories": 3,
+  "repetitions": 100,
+  "training_seed_start": 1234,
+  "training_seed_stride": 1000,
+  "validation_seed_offset": 1000000,
+  "pair_seed_start": 5000000,
+  "pair_validation_seed_offset": 1000000,
+  "trajectory_seed_policy": {
+    "name": "seedsequence_master_trajectory_namespace_v1",
+    "namespace": 1363234386,
+    "derivation": "SeedSequence([split_master_seed, trajectory_index, namespace]).generate_state(1, uint64)",
+    "paired_across_observation_intervals": true,
+    "separate_training_validation_master_seeds": true
+  },
+  "pair_sampling": {
+    "ratio": 50,
+    "pairs": 10000,
+    "ordered": true,
+    "exclude_diagonal": true,
+    "with_replacement": true,
+    "resample_each_observed_time": true,
+    "shared_across_tests_and_atoms": true,
+    "independent_training_validation": true,
+    "independent_across_observation_intervals": true
+  },
+  "estimator": {
+    "method": "raw_lasso",
+    "alpha_count": 60,
+    "alpha_min_ratio": 1e-7,
+    "max_iter": 200000,
+    "tol": 1e-8,
+    "fit_intercept": false,
+    "standardize": false,
+    "selection": "cyclic",
+    "report_nonzero_threshold": 1e-8,
+    "selection_metric": "independent_validation_weak_residual_mse",
+    "truth_used_for_selection": false,
+    "test_error_used_for_selection": false,
+    "post_lasso_refit": false,
+    "coefficient_thresholding": false
+  },
+  "slope_window": {
+    "maximum_observation_interval": 0.02,
+    "paired_bootstrap_resamples": 10000,
+    "bootstrap_seed": 985100
+  },
+  "drift_evaluation_samples": 2000,
+  "failure_policy": "Retain every predeclared repetition, selected finite iterate, boundary selection, and convergence diagnostic; do not rerun to improve results",
+  "output_policy": {
+    "exclusive_timestamped_directory": true,
+    "modify_existing_production": false,
+    "modify_manuscript": false,
+    "snapshot_sources": true,
+    "resume_by_repetition": true
+  }
+}

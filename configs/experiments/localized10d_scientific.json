@@ -1,0 +1,108 @@
+{
+  "task": "localized10d_matched_scientific",
+  "protocol_version": 1,
+  "pilot_only": false,
+  "model": {
+    "dimension": 10,
+    "particles": 500,
+    "steps": 500,
+    "dt": 0.01,
+    "observation_stride": 2,
+    "trajectories_per_split": 1,
+    "sigma": 0.05,
+    "initial_law": "normal_scale_mixture",
+    "initial_scale": 0.5,
+    "initial_scales": [0.25, 0.4, 0.55, 0.7],
+    "solver": "euler",
+    "interaction": {
+      "mode": "gaussian_shell",
+      "centers": [1.2, 1.8, 2.4, 3.0],
+      "h": 0.2,
+      "coefficients": [0.0, 1.5, -1.0, 0.0]
+    }
+  },
+  "dictionary": {
+    "basis": "gaussian_shell",
+    "M": 4,
+    "centers": [1.2, 1.8, 2.4, 3.0],
+    "h": 0.2
+  },
+  "weak_tests": {
+    "spatial_type": "gaussian",
+    "spatial_count": 25,
+    "spatial_scale_factor": 1.5,
+    "spatial_layout": "random",
+    "spatial_quantiles": [0.01, 0.99],
+    "temporal_type": "bump",
+    "temporal_count": 8,
+    "temporal_support_factor": 1.8,
+    "normalize_rows": true
+  },
+  "pair_sampling": {
+    "baseline_pairs": 10000,
+    "mode": "nested_resample_each_time",
+    "with_replacement": true,
+    "exclude_diagonal": true
+  },
+  "sweeps": {
+    "process_sigma": [0.0, 0.05, 0.075, 0.1, 0.15],
+    "particle_number": [100, 200, 350, 500],
+    "sampled_pairs": [3000, 5000, 10000, 20000, 30000]
+  },
+  "estimator": {
+    "method": "raw_lasso",
+    "alpha_count": 60,
+    "alpha_min_ratio": 1e-7,
+    "max_iter": 200000,
+    "tol": 1e-8,
+    "fit_intercept": false,
+    "standardize": false,
+    "selection": "cyclic",
+    "report_nonzero_threshold": 1e-8,
+    "selection_metric": "independent_validation_weak_residual_mse",
+    "truth_used_for_selection": false,
+    "test_error_used_for_selection": false,
+    "post_lasso_refit": false,
+    "coefficient_thresholding": false
+  },
+  "evaluation": {
+    "scientific_repetitions": 20,
+    "profile_radius": [0.5, 3.8],
+    "profile_grid_size": 400,
+    "latent_drift_time_count": 12,
+    "latent_drift_target_count": 64,
+    "rollout_particles": 100,
+    "rollout_horizon": 5.0,
+    "divergence_absolute_position": 1000000.0
+  },
+  "seeds": {
+    "trajectory_start": 7000000,
+    "repetition_stride": 101,
+    "validation_offset": 1000000,
+    "test_offset": 2000000,
+    "pair_start": 10000000,
+    "pair_validation_offset": 1000000,
+    "space_start": 12000000,
+    "evaluation_start": 13000000
+  },
+  "pair_penalty_policy": "absolute_alpha_selected_at_Pmax_by_independent_validation_then_fixed_across_all_P_within_repetition",
+  "pilot_acceptance": {
+    "maximum_geometric_mean_condition_A": 100000.0,
+    "maximum_baseline_lasso_coefficient_error": 0.25,
+    "maximum_baseline_lasso_profile_error": 0.25,
+    "maximum_baseline_lasso_drift_error": 0.15,
+    "maximum_first_repetition_trajectory_error": 0.05,
+    "direction_relative_tolerance": 0.15,
+    "required_lasso_endpoint_directions": {
+      "process_sigma": "increase",
+      "particle_number": "decrease",
+      "sampled_pairs": "decrease"
+    },
+    "require_finite_all_records": true,
+    "require_no_rank_deficiency": true,
+    "require_converged_selected_path_candidate": true
+  },
+  "data_policy": "Training, validation, and latent test trajectories are separate. Seeds and Brownian draws are paired across conditions. The baseline trajectories are reused across sweep labels. The accepted pilot is excluded; only these 20 predeclared repetitions are scientific records.",
+  "comparison_policy": "Compare validation-selected raw full-dictionary LASSO with raw minimum-norm full-dictionary OLS on identical weak systems. Report matched-dictionary coefficient error as the primary state-recovery metric; report latent drift/profile errors secondarily and nested sampled-design error for pair quadrature.",
+  "output_policy": "Timestamped scientific directory with frozen protocol, source snapshots and hashes, resumable per-repetition jobs, all raw records including failures, summary, quality report, and figures. Eligible for manuscript use only after the frozen checks and independent verification pass."
+}

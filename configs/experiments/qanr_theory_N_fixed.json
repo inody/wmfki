@@ -1,0 +1,22 @@
+{
+  "task": "sweep",
+  "_comment": "Theory N-sweep with fixes: sigma_div=6 + N-1/N normalization. sigma=0.1, dt=0.001, RK4. Should show O(1/sqrt(N)) for large N (stochastic noise dominates).",
+  "sweep": {
+    "out_dir": "outputs/qanr/theory_N_fixed",
+    "Ns": [100, 200, 400, 800, 1600],
+    "Rs": [10],
+    "sigmas": [0.1],
+    "alphas": [0],
+    "dts": [0.001],
+    "T_total": 10.0,
+    "powers": [1, 2],
+    "reg_method": "ridge",
+    "pair_replacement": true,
+    "fit_pairs": 20000,
+    "solver": "rk4",
+    "time_s_factor": 1.8,
+    "distance_pairs": 20000,
+    "support_threshold": 1e-3,
+    "seed": 1234
+  }
+}

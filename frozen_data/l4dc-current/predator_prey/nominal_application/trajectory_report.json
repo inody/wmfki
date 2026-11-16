@@ -1,0 +1,71 @@
+{
+  "condition": {
+    "id": "observation_noise-04",
+    "index": 4,
+    "observation_dt": 0.01,
+    "observation_noise": 0.01,
+    "prey_particles": 100,
+    "sweep": "observation_noise",
+    "value": 0.01
+  },
+  "methods": {
+    "P50": {
+      "lasso": {
+        "failed_steps": [
+          null
+        ],
+        "final_predator_rmse": 0.04042337401245652,
+        "final_prey_rmse": 0.07683677795147495,
+        "predator_relative": 0.18765984358415758,
+        "predator_rmse": 0.028552976581020493,
+        "prey_relative": 0.09374671226689901,
+        "prey_rmse": 0.05226154945027542,
+        "species_balanced_relative": 0.148331828942549,
+        "status": "finite"
+      },
+      "ols": {
+        "failed_steps": [
+          null
+        ],
+        "final_predator_rmse": 0.07511859458743521,
+        "final_prey_rmse": 0.09520189871554159,
+        "predator_relative": 0.3381769807189224,
+        "predator_rmse": 0.05145458520206704,
+        "prey_relative": 0.11874984730092422,
+        "prey_rmse": 0.06620019909883494,
+        "species_balanced_relative": 0.25344150855982456,
+        "status": "finite"
+      }
+    },
+    "full_pair": {
+      "lasso": {
+        "failed_steps": [
+          null
+        ],
+        "final_predator_rmse": 0.03868947002456662,
+        "final_prey_rmse": 0.07640661103678213,
+        "predator_relative": 0.1837360040652071,
+        "predator_rmse": 0.027955953287424753,
+        "prey_relative": 0.09352161531307791,
+        "prey_rmse": 0.05213606328336073,
+        "species_balanced_relative": 0.14578273512425458,
+        "status": "finite"
+      },
+      "ols": {
+        "failed_steps": [
+          null
+        ],
+        "final_predator_rmse": 0.03749281654147259,
+        "final_prey_rmse": 0.07569653651169776,
+        "predator_relative": 0.16444762552212955,
+        "predator_rmse": 0.025021171874909254,
+        "prey_relative": 0.09070553153848687,
+        "prey_rmse": 0.05056616394627354,
+        "species_balanced_relative": 0.1327978068183846,
+        "status": "finite"
+      }
+    }
+  },
+  "native_dt": 0.005,
+  "repetition": 0
+}

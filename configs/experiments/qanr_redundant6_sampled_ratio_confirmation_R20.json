@@ -1,0 +1,59 @@
+{
+  "task": "qanr_redundant6_sampled_ratio_confirmation_R20",
+  "protocol_version": 1,
+  "run_class": "confirmatory_full_grid_ratio_comparison",
+  "base_protocol": "configs/experiments/qanr_redundant6_lasso_sweeps_R100.json",
+  "time_step_protocol": "configs/experiments/qanr_redundant6_time_step_paired_R100.json",
+  "matched_full_pair_batch": "outputs/validation/qanr_redundant6_lasso_R100/sweeps-20261022T052958Z",
+  "matched_full_pair_time_step_batch": "outputs/validation/qanr_redundant6_time_step_paired_R100/sweeps-20261023T141936Z",
+  "repetitions": 20,
+  "ratios": [20, 50],
+  "validation_seed_offset": 1000000,
+  "pair_seed_start": 5000000,
+  "pair_validation_seed_offset": 1000000,
+  "sampling": {
+    "mode": "nested_prefix_resample_each_time",
+    "with_replacement": true,
+    "exclude_diagonal": true,
+    "training_validation_independent": true,
+    "time_independent": true,
+    "common_indices_across_tests_and_atoms": true,
+    "pairs_per_condition": "P=ratio*N",
+    "penalty_selection": "independent_sampled_validation_at_the_same_ratio"
+  },
+  "grids": {
+    "selection": "complete_current_Figure_2_a_to_d_grids",
+    "observation_noise": [0.0, 0.0003, 0.001, 0.003, 0.01, 0.03, 0.1],
+    "process_noise": [0.01, 0.05, 0.1, 0.2, 0.4],
+    "particle_number": [50, 100, 200, 400],
+    "time_step": [0.1, 0.05, 0.02, 0.01, 0.005, 0.002],
+    "limitations": [
+      "R=20 is a confirmation subset of the first twenty predeclared current-protocol repetitions, not a replacement for the frozen R=100 results",
+      "drift errors are evaluated on latent validation trajectories and are descriptive because the same validation split selects lambda"
+    ]
+  },
+  "nominal_conditions": {
+    "observation_noise": 0.01,
+    "process_noise": 0.1,
+    "particle_number": 100,
+    "time_step": 0.01,
+    "drift_evaluation_samples": 200
+  },
+  "slope_windows": {
+    "observation_noise": "positive_values",
+    "process_noise": "all_values",
+    "particle_number": "all_values",
+    "time_step": "values_at_most_0.02"
+  },
+  "comparison": {
+    "coefficient_inflation_reference": "matched_full_pair_first_20_repetitions",
+    "current_claim_reference": "frozen_current_R100_summary",
+    "provisional_coefficient_inflation_threshold": 1.25,
+    "stable_ratio_rule": "prefer the ratio preserving current endpoint directions and method rankings with fewer coefficient/drift degradations and smaller slope deviations",
+    "major_nonconvergence_policy": "no_missing_selection_no_nonfinite_selected_coefficients"
+  },
+  "output": {
+    "figure_stem": "qanr_sampled_ratio_confirmation_R20",
+    "watermark": "R=20 full-grid sampled-pair confirmation; not a manuscript result"
+  }
+}

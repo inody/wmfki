@@ -1,0 +1,63 @@
+{
+  "task": "fig1c_noisy_three_method",
+  "protocol_version": 1,
+  "study_status": "manuscript_current",
+  "source_batch": "outputs/validation/one_dimensional_hat/sampled-p50n-R100-20261025T084338282042Z",
+  "source_hashes": {
+    "frozen_protocol.json": "e9a887e57d14862cc2122dfb9fd7877c07918a9c8d510f49d18bc89db051e725",
+    "summary.json": "41446a0a44f60627989569e499d23bf8be8d2e558857e1a6e6816c9db677c92d",
+    "records.json": "d44cbad79debc3eaa776f13bea0def2125e911b9d4c1f3538de336dd088279d4"
+  },
+  "observation_noise": 0.01,
+  "observation_noise_seeds": {
+    "training_start": 71000000,
+    "validation_start": 72000000,
+    "repetition_stride": 1
+  },
+  "dictionary_sizes": [
+    9,
+    11,
+    14,
+    17,
+    22,
+    27,
+    33,
+    42,
+    52,
+    65
+  ],
+  "repetitions": 100,
+  "pair_ratio": 50,
+  "pair_count": 50000,
+  "lasso_estimator": {
+    "method": "raw_lasso",
+    "alpha_count": 60,
+    "alpha_min_ratio": 1e-09,
+    "max_iter": 200000,
+    "tol": 1e-08,
+    "fit_intercept": false,
+    "standardize": false,
+    "selection": "cyclic",
+    "report_nonzero_threshold": 1e-08,
+    "selection_metric": "independent_validation_residual_mse",
+    "truth_used_for_selection": false,
+    "test_error_used_for_selection": false,
+    "post_lasso_refit": false,
+    "coefficient_thresholding": false
+  },
+  "methods": [
+    "weak_lasso_validation_selected",
+    "weak_ols",
+    "strong_forward_difference_lasso_validation_selected"
+  ],
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 985100,
+    "unit": "matched_repetition"
+  },
+  "output_policy": {
+    "root": "outputs/validation/fig1c_noisy_three_method",
+    "modify_existing_outputs": false,
+    "modify_manuscript": false
+  }
+}

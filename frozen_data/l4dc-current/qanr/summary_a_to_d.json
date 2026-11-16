@@ -1,0 +1,2567 @@
+[
+  {
+    "boundary_selections": 1,
+    "coefficient": {
+      "ci95": [
+        1.1655823408289696,
+        3.0192175682453812
+      ],
+      "count": 100,
+      "rmse": 2.0923999545371754,
+      "standard_error": 0.4728661294429621
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "observation_noise",
+    "source": "50",
+    "unconverged_path_candidates": 1375,
+    "validation_drift": {
+      "ci95": [
+        0.042547249226296144,
+        0.051311319793781535
+      ],
+      "count": 100,
+      "rmse": 0.04692928451003884,
+      "standard_error": 0.0022357322876238243
+    },
+    "value": 0.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        14.31351054268319,
+        17.666709244193484
+      ],
+      "count": 100,
+      "rmse": 15.990109893438337,
+      "standard_error": 0.8554078320179327
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "observation_noise",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.10351348340244014,
+        0.12525812485598628
+      ],
+      "count": 100,
+      "rmse": 0.1143858041292132,
+      "standard_error": 0.005547102411618912
+    },
+    "value": 0.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.205341002848247,
+        3.304629881675706
+      ],
+      "count": 100,
+      "rmse": 2.2549854422619764,
+      "standard_error": 0.5355328772519028
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.04085216331816374,
+        0.04972481478339738
+      ],
+      "count": 100,
+      "rmse": 0.04528848905078056,
+      "standard_error": 0.0022634314962330696
+    },
+    "value": 0.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        14.39213573964933,
+        17.683715233834594
+      ],
+      "count": 100,
+      "rmse": 16.037925486741962,
+      "standard_error": 0.8396886464758327
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.1021681735625274,
+        0.12370135701529782
+      ],
+      "count": 100,
+      "rmse": 0.11293476528891261,
+      "standard_error": 0.005493159044074084
+    },
+    "value": 0.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        8.590296762348613,
+        11.12635412103077
+      ],
+      "count": 100,
+      "rmse": 9.858325441689692,
+      "standard_error": 0.6469534078270812
+    },
+    "failed": 0,
+    "method": "strong_fd_ols",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.049797711072543036,
+        0.05676559910631729
+      ],
+      "count": 100,
+      "rmse": 0.05328165508943016,
+      "standard_error": 0.0017775224575954731
+    },
+    "value": 0.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.1673993766152773,
+        3.0612037317719905
+      ],
+      "count": 100,
+      "rmse": 2.114301554193634,
+      "standard_error": 0.4831133559073248
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "observation_noise",
+    "source": "50",
+    "unconverged_path_candidates": 1392,
+    "validation_drift": {
+      "ci95": [
+        0.04103458160516619,
+        0.05029624098254792
+      ],
+      "count": 100,
+      "rmse": 0.04566541129385705,
+      "standard_error": 0.0023626682085157486
+    },
+    "value": 0.0003
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        14.351584307509373,
+        17.67183697623575
+      ],
+      "count": 100,
+      "rmse": 16.01171064187256,
+      "standard_error": 0.8470032318179531
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "observation_noise",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.1006300534060702,
+        0.12212442035474952
+      ],
+      "count": 100,
+      "rmse": 0.11137723688040986,
+      "standard_error": 0.005483256874663089
+    },
+    "value": 0.0003
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.2059765587755165,
+        3.305979801242101
+      ],
+      "count": 100,
+      "rmse": 2.2559781800088086,
+      "standard_error": 0.5357151128741287
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.039875312948867744,
+        0.050826548777788916
+      ],
+      "count": 100,
+      "rmse": 0.04535093086332833,
+      "standard_error": 0.0027936826094186644
+    },
+    "value": 0.0003
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        14.391650765576298,
+        17.68147601089188
+      ],
+      "count": 100,
+      "rmse": 16.03656338823409,
+      "standard_error": 0.8392411340090774
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.09976222243128845,
+        0.12091739375804268
+      ],
+      "count": 100,
+      "rmse": 0.11033980809466556,
+      "standard_error": 0.005396727379274039
+    },
+    "value": 0.0003
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        8.57978800101717,
+        11.118789954848252
+      ],
+      "count": 100,
+      "rmse": 9.84928897793271,
+      "standard_error": 0.6477045800589496
+    },
+    "failed": 0,
+    "method": "strong_fd_ols",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.049387025603427955,
+        0.05631781243050387
+      ],
+      "count": 100,
+      "rmse": 0.05285241901696591,
+      "standard_error": 0.0017680578640499787
+    },
+    "value": 0.0003
+  },
+  {
+    "boundary_selections": 1,
+    "coefficient": {
+      "ci95": [
+        1.1992064346783737,
+        3.3566436773136914
+      ],
+      "count": 100,
+      "rmse": 2.2779250559960325,
+      "standard_error": 0.5503666435294178
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "observation_noise",
+    "source": "50",
+    "unconverged_path_candidates": 1375,
+    "validation_drift": {
+      "ci95": [
+        0.04082191981671271,
+        0.04945223067224258
+      ],
+      "count": 100,
+      "rmse": 0.045137075244477645,
+      "standard_error": 0.0022016099121249678
+    },
+    "value": 0.001
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        14.338626376635899,
+        17.627130816836306
+      ],
+      "count": 100,
+      "rmse": 15.982878596736104,
+      "standard_error": 0.8389041939286758
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "observation_noise",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.10045460206147432,
+        0.1211011196848402
+      ],
+      "count": 100,
+      "rmse": 0.11077786087315726,
+      "standard_error": 0.005266968781470893
+    },
+    "value": 0.001
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.207612005550983,
+        3.309459284139166
+      ],
+      "count": 100,
+      "rmse": 2.2585356448450744,
+      "standard_error": 0.5361855302520875
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.04050588711168699,
+        0.04876517301000035
+      ],
+      "count": 100,
+      "rmse": 0.04463553006084367,
+      "standard_error": 0.0021069606883452434
+    },
+    "value": 0.001
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        14.39128495776758,
+        17.677339258449273
+      ],
+      "count": 100,
+      "rmse": 16.034312108108427,
+      "standard_error": 0.8382791583371668
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.101041392736493,
+        0.12174000788452856
+      ],
+      "count": 100,
+      "rmse": 0.11139070031051078,
+      "standard_error": 0.005280258966335602
+    },
+    "value": 0.001
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        8.672143426439426,
+        11.280604113448359
+      ],
+      "count": 100,
+      "rmse": 9.976373769943892,
+      "standard_error": 0.6654236446451356
+    },
+    "failed": 0,
+    "method": "strong_fd_ols",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.04994206058109576,
+        0.056803779980304205
+      ],
+      "count": 100,
+      "rmse": 0.05337292028069998,
+      "standard_error": 0.0017504386222470538
+    },
+    "value": 0.001
+  },
+  {
+    "boundary_selections": 1,
+    "coefficient": {
+      "ci95": [
+        1.0489694589796859,
+        2.7568462596585896
+      ],
+      "count": 100,
+      "rmse": 1.9029078593191378,
+      "standard_error": 0.43568285731604683
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "observation_noise",
+    "source": "50",
+    "unconverged_path_candidates": 1383,
+    "validation_drift": {
+      "ci95": [
+        0.04092432993740534,
+        0.049515924501206024
+      ],
+      "count": 100,
+      "rmse": 0.045220127219305684,
+      "standard_error": 0.0021917333070920115
+    },
+    "value": 0.003
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        14.91068047343193,
+        18.52441229832453
+      ],
+      "count": 100,
+      "rmse": 16.71754638587823,
+      "standard_error": 0.9218703634930105
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "observation_noise",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.10429874816283227,
+        0.12940647259724322
+      ],
+      "count": 100,
+      "rmse": 0.11685261038003775,
+      "standard_error": 0.006405031743472183
+    },
+    "value": 0.003
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.2154465000847297,
+        3.318859439248772
+      ],
+      "count": 100,
+      "rmse": 2.2671529696667507,
+      "standard_error": 0.5365849334602149
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.04034022629420459,
+        0.04946589660024522
+      ],
+      "count": 100,
+      "rmse": 0.044903061447224904,
+      "standard_error": 0.0023279771188879153
+    },
+    "value": 0.003
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        14.396708334900765,
+        17.6743314632636
+      ],
+      "count": 100,
+      "rmse": 16.035519899082182,
+      "standard_error": 0.8361283490721511
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.10152619017943053,
+        0.1249621841493712
+      ],
+      "count": 100,
+      "rmse": 0.11324418716440086,
+      "standard_error": 0.005978569890290987
+    },
+    "value": 0.003
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        9.611353338909712,
+        12.488598853738413
+      ],
+      "count": 100,
+      "rmse": 11.049976096324063,
+      "standard_error": 0.7339912027624238
+    },
+    "failed": 0,
+    "method": "strong_fd_ols",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.0730456622451773,
+        0.08197795916428338
+      ],
+      "count": 100,
+      "rmse": 0.07751181070473034,
+      "standard_error": 0.002278647173241345
+    },
+    "value": 0.003
+  },
+  {
+    "boundary_selections": 1,
+    "coefficient": {
+      "ci95": [
+        1.3190157440393693,
+        3.615257087413603
+      ],
+      "count": 100,
+      "rmse": 2.467136415726486,
+      "standard_error": 0.5857758529015903
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "observation_noise",
+    "source": "50",
+    "unconverged_path_candidates": 1354,
+    "validation_drift": {
+      "ci95": [
+        0.04053258433661193,
+        0.05355531246655261
+      ],
+      "count": 100,
+      "rmse": 0.04704394840158227,
+      "standard_error": 0.003322124522944051
+    },
+    "value": 0.01
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        14.763671205449883,
+        18.1427500546216
+      ],
+      "count": 100,
+      "rmse": 16.45321063003574,
+      "standard_error": 0.862009910502989
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "observation_noise",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.10554743423626145,
+        0.13130859783626464
+      ],
+      "count": 100,
+      "rmse": 0.11842801603626305,
+      "standard_error": 0.006571725408164083
+    },
+    "value": 0.01
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.2046474219178878,
+        3.351531994766078
+      ],
+      "count": 100,
+      "rmse": 2.278089708341983,
+      "standard_error": 0.5476746359306608
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.04047974886942816,
+        0.05267652137411818
+      ],
+      "count": 100,
+      "rmse": 0.04657813512177317,
+      "standard_error": 0.003111421557318882
+    },
+    "value": 0.01
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        14.490869630099311,
+        17.764684356182705
+      ],
+      "count": 100,
+      "rmse": 16.12777699314101,
+      "standard_error": 0.8351568178784171
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.10398260476769447,
+        0.12718337449932715
+      ],
+      "count": 100,
+      "rmse": 0.11558298963351081,
+      "standard_error": 0.0059185637070491535
+    },
+    "value": 0.01
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        22.7855717920047,
+        30.39988015121894
+      ],
+      "count": 100,
+      "rmse": 26.59272597161182,
+      "standard_error": 1.9424256018403685
+    },
+    "failed": 0,
+    "method": "strong_fd_ols",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.5166806527148243,
+        0.5429844614332878
+      ],
+      "count": 100,
+      "rmse": 0.5298325570740561,
+      "standard_error": 0.006710155285322324
+    },
+    "value": 0.01
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.5440412409719122,
+        3.2176915689296854
+      ],
+      "count": 100,
+      "rmse": 2.380866404950799,
+      "standard_error": 0.4269516142749421
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "observation_noise",
+    "source": "50",
+    "unconverged_path_candidates": 1351,
+    "validation_drift": {
+      "ci95": [
+        0.04172872165824072,
+        0.05164369514085321
+      ],
+      "count": 100,
+      "rmse": 0.046686208399546965,
+      "standard_error": 0.0025293299700542065
+    },
+    "value": 0.03
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        15.443586090623496,
+        18.98022330761809
+      ],
+      "count": 100,
+      "rmse": 17.211904699120794,
+      "standard_error": 0.9022033716822946
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "observation_noise",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.10770839697682191,
+        0.13287692213065572
+      ],
+      "count": 100,
+      "rmse": 0.12029265955373881,
+      "standard_error": 0.006420542131080053
+    },
+    "value": 0.03
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.6588580321183866,
+        3.8277438453294366
+      ],
+      "count": 100,
+      "rmse": 2.7433009387239116,
+      "standard_error": 0.5532871972477168
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.04216408170678139,
+        0.05378493521063013
+      ],
+      "count": 100,
+      "rmse": 0.04797450845870576,
+      "standard_error": 0.0029645034448593723
+    },
+    "value": 0.03
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        15.521575862437263,
+        19.03447374512947
+      ],
+      "count": 100,
+      "rmse": 17.278024803783367,
+      "standard_error": 0.8961474190541346
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.11078363864443656,
+        0.13552513272035366
+      ],
+      "count": 100,
+      "rmse": 0.1231543856823951,
+      "standard_error": 0.006311605631611502
+    },
+    "value": 0.03
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        141.756830558329,
+        187.31778208759727
+      ],
+      "count": 100,
+      "rmse": 164.53730632296313,
+      "standard_error": 11.622691716650074
+    },
+    "failed": 0,
+    "method": "strong_fd_ols",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        3.9082471510288586,
+        4.068262457244326
+      ],
+      "count": 100,
+      "rmse": 3.988254804136592,
+      "standard_error": 0.04082023117741505
+    },
+    "value": 0.03
+  },
+  {
+    "boundary_selections": 1,
+    "coefficient": {
+      "ci95": [
+        2.7734096624544176,
+        4.93309150445756
+      ],
+      "count": 100,
+      "rmse": 3.853250583455989,
+      "standard_error": 0.5509392454089651
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "observation_noise",
+    "source": "50",
+    "unconverged_path_candidates": 1419,
+    "validation_drift": {
+      "ci95": [
+        0.05343646238869049,
+        0.07786573479523884
+      ],
+      "count": 100,
+      "rmse": 0.06565109859196466,
+      "standard_error": 0.006231957246568457
+    },
+    "value": 0.1
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        27.30346157816488,
+        35.25878869845372
+      ],
+      "count": 100,
+      "rmse": 31.281125138309303,
+      "standard_error": 2.0294201837471535
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "observation_noise",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.2514893486578895,
+        0.32705523489988675
+      ],
+      "count": 100,
+      "rmse": 0.28927229177888814,
+      "standard_error": 0.01927701179642786
+    },
+    "value": 0.1
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        3.0352641328818426,
+        5.189422758659454
+      ],
+      "count": 100,
+      "rmse": 4.112343445770648,
+      "standard_error": 0.5495302616779619
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.054402954343237775,
+        0.0799346090696062
+      ],
+      "count": 100,
+      "rmse": 0.06716878170642199,
+      "standard_error": 0.006513177226114392
+    },
+    "value": 0.1
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        28.22027104660108,
+        36.1584400882825
+      ],
+      "count": 100,
+      "rmse": 32.18935556744179,
+      "standard_error": 2.025043122877912
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.2617305242350709,
+        0.33743187858956336
+      ],
+      "count": 100,
+      "rmse": 0.29958120141231714,
+      "standard_error": 0.01931156998839092
+    },
+    "value": 0.1
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        2028.6682810501447,
+        2295.9730825598967
+      ],
+      "count": 100,
+      "rmse": 2162.3206818050207,
+      "standard_error": 68.19000038514088
+    },
+    "failed": 0,
+    "method": "strong_fd_ols",
+    "panel": "observation_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        29.140874866979285,
+        30.236359258726257
+      ],
+      "count": 100,
+      "rmse": 29.68861706285277,
+      "standard_error": 0.2794603040170852
+    },
+    "value": 0.1
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.4864105446098477,
+        2.9162234627012835
+      ],
+      "count": 100,
+      "rmse": 2.2013170036555656,
+      "standard_error": 0.3647481933906724
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "particle_number",
+    "source": "50",
+    "unconverged_path_candidates": 1495,
+    "validation_drift": {
+      "ci95": [
+        0.0573922376839904,
+        0.07185414438347928
+      ],
+      "count": 100,
+      "rmse": 0.06462319103373484,
+      "standard_error": 0.003689261913134922
+    },
+    "value": 50.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        18.452630728075015,
+        25.01575241108113
+      ],
+      "count": 100,
+      "rmse": 21.734191569578073,
+      "standard_error": 1.6742657354607444
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "particle_number",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.1310489874093699,
+        0.16584293148486165
+      ],
+      "count": 100,
+      "rmse": 0.14844595944711578,
+      "standard_error": 0.00887600614170708
+    },
+    "value": 50.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.010421476925947,
+        2.457191241999044
+      ],
+      "count": 100,
+      "rmse": 1.7338063594624955,
+      "standard_error": 0.3690739196615044
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "particle_number",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.054833490553072295,
+        0.06795616341076875
+      ],
+      "count": 100,
+      "rmse": 0.061394826981920524,
+      "standard_error": 0.003347620626963383
+    },
+    "value": 50.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        18.455215142477517,
+        25.13035235211498
+      ],
+      "count": 100,
+      "rmse": 21.792783747296248,
+      "standard_error": 1.7028411249075157
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "particle_number",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.13168432808747724,
+        0.16726307231912138
+      ],
+      "count": 100,
+      "rmse": 0.1494737002032993,
+      "standard_error": 0.009076210263174525
+    },
+    "value": 50.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.0464927948530693,
+        1.9176605129898494
+      ],
+      "count": 100,
+      "rmse": 1.4820766539214594,
+      "standard_error": 0.22223666278999488
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "particle_number",
+    "source": "50",
+    "unconverged_path_candidates": 1364,
+    "validation_drift": {
+      "ci95": [
+        0.04137337665566017,
+        0.05027278159035646
+      ],
+      "count": 100,
+      "rmse": 0.045823079123008315,
+      "standard_error": 0.0022702563608919123
+    },
+    "value": 100.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        14.280499888953685,
+        18.787610314832925
+      ],
+      "count": 100,
+      "rmse": 16.534055101893305,
+      "standard_error": 1.1497730678263374
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "particle_number",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.09268520390529658,
+        0.11343885438243917
+      ],
+      "count": 100,
+      "rmse": 0.10306202914386788,
+      "standard_error": 0.005294298591107802
+    },
+    "value": 100.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.211458813450343,
+        2.8096634431016634
+      ],
+      "count": 100,
+      "rmse": 2.010561128276003,
+      "standard_error": 0.4077052626661531
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "particle_number",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.042165433047972094,
+        0.05260956921703173
+      ],
+      "count": 100,
+      "rmse": 0.04738750113250191,
+      "standard_error": 0.002664320451290722
+    },
+    "value": 100.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        14.295789902158448,
+        18.759708330550556
+      ],
+      "count": 100,
+      "rmse": 16.527749116354503,
+      "standard_error": 1.1387547011204358
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "particle_number",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.09243677353346541,
+        0.11239628623093212
+      ],
+      "count": 100,
+      "rmse": 0.10241652988219876,
+      "standard_error": 0.005091712422823138
+    },
+    "value": 100.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.5447473627169677,
+        1.0228341823489857
+      ],
+      "count": 100,
+      "rmse": 0.7837907725329767,
+      "standard_error": 0.12196092337551481
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "particle_number",
+    "source": "50",
+    "unconverged_path_candidates": 1222,
+    "validation_drift": {
+      "ci95": [
+        0.026621068238135176,
+        0.031623557448228826
+      ],
+      "count": 100,
+      "rmse": 0.029122312843182,
+      "standard_error": 0.001276145206656544
+    },
+    "value": 200.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        10.093857753450603,
+        12.54730324168544
+      ],
+      "count": 100,
+      "rmse": 11.320580497568022,
+      "standard_error": 0.6258789510803162
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "particle_number",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.06120597368795549,
+        0.07486381116799028
+      ],
+      "count": 100,
+      "rmse": 0.06803489242797288,
+      "standard_error": 0.0034841422142945877
+    },
+    "value": 200.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.5166423269390639,
+        1.0787628648801149
+      ],
+      "count": 100,
+      "rmse": 0.7977025959095894,
+      "standard_error": 0.1433980964135334
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "particle_number",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.026814009921870684,
+        0.03189776812438057
+      ],
+      "count": 100,
+      "rmse": 0.029355889023125626,
+      "standard_error": 0.0012968770924770105
+    },
+    "value": 200.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        10.09970550269478,
+        12.58287918155183
+      ],
+      "count": 100,
+      "rmse": 11.341292342123305,
+      "standard_error": 0.6334626731778189
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "particle_number",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.06126644086251466,
+        0.07495441533808596
+      ],
+      "count": 100,
+      "rmse": 0.06811042810030031,
+      "standard_error": 0.003491830223360023
+    },
+    "value": 200.0
+  },
+  {
+    "boundary_selections": 1,
+    "coefficient": {
+      "ci95": [
+        0.4121388446915345,
+        1.057621909903475
+      ],
+      "count": 100,
+      "rmse": 0.7348803772975048,
+      "standard_error": 0.164664047247944
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "particle_number",
+    "source": "50",
+    "unconverged_path_candidates": 1067,
+    "validation_drift": {
+      "ci95": [
+        0.018463402441385283,
+        0.02364223421320372
+      ],
+      "count": 100,
+      "rmse": 0.0210528183272945,
+      "standard_error": 0.0013211305540353163
+    },
+    "value": 400.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        6.50480149422319,
+        8.401779935530328
+      ],
+      "count": 100,
+      "rmse": 7.4532907148767595,
+      "standard_error": 0.4839230717620252
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "particle_number",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.03667202670977697,
+        0.04331307852411069
+      ],
+      "count": 100,
+      "rmse": 0.03999255261694383,
+      "standard_error": 0.0016941458710034991
+    },
+    "value": 400.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.4215751899507321,
+        0.9410360763775021
+      ],
+      "count": 100,
+      "rmse": 0.6813056331641171,
+      "standard_error": 0.13251553225172702
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "particle_number",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.018589859952473427,
+        0.022518423956306273
+      ],
+      "count": 100,
+      "rmse": 0.02055414195438985,
+      "standard_error": 0.0010021846948553186
+    },
+    "value": 400.0
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        6.482957664440034,
+        8.367900896307999
+      ],
+      "count": 100,
+      "rmse": 7.425429280374017,
+      "standard_error": 0.48085286527244003
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "particle_number",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.03678000770627747,
+        0.04343599320307624
+      ],
+      "count": 100,
+      "rmse": 0.040108000454676856,
+      "standard_error": 0.0016979554838772364
+    },
+    "value": 400.0
+  },
+  {
+    "boundary_selections": 3,
+    "coefficient": {
+      "ci95": [
+        0.10141465439128593,
+        0.1784446542768301
+      ],
+      "count": 100,
+      "rmse": 0.13992965433405802,
+      "standard_error": 0.01965051017488372
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "process_noise",
+    "source": "50",
+    "unconverged_path_candidates": 497,
+    "validation_drift": {
+      "ci95": [
+        0.004028091353668677,
+        0.004757922874511657
+      ],
+      "count": 100,
+      "rmse": 0.004393007114090167,
+      "standard_error": 0.00018618151041912754
+    },
+    "value": 0.01
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.547863080359432,
+        1.98552003925662
+      ],
+      "count": 100,
+      "rmse": 1.766691559808026,
+      "standard_error": 0.11164718339213979
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "process_noise",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.00878638442728124,
+        0.010558673395024427
+      ],
+      "count": 100,
+      "rmse": 0.009672528911152833,
+      "standard_error": 0.00045211453258754757
+    },
+    "value": 0.01
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.08906345033915733,
+        0.17672942730892907
+      ],
+      "count": 100,
+      "rmse": 0.1328964388240432,
+      "standard_error": 0.022363769635145858
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "process_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.0037606365884282076,
+        0.00463642952628032
+      ],
+      "count": 100,
+      "rmse": 0.004198533057354264,
+      "standard_error": 0.00022341656577860015
+    },
+    "value": 0.01
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.435129614090111,
+        1.8728181817699632
+      ],
+      "count": 100,
+      "rmse": 1.6539738979300371,
+      "standard_error": 0.11165524685710507
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "process_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.008392011893224284,
+        0.010096693987672413
+      ],
+      "count": 100,
+      "rmse": 0.009244352940448348,
+      "standard_error": 0.000434867881236768
+    },
+    "value": 0.01
+  },
+  {
+    "boundary_selections": 2,
+    "coefficient": {
+      "ci95": [
+        0.5751456619727664,
+        1.0483804909619483
+      ],
+      "count": 100,
+      "rmse": 0.8117630764673573,
+      "standard_error": 0.1207231706605056
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "process_noise",
+    "source": "50",
+    "unconverged_path_candidates": 1003,
+    "validation_drift": {
+      "ci95": [
+        0.020194210758923248,
+        0.02395016614537502
+      ],
+      "count": 100,
+      "rmse": 0.022072188452149134,
+      "standard_error": 0.0009581518842989205
+    },
+    "value": 0.05
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        6.835351561585909,
+        9.35387321519377
+      ],
+      "count": 100,
+      "rmse": 8.094612388389839,
+      "standard_error": 0.6424800136754749
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "process_noise",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.042948283674156214,
+        0.05153552371187991
+      ],
+      "count": 100,
+      "rmse": 0.04724190369301806,
+      "standard_error": 0.002190622458602982
+    },
+    "value": 0.05
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.441441231972732,
+        0.8472426982002749
+      ],
+      "count": 100,
+      "rmse": 0.6443419650865034,
+      "standard_error": 0.10352078220090381
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "process_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.01961406361681125,
+        0.02333366256657094
+      ],
+      "count": 100,
+      "rmse": 0.021473863091691095,
+      "standard_error": 0.0009488772831019614
+    },
+    "value": 0.05
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        6.74820151513407,
+        9.17879311803542
+      ],
+      "count": 100,
+      "rmse": 7.963497316584745,
+      "standard_error": 0.6200488782911608
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "process_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.04289091192409911,
+        0.05123707655959228
+      ],
+      "count": 100,
+      "rmse": 0.047063994241845694,
+      "standard_error": 0.002129123631503361
+    },
+    "value": 0.05
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.2878691666036155,
+        2.597947009171116
+      ],
+      "count": 100,
+      "rmse": 1.9429080878873657,
+      "standard_error": 0.3342035312672194
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "process_noise",
+    "source": "50",
+    "unconverged_path_candidates": 1369,
+    "validation_drift": {
+      "ci95": [
+        0.042064819897771236,
+        0.05009442366475064
+      ],
+      "count": 100,
+      "rmse": 0.04607962178126094,
+      "standard_error": 0.0020483683079029085
+    },
+    "value": 0.1
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        14.223573716367257,
+        18.690528002139963
+      ],
+      "count": 100,
+      "rmse": 16.45705085925361,
+      "standard_error": 1.1395291545338535
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "process_noise",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.09305150576045071,
+        0.11248507097180149
+      ],
+      "count": 100,
+      "rmse": 0.1027682883661261,
+      "standard_error": 0.004957542145752747
+    },
+    "value": 0.1
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.211458813450343,
+        2.8096634431016634
+      ],
+      "count": 100,
+      "rmse": 2.010561128276003,
+      "standard_error": 0.4077052626661531
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "process_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.04175035407911994,
+        0.050179194012330806
+      ],
+      "count": 100,
+      "rmse": 0.045964774045725375,
+      "standard_error": 0.0021502142686762407
+    },
+    "value": 0.1
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        14.295789902158448,
+        18.759708330550556
+      ],
+      "count": 100,
+      "rmse": 16.527749116354503,
+      "standard_error": 1.1387547011204358
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "process_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.09388156575450368,
+        0.11372130486695611
+      ],
+      "count": 100,
+      "rmse": 0.1038014353107299,
+      "standard_error": 0.005061157936850107
+    },
+    "value": 0.1
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        3.2534952849820593,
+        7.4538520311687195
+      ],
+      "count": 100,
+      "rmse": 5.353673658075389,
+      "standard_error": 1.071519578108842
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "process_noise",
+    "source": "50",
+    "unconverged_path_candidates": 1624,
+    "validation_drift": {
+      "ci95": [
+        0.09458416243666717,
+        0.1277426066672098
+      ],
+      "count": 100,
+      "rmse": 0.11116338455193849,
+      "standard_error": 0.00845878679350577
+    },
+    "value": 0.2
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        36.05382509611846,
+        46.4701493637842
+      ],
+      "count": 100,
+      "rmse": 41.26198722995133,
+      "standard_error": 2.657225578486159
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "process_noise",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.2478686765389547,
+        0.3066123811654307
+      ],
+      "count": 100,
+      "rmse": 0.2772405288521927,
+      "standard_error": 0.014985638935325514
+    },
+    "value": 0.2
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        3.4225758677034293,
+        7.667709550654411
+      ],
+      "count": 100,
+      "rmse": 5.54514270917892,
+      "standard_error": 1.082942266058924
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "process_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.09465828985020147,
+        0.12907144551060554
+      ],
+      "count": 100,
+      "rmse": 0.1118648676804035,
+      "standard_error": 0.008778866239898993
+    },
+    "value": 0.2
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        36.11745133393545,
+        46.843568896110085
+      ],
+      "count": 100,
+      "rmse": 41.48051011502277,
+      "standard_error": 2.73625448014659
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "process_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.24692219774838758,
+        0.3069290391762944
+      ],
+      "count": 100,
+      "rmse": 0.276925618462341,
+      "standard_error": 0.015307867711200717
+    },
+    "value": 0.2
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        19.139900539225625,
+        31.881890476751938
+      ],
+      "count": 100,
+      "rmse": 25.51089550798878,
+      "standard_error": 3.25050763712406
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "process_noise",
+    "source": "50",
+    "unconverged_path_candidates": 2088,
+    "validation_drift": {
+      "ci95": [
+        0.33900841287325345,
+        0.4633493739602276
+      ],
+      "count": 100,
+      "rmse": 0.4011788934167405,
+      "standard_error": 0.03171963293035053
+    },
+    "value": 0.4
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        190.60754013388114,
+        236.4223666579974
+      ],
+      "count": 100,
+      "rmse": 213.51495339593927,
+      "standard_error": 11.68745574594803
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "process_noise",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        1.4018176633838615,
+        1.6443575334219505
+      ],
+      "count": 100,
+      "rmse": 1.523087598402906,
+      "standard_error": 0.061872415826043047
+    },
+    "value": 0.4
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        18.4472530514689,
+        30.951264890536955
+      ],
+      "count": 100,
+      "rmse": 24.699258971002926,
+      "standard_error": 3.1897989385377694
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "process_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.32987251121238487,
+        0.44976239459074213
+      ],
+      "count": 100,
+      "rmse": 0.3898174529015635,
+      "standard_error": 0.03058415392305033
+    },
+    "value": 0.4
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        193.54838302215438,
+        236.39049573897887
+      ],
+      "count": 100,
+      "rmse": 214.96943938056663,
+      "standard_error": 10.929110386945027
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "process_noise",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        1.419642095224131,
+        1.6529388773295166
+      ],
+      "count": 100,
+      "rmse": 1.5362904862768239,
+      "standard_error": 0.059514485230965676
+    },
+    "value": 0.4
+  },
+  {
+    "boundary_selections": 14,
+    "coefficient": {
+      "ci95": [
+        0.011626365601072042,
+        0.025167439595024783
+      ],
+      "count": 100,
+      "rmse": 0.018396902598048413,
+      "standard_error": 0.00345435561070223
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "time_step",
+    "source": "50",
+    "unconverged_path_candidates": 295,
+    "validation_drift": {
+      "ci95": [
+        0.0009930573580282254,
+        0.001223447320901403
+      ],
+      "count": 100,
+      "rmse": 0.0011082523394648142,
+      "standard_error": 5.877294971254526e-05
+    },
+    "value": 0.002
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.5320983241780547,
+        0.6960891903559708
+      ],
+      "count": 100,
+      "rmse": 0.6140937572670128,
+      "standard_error": 0.04183440463722352
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "time_step",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.003445042646917588,
+        0.004365629640962391
+      ],
+      "count": 100,
+      "rmse": 0.0039053361439399894,
+      "standard_error": 0.00023484362092979666
+    },
+    "value": 0.002
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.0009650574971647673,
+        0.000966047568047413
+      ],
+      "count": 100,
+      "rmse": 0.0009655525326060901,
+      "standard_error": 2.525691027157506e-07
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "time_step",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.0009709318090139657,
+        0.0009718110101989407
+      ],
+      "count": 100,
+      "rmse": 0.0009713714096064532,
+      "standard_error": 2.2428601657527818e-07
+    },
+    "value": 0.002
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.0010013355107409798,
+        0.0010013356234721692
+      ],
+      "count": 100,
+      "rmse": 0.0010013355671065745,
+      "standard_error": 2.875795646954687e-11
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "time_step",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.0010013353396007988,
+        0.0010013353489823863
+      ],
+      "count": 100,
+      "rmse": 0.0010013353442915925,
+      "standard_error": 2.3932620734265096e-12
+    },
+    "value": 0.002
+  },
+  {
+    "boundary_selections": 1,
+    "coefficient": {
+      "ci95": [
+        0.013248733642793414,
+        0.027887078433716225
+      ],
+      "count": 100,
+      "rmse": 0.02056790603825482,
+      "standard_error": 0.003734271630337452
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "time_step",
+    "source": "50",
+    "unconverged_path_candidates": 384,
+    "validation_drift": {
+      "ci95": [
+        0.002139111284765512,
+        0.0024913856222629834
+      ],
+      "count": 100,
+      "rmse": 0.0023152484535142476,
+      "standard_error": 8.98659024228243e-05
+    },
+    "value": 0.005
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.067222519201891,
+        1.3446783181454607
+      ],
+      "count": 100,
+      "rmse": 1.2059504186736758,
+      "standard_error": 0.07077954054682904
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "time_step",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.00654413355951809,
+        0.008112726780597553
+      ],
+      "count": 100,
+      "rmse": 0.007328430170057821,
+      "standard_error": 0.00040015133190802603
+    },
+    "value": 0.005
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.002472023676410781,
+        0.0024730141240075446
+      ],
+      "count": 100,
+      "rmse": 0.002472518900209163,
+      "standard_error": 2.526652032561385e-07
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "time_step",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.0024778479462023557,
+        0.0024787296970224123
+      ],
+      "count": 100,
+      "rmse": 0.002478288821612384,
+      "standard_error": 2.2493643368800816e-07
+    },
+    "value": 0.005
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.0025083653184403486,
+        0.0025083654416845126
+      ],
+      "count": 100,
+      "rmse": 0.0025083653800624306,
+      "standard_error": 3.143983780147289e-11
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "time_step",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.002508364731255653,
+        0.0025083647442406577
+      ],
+      "count": 100,
+      "rmse": 0.0025083647377481554,
+      "standard_error": 3.312501071405856e-12
+    },
+    "value": 0.005
+  },
+  {
+    "boundary_selections": 1,
+    "coefficient": {
+      "ci95": [
+        0.021433330403904945,
+        0.046772184342512284
+      ],
+      "count": 100,
+      "rmse": 0.034102757373208614,
+      "standard_error": 0.0064639933516855465
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "time_step",
+    "source": "50",
+    "unconverged_path_candidates": 531,
+    "validation_drift": {
+      "ci95": [
+        0.004291469335877011,
+        0.0048589303561588325
+      ],
+      "count": 100,
+      "rmse": 0.004575199846017922,
+      "standard_error": 0.00014476046435760753
+    },
+    "value": 0.01
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        1.8295238843694381,
+        2.280176572921267
+      ],
+      "count": 100,
+      "rmse": 2.0548502286453525,
+      "standard_error": 0.11496242054893589
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "time_step",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.011322241481222114,
+        0.014798407696430524
+      ],
+      "count": 100,
+      "rmse": 0.01306032458882632,
+      "standard_error": 0.0008867770957164309
+    },
+    "value": 0.01
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.00499714263491396,
+        0.004998133957797939
+      ],
+      "count": 100,
+      "rmse": 0.00499763829635595,
+      "standard_error": 2.5288849081105264e-07
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "time_step",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.005002945114513801,
+        0.005003819029634548
+      ],
+      "count": 100,
+      "rmse": 0.0050033820720741745,
+      "standard_error": 2.2293753080269717e-07
+    },
+    "value": 0.01
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.005033591402744459,
+        0.005033591702888126
+      ],
+      "count": 100,
+      "rmse": 0.005033591552816292,
+      "standard_error": 7.656726207322978e-11
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "time_step",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.005033586285619853,
+        0.005033586366223444
+      ],
+      "count": 100,
+      "rmse": 0.005033586325921649,
+      "standard_error": 2.0562140559629627e-11
+    },
+    "value": 0.01
+  },
+  {
+    "boundary_selections": 1,
+    "coefficient": {
+      "ci95": [
+        0.04528401967063016,
+        0.08610305628076657
+      ],
+      "count": 100,
+      "rmse": 0.06569353797569837,
+      "standard_error": 0.010413019543402145
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "time_step",
+    "source": "50",
+    "unconverged_path_candidates": 609,
+    "validation_drift": {
+      "ci95": [
+        0.008719171447028402,
+        0.009420196573979276
+      ],
+      "count": 100,
+      "rmse": 0.009069684010503839,
+      "standard_error": 0.00017883294054869256
+    },
+    "value": 0.02
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        3.2566696436644555,
+        3.9435570602158254
+      ],
+      "count": 100,
+      "rmse": 3.6001133519401405,
+      "standard_error": 0.17522638177330863
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "time_step",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.01876373452623579,
+        0.023497102245925047
+      ],
+      "count": 100,
+      "rmse": 0.02113041838608042,
+      "standard_error": 0.0012074917652268506
+    },
+    "value": 0.02
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.010098442571672639,
+        0.010099166889021422
+      ],
+      "count": 100,
+      "rmse": 0.01009880473034703,
+      "standard_error": 1.8477483387310773e-07
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "time_step",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.010104301895062427,
+        0.01010503940806301
+      ],
+      "count": 100,
+      "rmse": 0.010104670651562718,
+      "standard_error": 1.8814107157753757e-07
+    },
+    "value": 0.02
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.01014404363746751,
+        0.0101444192394135
+      ],
+      "count": 100,
+      "rmse": 0.010144231438440504,
+      "standard_error": 9.5816822956743e-08
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "time_step",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.010135813335288407,
+        0.010135903514466861
+      ],
+      "count": 100,
+      "rmse": 0.010135858424877634,
+      "standard_error": 2.3004892462458723e-08
+    },
+    "value": 0.02
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.07732164180180885,
+        0.14459947955383473
+      ],
+      "count": 100,
+      "rmse": 0.11096056067782178,
+      "standard_error": 0.017162713712251497
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "time_step",
+    "source": "50",
+    "unconverged_path_candidates": 933,
+    "validation_drift": {
+      "ci95": [
+        0.023143331263313624,
+        0.02426778849852919
+      ],
+      "count": 100,
+      "rmse": 0.023705559880921406,
+      "standard_error": 0.00028685133551417457
+    },
+    "value": 0.05
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        7.126804939932067,
+        8.228535026521786
+      ],
+      "count": 100,
+      "rmse": 7.677669983226926,
+      "standard_error": 0.28105359351778547
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "time_step",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.044362197167940334,
+        0.052976084859930606
+      ],
+      "count": 100,
+      "rmse": 0.04866914101393547,
+      "standard_error": 0.0021974203295893535
+    },
+    "value": 0.05
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.02658408007973279,
+        0.026667265324075918
+      ],
+      "count": 100,
+      "rmse": 0.026625672701904354,
+      "standard_error": 2.1220725597737524e-05
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "time_step",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.02590420958982652,
+        0.025917481554683403
+      ],
+      "count": 100,
+      "rmse": 0.02591084557225496,
+      "standard_error": 3.385705320633693e-06
+    },
+    "value": 0.05
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.09770229757328465,
+        0.10358094442450926
+      ],
+      "count": 100,
+      "rmse": 0.10064162099889695,
+      "standard_error": 0.001499654808985871
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "time_step",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.025476331525670547,
+        0.025534910822981968
+      ],
+      "count": 100,
+      "rmse": 0.025505621174326257,
+      "standard_error": 1.4943698293729305e-05
+    },
+    "value": 0.05
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.2532550239783625,
+        0.33878981553966225
+      ],
+      "count": 100,
+      "rmse": 0.2960224197590124,
+      "standard_error": 0.021820099888086655
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "time_step",
+    "source": "50",
+    "unconverged_path_candidates": 1241,
+    "validation_drift": {
+      "ci95": [
+        0.05202761657302313,
+        0.054175043308283266
+      ],
+      "count": 100,
+      "rmse": 0.0531013299406532,
+      "standard_error": 0.0005478129426684043
+    },
+    "value": 0.1
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        11.21411456524787,
+        12.787138113518209
+      ],
+      "count": 100,
+      "rmse": 12.00062633938304,
+      "standard_error": 0.4012815174159026
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "time_step",
+    "source": "50",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.07559904784171632,
+        0.08891166517036041
+      ],
+      "count": 100,
+      "rmse": 0.08225535650603837,
+      "standard_error": 0.0033960758491438973
+    },
+    "value": 0.1
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.20652254918628693,
+        0.215761799778787
+      ],
+      "count": 100,
+      "rmse": 0.21114217448253697,
+      "standard_error": 0.002356951681760227
+    },
+    "failed": 0,
+    "method": "lasso",
+    "panel": "time_step",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.05364017705183106,
+        0.054371932059187965
+      ],
+      "count": 100,
+      "rmse": 0.05400605455550951,
+      "standard_error": 0.00018667219575431196
+    },
+    "value": 0.1
+  },
+  {
+    "boundary_selections": 0,
+    "coefficient": {
+      "ci95": [
+        0.9051017596089244,
+        1.0761752969291996
+      ],
+      "count": 100,
+      "rmse": 0.990638528269062,
+      "standard_error": 0.04364120850007019
+    },
+    "failed": 0,
+    "method": "ols",
+    "panel": "time_step",
+    "source": "full",
+    "unconverged_path_candidates": 0,
+    "validation_drift": {
+      "ci95": [
+        0.056375626095290746,
+        0.0572553227529328
+      ],
+      "count": 100,
+      "rmse": 0.05681547442411177,
+      "standard_error": 0.00022441241266379032
+    },
+    "value": 0.1
+  }
+]

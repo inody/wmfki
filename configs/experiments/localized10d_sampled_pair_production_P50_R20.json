@@ -1,0 +1,69 @@
+{
+  "task": "localized10d_sampled_pair_production_P50_R20",
+  "protocol_version": 1,
+  "study_status": "production_candidate_distance_localized_P50_R20",
+  "authoritative_frozen_protocol": "outputs/validation/localized10d_noisy_robustness/sweeps-20261023T123949Z/frozen_protocol.json",
+  "authoritative_frozen_protocol_sha256": "67ef4ded1f95ce7a1aaf8fe1085e8ada1ce015915a9964105f463328df5d57d8",
+  "authoritative_requested_protocol": "outputs/validation/localized10d_noisy_robustness/sweeps-20261023T123949Z/requested_protocol.json",
+  "authoritative_requested_protocol_sha256": "9e05ab36e203c397f6892e84577654c63449d0ecbd58738c959acc962e57b6f3",
+  "authoritative_source_manifest": "outputs/validation/localized10d_noisy_robustness/sweeps-20261023T123949Z/source_manifest.json",
+  "authoritative_source_manifest_sha256": "52377684c5b39a27e7c9ef9827f129af16a91e358d850a714bd1aaf4a08725f9",
+  "active_observation_runner": "scripts/run_localized10d_observation_noise.py",
+  "frozen_observation_runner": "outputs/validation/localized10d_noisy_robustness/sweeps-20261023T123949Z/source/scripts/run_localized10d_observation_noise.py",
+  "repetitions": 20,
+  "observation_noise": 0.01,
+  "pair_sampling": {
+    "mode": "resample_each_time",
+    "with_replacement": true,
+    "exclude_diagonal": true,
+    "pairs_per_particle": 50,
+    "nominal_particles": 500,
+    "nominal_pairs": 25000
+  },
+  "pair_count_sweep": [3000, 5000, 10000, 20000, 25000, 30000],
+  "pair_count_penalty_policy": {
+    "selection_pairs": 25000,
+    "selection_validation": "independent_sampled_validation_system_at_P0",
+    "reuse": "fix_selected_absolute_alpha_across_all_pair_counts_within_repetition"
+  },
+  "pair_index_policy": "At every observed time, draw ordered off-diagonal pairs with replacement. Draws are independent across time. The one draw at a time is shared by all spatial tests, temporal tests, and dictionary atoms. Training and validation use independent pair seeds and therefore independent pair streams.",
+  "condition_budget_policy": "Nominal and process-noise conditions use N=500 and P=25000. Particle-number conditions use P=50N. Pair-count conditions use the declared P values at N=500, including the nominal P=25000.",
+  "selection_policy": "Each nominal, process-noise, and particle-number condition selects raw LASSO using its independent sampled validation weak system at the same P. The pair-count sweep selects lambda once at P0=25000 using an independent sampled validation system and fixes that absolute lambda for every P within the repetition. Truth and latent test metrics are excluded from fitting and selection.",
+  "source_preservation_policy": "Copy the model, dictionary, weak tests, process-noise and particle-number grids, estimator, seeds, evaluation settings, observation-noise protocol, and R=20 from the authoritative frozen protocol. Change only sampled-pair mode/budgets, add P=25000 to the pair-count grid, and change pair-count lambda selection from Pmax to P0=25000.",
+  "production_artifacts": {
+    "robustness_figure": true,
+    "nominal_profile": true,
+    "nominal_coupled_trajectory": true,
+    "representative_repetition": 0,
+    "table_metrics": [
+      "nominal_relative_coefficient_error",
+      "nominal_latent_drift_error",
+      "nominal_profile_error",
+      "representative_coupled_trajectory_error",
+      "sweep_endpoint_statistics",
+      "fit_rank_and_selection_diagnostics"
+    ],
+    "provenance": true,
+    "verification": true
+  },
+  "protected_paths": [
+    "outputs/validation/localized10d_noisy_robustness/sweeps-20261023T123949Z",
+    "configs/experiments/localized10d_noisy_robustness.json",
+    "configs/experiments/localized10d_noisy_robustness_001.json",
+    "scripts/run_localized10d_noisy_robustness.py",
+    "configs/experiments/localized10d_sampled_pair_p10n_preview.json",
+    "scripts/run_localized10d_sampled_pair_p10n_preview.py",
+    "outputs/validation/localized10d_sampled_pair_p10n_preview",
+    "configs/experiments/l4dc_current_figures.json",
+    "latex/L4DC"
+  ],
+  "output_policy": {
+    "exclusive_new_directory": true,
+    "modify_existing_current": false,
+    "modify_frozen_results": false,
+    "modify_manuscript": false,
+    "modify_P10_preview": false,
+    "retain_all_predeclared_repetitions_and_failures": true,
+    "snapshot_sources_and_hash_artifacts": true
+  }
+}

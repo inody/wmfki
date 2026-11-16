@@ -1,0 +1,23 @@
+{
+  "artifact_sha256": {
+    "diagnostics.json": "9bd6a20dc1662abfcf3960e0936f7fe0d50d84a65444d434d58ee2ef3ff25ee9",
+    "effective_protocol.json": "cd47333cac57af73ad3c7e0234e1a7897fcc120b4a2119b2d67a8d258a846a91",
+    "records.json": "142df5d82ad0d9cbc9ed5bef92924787a5cb06fc621f8b5afa6f36809dd612c1",
+    "requested_protocol.json": "18f3a59f89ac0bb3893dc8f04041b027a65dae8a3aef947c0b83234b313ca906",
+    "summary.json": "dc83e6ee7b6884cadb79f57b85208282216e1b2e4099b89656a3fe9f30cb19f9"
+  },
+  "created_utc": "2026-11-13T06:14:42.383936+00:00",
+  "elapsed_seconds": 125.84811399993487,
+  "record_count": 700,
+  "smoke": false,
+  "source_sha256": {
+    "configs/experiments/qanr_strong_fd_lasso_observation_noise_R100.json": "18f3a59f89ac0bb3893dc8f04041b027a65dae8a3aef947c0b83234b313ca906",
+    "features.py": "678833b5563190087fecf0cf99db64b4347f63bbbbd2211d854fd37db2318966",
+    "kernels.py": "dc93a89a53b4199c40c06336bea837b311690c708156f20bffd1353227be5dfb",
+    "scripts/run_qanr_strong_fd_lasso_observation_noise_R100.py": "f255672dd071b2ddea76c9b650bb49df8284c4c4650f132d9c286d991b82dfbe",
+    "scripts/run_regularized_baseline_exploration.py": "c33c1d86920f644e099dc6ec2753cfa6f2c52a92bad962b2533dfdc92e21aecc",
+    "simulate.py": "eae0d4aed0c5b417117e6bf251a09e9b8d95e8a247173d030619d1b5988026f2"
+  },
+  "status": "scientific_complete",
+  "task": "qanr_strong_fd_lasso_observation_noise_R100"
+}

@@ -1,0 +1,53 @@
+{
+  "task": "cross_example_nominal_method_comparison",
+  "protocol_version": 1,
+  "base_cross_records": "outputs/validation/cross_example_nominal_comparison/nominal-20261023T062024Z/records.json",
+  "base_cross_records_sha256": "4534707b0e8129e2d9e0ca88ebd9f63d619257a6e9049736b80ef4769bf1f09c",
+  "metric": {
+    "name": "relative_coefficient_error",
+    "definition": "||theta_hat-theta_star||_2/||theta_star||_2",
+    "primary_summary": "root_mean_square_across_all_repetitions",
+    "secondary_summary": "median_and_interquartile_range",
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 20261023
+  },
+  "methods": [
+    "weak_lasso",
+    "weak_ols",
+    "strong_forward_difference_ols"
+  ],
+  "one_dimensional": {
+    "source_records": "outputs/validation/qanr_redundant6_lasso_R100/sweeps-20261022T052958Z/observation_lasso.csv",
+    "source_sha256": "ef7f3d0818f3138cb576a43a73e08a6927772829443f326d2fdf19a29ac61878",
+    "sigma_obs": 0.001,
+    "truth": [1.0, -1.0, 0.0, 0.0, 0.0, 0.0],
+    "repetitions": 100,
+    "condition": "Six-atom one-dimensional benchmark at Gaussian position-noise standard deviation 0.001."
+  },
+  "predator_prey": {
+    "config": "configs/experiments/predator_prey_application.json",
+    "source_records": "outputs/validation/predator_prey/application-metric-20261022T200946Z/records.json",
+    "source_sha256": "d3bafb6dcc035acdecb04412bc08325012c4bc72b02e646a6457ca2122ed2b5f",
+    "repetitions": 20,
+    "condition": "Two-dimensional predator--prey benchmark at Gaussian position-noise standard deviation 0.001."
+  },
+  "localized_10d": {
+    "config": "configs/experiments/localized10d_scientific.json",
+    "source_kind": "fixed_observation_noise_benchmark",
+    "source_records": "outputs/validation/localized10d_observation_noise/sweeps-20261023T072249Z/records.json",
+    "source_sha256": "44f774bb8c6b4293ac78ae02825c5a1c201ca8856c5b5b05c67003f34e3d28b5",
+    "nominal_observation_noise": 0.03,
+    "repetitions": 20,
+    "condition": "Ten-dimensional localized benchmark at Gaussian position-noise standard deviation 0.03."
+  },
+  "strong_form_policy": {
+    "response": "forward_position_difference_divided_by_observation_step",
+    "solver": "raw_numpy_minimum_norm_lstsq",
+    "regularization": false,
+    "intercept": false,
+    "standardization": false,
+    "coefficient_thresholding": false,
+    "failure_exclusion": false
+  },
+  "table_policy": "Report the relative coefficient RMSE comparison with the observation-noise condition stated for each example."
+}
