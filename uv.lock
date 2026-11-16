@@ -1141,6 +1141,3 @@ requires-dist = [
     { name = "pandas", specifier = ">=2.3.3" },
     { name = "scikit-learn" },
 ]
-
-[package.metadata.requires-dev]
-dev = []

@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "Weak-form Mean-field Kernel Identification"
+type: software
+authors:
+  - family-names: Inoue
+    given-names: Daisuke
+  - family-names: Kalise
+    given-names: Dante
+repository-code: "https://github.com/inody/wmfki"
+url: "https://github.com/inody/wmfki"
+license: MIT

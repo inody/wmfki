@@ -9,7 +9,9 @@ L4DC numerical results. The principal commands are::
 
 Fresh dependency-bound configs are generated inside each run so archived
 ``outputs/`` paths in the original production configs are never consumed by
-the source-independent workflow.
+the source-independent workflow. Distributed release checkouts require every
+reproduction and smoke output to use ``outputs/<run-directory>`` so generated
+state remains outside the release manifest payload.
 """
 
 from __future__ import annotations
@@ -20,12 +22,18 @@ from datetime import datetime, timezone
 import hashlib
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
+import re
 import shutil
 import subprocess
 import sys
 from time import perf_counter
 from typing import Any
+
+try:
+    from scripts import verify_release_manifest
+except ImportError:  # Direct execution as ``python scripts/reproduce_l4dc_current.py``.
+    import verify_release_manifest
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -41,6 +49,13 @@ CURRENT_FIGURES = (
     "localized10d_robustness_sweeps.pdf",
 )
 NUMERICAL_TABLE_REFERENCE = ROOT / "reference/table1.json"
+RELEASE_MANIFEST = ROOT / "RELEASE_MANIFEST.json"
+DEVELOPER_MARKER = ROOT / "scripts/export_private_release.py"
+SOURCE_CONTRACT_SCHEMA = "wmfki.l4dc-source-contract"
+SOURCE_CONTRACT_VERSION = 2
+RESUME_STATE_SCHEMA = "wmfki.l4dc-resume-state"
+RESUME_STATE_VERSION = 2
+SHA256_PATTERN = re.compile(r"[0-9a-f]{64}")
 
 
 @dataclass(frozen=True)
@@ -290,15 +305,257 @@ def relative(path: Path) -> str:
         raise ValueError(f"reproduction input must be below {ROOT}: {resolved}") from error
 
 
-def numerical_source_contract() -> dict[str, Any]:
-    if not NUMERICAL_TABLE_REFERENCE.is_file():
-        raise FileNotFoundError(NUMERICAL_TABLE_REFERENCE)
-    return {
-        "table1_reference": {
-            "path": relative(NUMERICAL_TABLE_REFERENCE),
-            "sha256": digest(NUMERICAL_TABLE_REFERENCE),
+def _relative_to_root(path: Path, root: Path) -> str:
+    resolved = Path(path).resolve()
+    try:
+        return resolved.relative_to(Path(root).resolve()).as_posix()
+    except ValueError as error:
+        raise ValueError(f"path must be below {root}: {resolved}") from error
+
+
+def _contract_fingerprint(files: dict[str, str]) -> str:
+    encoded = json.dumps(files, sort_keys=True, separators=(",", ":")).encode()
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def _developer_source_inventory(root: Path) -> dict[str, str]:
+    """Hash the bounded numerical code/config inventory used by developers."""
+    root = Path(root).resolve()
+    candidates = set(root.glob("*.py"))
+    scripts = root / "scripts"
+    configs = root / "configs"
+    for directory in (scripts, configs):
+        if not directory.is_dir():
+            raise FileNotFoundError(directory)
+    candidates.update(path for path in scripts.rglob("*.py") if path.is_file())
+    candidates.update(path for path in configs.rglob("*") if path.is_file())
+    candidates.update((root / "pyproject.toml", root / "uv.lock", root / "reference/table1.json"))
+
+    files: dict[str, str] = {}
+    for path in sorted(candidates, key=lambda item: _relative_to_root(item, root)):
+        relative_name = _relative_to_root(path, root)
+        if path.is_symlink() or not path.is_file():
+            raise ValueError(f"developer source inventory entry is not a regular file: {relative_name}")
+        files[relative_name] = digest(path)
+    return files
+
+
+def numerical_source_contract(root: Path = ROOT) -> dict[str, Any]:
+    """Return the versioned release or developer source identity.
+
+    A distributed checkout is accepted only after full release-manifest
+    verification.  The canonical private checkout has no release manifest and
+    is recognized by its non-distributed exporter marker; it uses a bounded,
+    deterministic inventory of numerical code, configs, dependency metadata,
+    and the immutable numerical table reference.
+    """
+    root = Path(root).resolve()
+    manifest = root / "RELEASE_MANIFEST.json"
+    table_reference = root / "reference/table1.json"
+    marker = root / "scripts/export_private_release.py"
+
+    if manifest.exists() or manifest.is_symlink():
+        verification = verify_release_manifest.verify_manifest(root)
+        if table_reference.is_symlink() or not table_reference.is_file():
+            raise FileNotFoundError(table_reference)
+        files = {
+            "RELEASE_MANIFEST.json": digest(manifest),
+            "reference/table1.json": digest(table_reference),
         }
+        mode = "distributed_release_manifest"
+        detail: dict[str, Any] = {"verified_payload_file_count": verification["file_count"]}
+    else:
+        if marker.is_symlink() or not marker.is_file():
+            raise RuntimeError(
+                "RELEASE_MANIFEST.json is missing and this is not a recognized "
+                "developer checkout (scripts/export_private_release.py is absent)"
+            )
+        files = _developer_source_inventory(root)
+        mode = "developer_inventory"
+        detail = {
+            "inventory_roots": ["root:*.py", "scripts/**", "configs/**"],
+            "dependency_files": ["pyproject.toml", "uv.lock"],
+            "numerical_reference": "reference/table1.json",
+            "developer_marker": "scripts/export_private_release.py",
+        }
+    return {
+        "schema": SOURCE_CONTRACT_SCHEMA,
+        "version": SOURCE_CONTRACT_VERSION,
+        "mode": mode,
+        "files": files,
+        "fingerprint_sha256": _contract_fingerprint(files),
+        **detail,
     }
+
+
+def _validate_reproduction_output_namespace(
+    output: Path, source_contract: dict[str, Any]
+) -> None:
+    """Keep distributed run products in the manifest-excluded outputs tree."""
+    if source_contract.get("mode") != "distributed_release_manifest":
+        return
+    outputs_root = (ROOT / "outputs").resolve()
+    try:
+        relative_output = Path(output).resolve().relative_to(outputs_root)
+    except ValueError as error:
+        raise ValueError(
+            "distributed release reproduction output must be below "
+            f"{outputs_root} (use outputs/<run-directory>)"
+        ) from error
+    if not relative_output.parts:
+        raise ValueError(
+            "distributed release reproduction output must be a run directory "
+            "below outputs/; the outputs directory itself is not allowed"
+        )
+
+
+def _read_json_object(path: Path, description: str) -> dict[str, Any]:
+    try:
+        payload = json.loads(Path(path).read_text())
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise ValueError(f"cannot read {description} {path}: {error}") from error
+    if not isinstance(payload, dict):
+        raise ValueError(f"{description} root must be a JSON object: {path}")
+    return payload
+
+
+def _artifact_path(name: str, output: Path, label: str) -> Path:
+    if not verify_release_manifest.is_safe_relative_path(name):
+        raise ValueError(f"stage {label} has unsafe artifact path: {name!r}")
+    path = ROOT / PurePosixPath(name)
+    try:
+        path.resolve().relative_to(Path(output).resolve())
+    except ValueError as error:
+        raise ValueError(
+            f"stage {label} artifact is outside its reproduction output: {name}"
+        ) from error
+    return path
+
+
+def _artifact_records(
+    paths: tuple[Path, ...], output: Path, label: str
+) -> tuple[list[str], dict[str, str]]:
+    names: list[str] = []
+    artifacts: dict[str, str] = {}
+    for raw_path in paths:
+        path = Path(raw_path)
+        if path.is_symlink() or not path.is_file():
+            raise ValueError(
+                f"stage {label} artifact is missing or not a regular file: {path}"
+            )
+        try:
+            path.resolve().relative_to(Path(output).resolve())
+        except ValueError as error:
+            raise ValueError(
+                f"stage {label} artifact is outside its reproduction output: {path}"
+            ) from error
+        name = relative(path)
+        if name in artifacts:
+            raise ValueError(f"stage {label} repeats expected artifact: {name}")
+        names.append(name)
+        artifacts[name] = digest(path)
+    if not artifacts:
+        raise ValueError(f"stage {label} has no expected artifacts")
+    return names, artifacts
+
+
+def validate_completed_stage(
+    label: str,
+    record: Any,
+    output: Path,
+    *,
+    expected: tuple[Path, ...] | None = None,
+    require_expected_record: bool = True,
+) -> None:
+    """Validate one completed stage without changing any output bytes."""
+    if not isinstance(record, dict):
+        raise ValueError(f"completed stage {label} record must be an object")
+    artifacts = record.get("artifacts")
+    if not isinstance(artifacts, dict) or not artifacts:
+        raise ValueError(f"completed stage {label} has missing or empty artifacts")
+
+    recorded_expected = record.get("expected_artifacts")
+    if require_expected_record:
+        if not isinstance(recorded_expected, list) or not recorded_expected:
+            raise ValueError(
+                f"completed stage {label} lacks versioned expected_artifacts"
+            )
+        if not all(isinstance(name, str) for name in recorded_expected):
+            raise ValueError(
+                f"completed stage {label} expected_artifacts must contain only strings"
+            )
+        if len(recorded_expected) != len(set(recorded_expected)):
+            raise ValueError(f"completed stage {label} repeats expected artifacts")
+        if set(recorded_expected) != set(artifacts):
+            raise ValueError(
+                f"completed stage {label} artifact coverage does not match expected_artifacts"
+            )
+    if expected is not None:
+        expected_names = {relative(path) for path in expected}
+        if set(artifacts) != expected_names:
+            raise ValueError(
+                f"completed stage {label} artifacts do not cover the current expected paths"
+            )
+        if require_expected_record and set(recorded_expected) != expected_names:
+            raise ValueError(
+                f"completed stage {label} expected paths are incompatible with this workflow"
+            )
+
+    for name, expected_hash in artifacts.items():
+        path = _artifact_path(name, output, label)
+        if not isinstance(expected_hash, str) or not SHA256_PATTERN.fullmatch(expected_hash):
+            raise ValueError(f"completed stage {label} has invalid SHA-256 for {name!r}")
+        if path.is_symlink() or not path.is_file():
+            raise ValueError(
+                f"completed stage {label} artifact is missing or not a regular file: {name}"
+            )
+        actual_hash = digest(path)
+        if actual_hash != expected_hash:
+            raise ValueError(
+                f"completed stage {label} artifact SHA-256 mismatch for {name}: "
+                f"{actual_hash} != {expected_hash}"
+            )
+
+
+def _validate_resume_state(
+    state: dict[str, Any], output: Path, source_contract: dict[str, Any], *, task: str
+) -> None:
+    if state.get("state_schema") != RESUME_STATE_SCHEMA \
+            or state.get("state_version") != RESUME_STATE_VERSION:
+        raise ValueError(
+            "resume state is old, unversioned, or incompatible; start a new output directory"
+        )
+    if state.get("task") != task or not isinstance(state.get("stages"), dict):
+        raise ValueError("resume state task or stages are malformed")
+    stored_contract = state.get("source_contract")
+    if not isinstance(stored_contract, dict) \
+            or stored_contract.get("schema") != SOURCE_CONTRACT_SCHEMA \
+            or stored_contract.get("version") != SOURCE_CONTRACT_VERSION:
+        raise ValueError(
+            "resume source contract is old, unversioned, or incompatible"
+        )
+    if stored_contract != source_contract:
+        raise ValueError("resume source contract mismatch")
+    for label, record in state["stages"].items():
+        if not isinstance(record, dict):
+            raise ValueError(f"stage {label} record must be an object")
+        if record.get("status") == "completed":
+            validate_completed_stage(label, record, output)
+
+
+def _validate_legacy_smoke_state(path: Path, base: Path) -> dict[str, Any]:
+    state = _read_json_object(path, "legacy smoke state")
+    stages = state.get("stages")
+    if not isinstance(stages, dict):
+        raise ValueError("legacy smoke state stages are malformed")
+    for label, record in stages.items():
+        if not isinstance(record, dict):
+            raise ValueError(f"legacy smoke stage {label} record must be an object")
+        if record.get("status") == "completed":
+            validate_completed_stage(
+                f"legacy:{label}", record, base, require_expected_record=False
+            )
+    return state
 
 
 def build_hat_sampled_config(
@@ -940,41 +1197,109 @@ def current_stage_paths(output: Path) -> dict[str, Path]:
 
 
 def run_wiring_smoke(output: Path, *, workers: int, resume: bool) -> dict[str, Any]:
-    """Run reduced core experiments and materialize every current-stage config.
-
-    Current P=50N production loops retain their full scientific dimensions, so
-    this smoke run exercises the shared simulation, fitting, verification, and
-    figure-input families with reduced protocols, then validates the dependency
-    injection needed by the current production runners. It does not claim
-    scientific parity or execute the R=100/R=20 production loops.
-    """
+    """Run the reduced legacy smoke behind an integrity-safe current facade."""
     output = Path(output).resolve()
     relative(output)
-    if output.exists() and not resume:
-        raise FileExistsError(
-            f"smoke output already exists: {output}; use --resume or a new path"
-        )
-    output.mkdir(parents=True, exist_ok=True)
+    source_contract = numerical_source_contract()
+    _validate_reproduction_output_namespace(output, source_contract)
+    state_path = output / "current_smoke_state.json"
+    task = "current_l4dc_wiring_smoke"
+
+    if resume:
+        if output.is_symlink() or not output.is_dir():
+            raise ValueError(f"resume smoke output is missing or invalid: {output}")
+        if state_path.is_symlink() or not state_path.is_file():
+            raise ValueError(
+                "resume smoke state is missing; refusing to invent provenance for existing outputs"
+            )
+        state = _read_json_object(state_path, "current smoke resume state")
+        _validate_resume_state(state, output, source_contract, task=task)
+    else:
+        if output.exists():
+            raise FileExistsError(
+                f"smoke output already exists: {output}; use --resume or a new path"
+            )
+        output.mkdir(parents=True)
+        state = {
+            "state_schema": RESUME_STATE_SCHEMA,
+            "state_version": RESUME_STATE_VERSION,
+            "task": task,
+            "status": "running",
+            "workers": workers,
+            "created_utc": datetime.now(timezone.utc).isoformat(),
+            "source_contract": source_contract,
+            "stages": {},
+        }
+        write_json(state_path, state)
+
     base = output / "base-smoke"
+    base_state_path = base / "state.json"
     log = output / "base-smoke.log"
-    command = [
-        sys.executable, "scripts/reproduce_l4dc.py", "smoke",
-        "--output", relative(base), "--workers", str(workers),
-        *(["--resume"] if resume else []),
-    ]
-    environment = os.environ.copy()
-    environment.update(
-        SOURCE_DATE_EPOCH="0", OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1",
-        MKL_NUM_THREADS="1", NUMEXPR_NUM_THREADS="1", WMFKI_PLOT_USETEX="0",
-    )
-    with log.open("a" if resume else "w") as handle:
-        subprocess.run(
-            command, cwd=ROOT, env=environment, check=True,
-            stdout=handle, stderr=subprocess.STDOUT,
+    previous_base = state["stages"].get("base_smoke", {})
+    if resume and base.exists():
+        if base_state_path.is_symlink() or not base_state_path.is_file():
+            raise ValueError("legacy base smoke exists without a valid state.json")
+        _validate_legacy_smoke_state(base_state_path, base)
+
+    if resume and previous_base.get("status") == "completed":
+        validate_completed_stage(
+            "base_smoke", previous_base, output, expected=(base_state_path, log)
         )
+        print("[current-smoke] base_smoke: already completed", flush=True)
+    else:
+        current_contract = numerical_source_contract()
+        if current_contract != state["source_contract"]:
+            raise ValueError("resume source contract mismatch before base smoke execution")
+        command = [
+            sys.executable, "scripts/reproduce_l4dc.py", "smoke",
+            "--output", relative(base), "--workers", str(workers),
+            *(["--resume"] if resume and base_state_path.is_file() else []),
+        ]
+        environment = os.environ.copy()
+        environment.update(
+            SOURCE_DATE_EPOCH="0", OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1",
+            MKL_NUM_THREADS="1", NUMEXPR_NUM_THREADS="1", WMFKI_PLOT_USETEX="0",
+        )
+        started = perf_counter()
+        state["stages"]["base_smoke"] = {
+            "status": "running",
+            "command": command,
+            "started_utc": datetime.now(timezone.utc).isoformat(),
+            "log": relative(log),
+        }
+        write_json(state_path, state)
+        try:
+            with log.open("a" if resume else "w") as handle:
+                subprocess.run(
+                    command, cwd=ROOT, env=environment, check=True,
+                    stdout=handle, stderr=subprocess.STDOUT,
+                )
+            legacy_state = _validate_legacy_smoke_state(base_state_path, base)
+            if legacy_state.get("status") != "smoke_passed":
+                raise ValueError("legacy base smoke did not report smoke_passed")
+            base_expected = (base_state_path, log)
+            expected_names, artifacts = _artifact_records(
+                base_expected, output, "base_smoke"
+            )
+        except Exception as error:
+            state["stages"]["base_smoke"].update(
+                status="failed",
+                elapsed_seconds=perf_counter() - started,
+                error=f"{type(error).__name__}: {error}",
+            )
+            state["status"] = "failed"
+            write_json(state_path, state)
+            raise
+        state["stages"]["base_smoke"].update(
+            status="completed",
+            elapsed_seconds=perf_counter() - started,
+            expected_artifacts=expected_names,
+            artifacts=artifacts,
+        )
+        write_json(state_path, state)
+
     data = base / "data"
     configs = output / "current-configs"
-    configs.mkdir(exist_ok=True)
     generated = {
         "hat_sampled_p50": configs / "hat_sampled_p50.json",
         "qanr_sampled_p50": configs / "qanr_sampled_p50.json",
@@ -982,38 +1307,79 @@ def run_wiring_smoke(output: Path, *, workers: int, resume: bool) -> dict[str, A
         "predator_strong": configs / "predator_strong.json",
         "localized_sampled_p50": configs / "localized_sampled_p50.json",
     }
-    build_hat_sampled_config(
-        data / "hat_lasso", data / "hat_ols", generated["hat_sampled_p50"]
-    )
-    build_qanr_sampled_config(
-        data / "redundant6", data / "redundant6_time_step",
-        generated["qanr_sampled_p50"],
-    )
-    build_predator_sampled_config(
-        data / "predator_sweeps", generated["predator_sampled_p50"]
-    )
-    # The reduced core smoke does not execute the fixed R=20 sampled production
-    # loop. Its matched full-pair records are sufficient to validate this path.
-    build_predator_strong_config(
-        data / "predator_sweeps", generated["predator_strong"]
-    )
-    build_localized_sampled_config(
-        data / "localized10d_robustness", generated["localized_sampled_p50"]
-    )
-    result = {
-        "task": "current_l4dc_wiring_smoke",
-        "status": "passed",
-        "scientific_parity_claimed": False,
-        "current_fixed_dimension_production_loops_executed": False,
-        "base_smoke_state": relative(base / "state.json"),
-        "base_smoke_state_sha256": digest(base / "state.json"),
-        "log": relative(log),
-        "generated_configs": {
-            name: {"path": relative(path), "sha256": digest(path)}
-            for name, path in generated.items()
-        },
+    report = output / "current_smoke.json"
+    current_expected = tuple(generated.values()) + (report,)
+    previous_current = state["stages"].get("current_wiring", {})
+    if resume and previous_current.get("status") == "completed":
+        if numerical_source_contract() != state["source_contract"]:
+            raise ValueError("resume source contract mismatch before current smoke reuse")
+        validate_completed_stage(
+            "current_wiring", previous_current, output, expected=current_expected
+        )
+        return _read_json_object(report, "current smoke report")
+
+    if numerical_source_contract() != state["source_contract"]:
+        raise ValueError("resume source contract mismatch before current smoke wiring")
+    configs.mkdir(exist_ok=True)
+    started = perf_counter()
+    state["stages"]["current_wiring"] = {
+        "status": "running",
+        "started_utc": datetime.now(timezone.utc).isoformat(),
     }
-    write_json(output / "current_smoke.json", result)
+    write_json(state_path, state)
+    try:
+        build_hat_sampled_config(
+            data / "hat_lasso", data / "hat_ols", generated["hat_sampled_p50"]
+        )
+        build_qanr_sampled_config(
+            data / "redundant6", data / "redundant6_time_step",
+            generated["qanr_sampled_p50"],
+        )
+        build_predator_sampled_config(
+            data / "predator_sweeps", generated["predator_sampled_p50"]
+        )
+        build_predator_strong_config(
+            data / "predator_sweeps", generated["predator_strong"]
+        )
+        build_localized_sampled_config(
+            data / "localized10d_robustness", generated["localized_sampled_p50"]
+        )
+        result = {
+            "task": task,
+            "status": "passed",
+            "scientific_parity_claimed": False,
+            "current_fixed_dimension_production_loops_executed": False,
+            "base_smoke_state": relative(base_state_path),
+            "base_smoke_state_sha256": digest(base_state_path),
+            "log": relative(log),
+            "source_contract": state["source_contract"],
+            "generated_configs": {
+                name: {"path": relative(path), "sha256": digest(path)}
+                for name, path in generated.items()
+            },
+        }
+        write_json(report, result)
+        expected_names, artifacts = _artifact_records(
+            current_expected, output, "current_wiring"
+        )
+    except Exception as error:
+        state["stages"]["current_wiring"].update(
+            status="failed",
+            elapsed_seconds=perf_counter() - started,
+            error=f"{type(error).__name__}: {error}",
+        )
+        state["status"] = "failed"
+        write_json(state_path, state)
+        raise
+    state["stages"]["current_wiring"].update(
+        status="completed",
+        elapsed_seconds=perf_counter() - started,
+        expected_artifacts=expected_names,
+        artifacts=artifacts,
+    )
+    state["status"] = "passed"
+    state["completed_utc"] = datetime.now(timezone.utc).isoformat()
+    write_json(state_path, state)
     return result
 
 
@@ -1029,31 +1395,41 @@ class CurrentReproducer:
         self.configs = self.output / "configs"
         self.logs = self.output / "logs"
         self.state_path = self.output / "state.json"
-        if self.output.exists() and not self.resume:
-            raise FileExistsError(
-                f"output already exists: {self.output}; use --resume or a new path"
-            )
-        self.output.mkdir(parents=True, exist_ok=True)
-        self.configs.mkdir(exist_ok=True)
-        self.logs.mkdir(exist_ok=True)
-        source_contract = numerical_source_contract()
-        if self.state_path.is_file():
-            self.state = read_json(self.state_path)
-            if self.state.get("source_contract") != source_contract:
+        self.source_contract = numerical_source_contract()
+        _validate_reproduction_output_namespace(self.output, self.source_contract)
+        task = "reproduce_current_l4dc_from_scratch"
+
+        if self.resume:
+            if self.output.is_symlink() or not self.output.is_dir():
+                raise ValueError(f"resume output is missing or invalid: {self.output}")
+            if self.state_path.is_symlink() or not self.state_path.is_file():
                 raise ValueError(
-                    "resume source contract mismatch for frozen numerical references"
+                    "resume state is missing; refusing automatic migration or recomputation"
                 )
+            self.state = _read_json_object(self.state_path, "resume state")
+            _validate_resume_state(
+                self.state, self.output, self.source_contract, task=task
+            )
         else:
+            if self.output.exists():
+                raise FileExistsError(
+                    f"output already exists: {self.output}; use --resume or a new path"
+                )
+            self.output.mkdir(parents=True)
             self.state = {
-                "task": "reproduce_current_l4dc_from_scratch",
+                "state_schema": RESUME_STATE_SCHEMA,
+                "state_version": RESUME_STATE_VERSION,
+                "task": task,
                 "protocol_version": 1,
                 "status": "running",
                 "workers": self.workers,
                 "created_utc": datetime.now(timezone.utc).isoformat(),
-                "source_contract": source_contract,
+                "source_contract": self.source_contract,
                 "stages": {},
             }
             write_json(self.state_path, self.state)
+        self.configs.mkdir(exist_ok=True)
+        self.logs.mkdir(exist_ok=True)
 
     def command(
         self,
@@ -1064,8 +1440,13 @@ class CurrentReproducer:
         restart_paths: tuple[Path, ...] = (),
     ) -> None:
         previous = self.state["stages"].get(label, {})
-        if self.resume and previous.get("status") == "completed" \
-                and all(path.is_file() for path in expected):
+        current_contract = numerical_source_contract()
+        if current_contract != self.state["source_contract"]:
+            raise ValueError("resume source contract mismatch before stage execution")
+        if self.resume and previous.get("status") == "completed":
+            validate_completed_stage(
+                label, previous, self.output, expected=expected
+            )
             print(f"[current-reproduce] {label}: already completed", flush=True)
             return
         if self.resume:
@@ -1104,9 +1485,9 @@ class CurrentReproducer:
                     arguments, cwd=ROOT, env=environment, check=True,
                     stdout=handle, stderr=subprocess.STDOUT,
                 )
-            missing = [relative(path) for path in expected if not path.is_file()]
-            if missing:
-                raise RuntimeError(f"stage {label} did not create {missing}")
+            expected_names, artifacts = _artifact_records(
+                expected, self.output, label
+            )
         except Exception as error:
             self.state["stages"][label].update(
                 status="failed",
@@ -1119,7 +1500,8 @@ class CurrentReproducer:
         self.state["stages"][label].update(
             status="completed",
             elapsed_seconds=perf_counter() - started,
-            artifacts={relative(path): digest(path) for path in expected},
+            expected_artifacts=expected_names,
+            artifacts=artifacts,
         )
         write_json(self.state_path, self.state)
 

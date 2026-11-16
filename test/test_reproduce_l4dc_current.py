@@ -1,6 +1,9 @@
 import json
 import os
 from pathlib import Path
+import shutil
+import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -35,25 +38,40 @@ from scripts.reproduce_l4dc_current import (
     build_qanr_sampled_config,
     current_stage_paths,
     digest,
+    numerical_source_contract,
     plan,
+    run_wiring_smoke,
     validate_stage_graph,
 )
 
 
+def reproduction_temporary_directory():
+    root = ROOT / "outputs"
+    root.mkdir(parents=True, exist_ok=True)
+    return tempfile.TemporaryDirectory(dir=root)
+
+
 class CurrentL4DCReproductionPlanTests(unittest.TestCase):
     def test_current_executor_initializes_an_isolated_state(self):
-        with tempfile.TemporaryDirectory(dir=ROOT) as directory:
+        with reproduction_temporary_directory() as directory:
             output = Path(directory) / "current-run"
             reproducer = CurrentReproducer(output, workers=2, resume=False)
             self.assertTrue(reproducer.state_path.is_file())
             self.assertEqual(reproducer.state["status"], "running")
+            contract = reproducer.state["source_contract"]
+            self.assertEqual(contract, numerical_source_contract())
+            self.assertEqual(contract["version"], 2)
             self.assertEqual(
-                reproducer.state["source_contract"]["table1_reference"],
-                {
-                    "path": "reference/table1.json",
-                    "sha256": digest(NUMERICAL_TABLE_REFERENCE),
-                },
+                contract["files"]["reference/table1.json"],
+                digest(NUMERICAL_TABLE_REFERENCE),
             )
+            manifest = ROOT / "RELEASE_MANIFEST.json"
+            if manifest.is_file():
+                self.assertEqual(contract["mode"], "distributed_release_manifest")
+                self.assertEqual(
+                    contract["files"]["RELEASE_MANIFEST.json"], digest(manifest)
+                )
+            self.assertNotIn(str(ROOT), json.dumps(contract, sort_keys=True))
             paths = current_stage_paths(output)
             self.assertEqual(paths["hat_full_lasso"], output / "data/hat_full_lasso")
             self.assertEqual(
@@ -62,11 +80,11 @@ class CurrentL4DCReproductionPlanTests(unittest.TestCase):
             )
 
     def test_resume_rejects_a_changed_numerical_source_contract(self):
-        with tempfile.TemporaryDirectory(dir=ROOT) as directory:
+        with reproduction_temporary_directory() as directory:
             output = Path(directory) / "current-run"
             reproducer = CurrentReproducer(output, workers=2, resume=False)
             state = json.loads(reproducer.state_path.read_text())
-            state["source_contract"]["table1_reference"]["sha256"] = "0" * 64
+            state["source_contract"]["files"]["reference/table1.json"] = "0" * 64
             reproducer.state_path.write_text(json.dumps(state) + "\n")
             with self.assertRaisesRegex(ValueError, "source contract mismatch"):
                 CurrentReproducer(output, workers=2, resume=True)
@@ -139,7 +157,7 @@ class CurrentL4DCReproductionPlanTests(unittest.TestCase):
         self.assertEqual(missing, [])
 
     def test_sampled_hat_resume_resets_only_derived_outputs(self):
-        with tempfile.TemporaryDirectory(dir=ROOT) as directory:
+        with reproduction_temporary_directory() as directory:
             output = Path(directory)
             preserved = output / "runs/ratio-50-run-0/report.json"
             preserved.parent.mkdir(parents=True)
@@ -173,7 +191,7 @@ class CurrentL4DCReproductionPlanTests(unittest.TestCase):
         template = json.loads((
             ROOT / "configs/experiments/one_dimensional_hat_sampled_p50n_R100.json"
         ).read_text())
-        with tempfile.TemporaryDirectory(dir=ROOT) as directory:
+        with reproduction_temporary_directory() as directory:
             directory = Path(directory)
             lasso = directory / "lasso"
             ols = directory / "ols"
@@ -195,7 +213,7 @@ class CurrentL4DCReproductionPlanTests(unittest.TestCase):
             self.assertEqual(saved["current_artifact_audit"], {})
 
     def test_qanr_sampled_config_can_bind_fresh_stage_outputs(self):
-        with tempfile.TemporaryDirectory(dir=ROOT) as directory:
+        with reproduction_temporary_directory() as directory:
             directory = Path(directory)
             full = directory / "full"
             time_step = directory / "time-step"
@@ -222,7 +240,7 @@ class CurrentL4DCReproductionPlanTests(unittest.TestCase):
             self.assertEqual(saved["source_mode"], "fresh_full_pair_stage_outputs")
 
     def test_predator_sampled_config_can_bind_fresh_full_pair_output(self):
-        with tempfile.TemporaryDirectory(dir=ROOT) as directory:
+        with reproduction_temporary_directory() as directory:
             directory = Path(directory)
             full = directory / "predator-full"
             full.mkdir()
@@ -240,7 +258,7 @@ class CurrentL4DCReproductionPlanTests(unittest.TestCase):
             validate_predator_production(saved)
 
     def test_predator_strong_config_can_bind_fresh_sampled_records(self):
-        with tempfile.TemporaryDirectory(dir=ROOT) as directory:
+        with reproduction_temporary_directory() as directory:
             directory = Path(directory)
             sampled = directory / "predator-sampled"
             sampled.mkdir()
@@ -259,7 +277,7 @@ class CurrentL4DCReproductionPlanTests(unittest.TestCase):
             )
 
     def test_integration_configs_bind_fresh_stage_outputs(self):
-        with tempfile.TemporaryDirectory(dir=ROOT) as directory:
+        with reproduction_temporary_directory() as directory:
             directory = Path(directory)
             full = directory / "predator-full"
             full.mkdir()
@@ -314,7 +332,7 @@ class CurrentL4DCReproductionPlanTests(unittest.TestCase):
             )
 
     def test_fresh_figure_config_covers_exactly_eight_figures(self):
-        with tempfile.TemporaryDirectory(dir=ROOT) as directory:
+        with reproduction_temporary_directory() as directory:
             output = Path(directory)
             paths = current_stage_paths(output)
             required = (
@@ -375,7 +393,7 @@ class CurrentL4DCReproductionPlanTests(unittest.TestCase):
             )
 
     def test_integration_uses_numerical_table_verification_only(self):
-        with tempfile.TemporaryDirectory(dir=ROOT) as directory:
+        with reproduction_temporary_directory() as directory:
             output = Path(directory) / "current-run"
             reproducer = CurrentReproducer(output, workers=2, resume=False)
             commands = {}
@@ -409,8 +427,365 @@ class CurrentL4DCReproductionPlanTests(unittest.TestCase):
             self.assertIn("numerical_table_reference", result["artifacts"])
             self.assertNotIn("metric_table", result["artifacts"])
 
+    def _write_developer_contract_fixture(self, root: Path) -> None:
+        files = {
+            "scripts/export_private_release.py": "# developer marker\n",
+            "scripts/runner.py": "print('runner')\n",
+            "configs/experiments/example.json": "{\"seed\": 1}\n",
+            "pyproject.toml": "[project]\nname='fixture'\n",
+            "uv.lock": "version = 1\n",
+            "reference/table1.json": "{\"value\": 1}\n",
+        }
+        for name, content in files.items():
+            path = root / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(content)
+
+    def _run_tiny_completed_stage(self, output: Path):
+        reproducer = CurrentReproducer(output, workers=2, resume=False)
+        first = output / "tiny/first.txt"
+        second = output / "tiny/second.txt"
+        script = (
+            "from pathlib import Path; "
+            f"Path({str(first)!r}).parent.mkdir(parents=True, exist_ok=True); "
+            f"Path({str(first)!r}).write_text('first\\n'); "
+            f"Path({str(second)!r}).write_text('second\\n')"
+        )
+        arguments = [sys.executable, "-c", script]
+        expected = (first, second)
+        reproducer.command("tiny", arguments, expected)
+        return arguments, expected
+
+    def _fake_legacy_smoke_child(self, output: Path):
+        base = output / "base-smoke"
+        data = base / "data"
+        template = json.loads((
+            ROOT / "configs/experiments/one_dimensional_hat_sampled_p50n_R100.json"
+        ).read_text())
+        for method in ("lasso", "ols"):
+            for name in template[f"source_{method}_hashes"]:
+                path = data / f"hat_{method}" / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(f"{method}:{name}\n")
+        for directory, names in (
+            (data / "redundant6", (
+                "summary.json", "observation_lasso.csv", "stochastic_lasso.csv",
+            )),
+            (data / "redundant6_time_step", ("summary.json", "records.json")),
+            (data / "predator_sweeps", (
+                "manifest.json", "records.json", "requested_protocol.json",
+            )),
+            (data / "localized10d_robustness", (
+                "frozen_protocol.json", "requested_protocol.json", "source_manifest.json",
+                "source/scripts/run_localized10d_observation_noise.py",
+            )),
+        ):
+            for name in names:
+                path = directory / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("{}\n")
+        marker = data / "legacy-marker.txt"
+        marker.write_text("legacy\n")
+        state = {
+            "status": "smoke_passed",
+            "stages": {
+                "fixture": {
+                    "status": "completed",
+                    "artifacts": {
+                        str(marker.relative_to(ROOT)): digest(marker),
+                    },
+                }
+            },
+        }
+        state_path = base / "state.json"
+        state_path.parent.mkdir(parents=True, exist_ok=True)
+        state_path.write_text(json.dumps(state, indent=2, sort_keys=True) + "\n")
+
+    def test_developer_source_contract_detects_code_config_lock_and_reference_changes(self):
+        names = (
+            "scripts/runner.py",
+            "configs/experiments/example.json",
+            "pyproject.toml",
+            "uv.lock",
+            "reference/table1.json",
+        )
+        for name in names:
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                self._write_developer_contract_fixture(root)
+                before = numerical_source_contract(root)
+                (root / name).write_text((root / name).read_text() + "changed\n")
+                after = numerical_source_contract(root)
+                self.assertEqual(before["mode"], "developer_inventory")
+                self.assertNotEqual(before["fingerprint_sha256"], after["fingerprint_sha256"])
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._write_developer_contract_fixture(root)
+            before = numerical_source_contract(root)
+            (root / "scripts/new_source.py").write_text("print('new')\n")
+            after = numerical_source_contract(root)
+            self.assertNotEqual(set(before["files"]), set(after["files"]))
+
+    def test_source_contract_fails_closed_without_manifest_or_developer_marker(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "reference").mkdir()
+            (root / "reference/table1.json").write_text("{}\n")
+            with self.assertRaisesRegex(RuntimeError, "not a recognized developer checkout"):
+                numerical_source_contract(root)
+
+    def test_distributed_mode_uses_outputs_namespace_and_rejects_custom_run(self):
+        with tempfile.TemporaryDirectory() as directory:
+            release = Path(directory)
+            scripts = release / "scripts"
+            reference = release / "reference/table1.json"
+            scripts.mkdir()
+            reference.parent.mkdir()
+            shutil.copy2(
+                ROOT / "scripts/reproduce_l4dc_current.py",
+                scripts / "reproduce_l4dc_current.py",
+            )
+            shutil.copy2(
+                ROOT / "scripts/verify_release_manifest.py",
+                scripts / "verify_release_manifest.py",
+            )
+            reference.write_text("{}\n")
+            files = {
+                "scripts/reproduce_l4dc_current.py": digest(
+                    scripts / "reproduce_l4dc_current.py"
+                ),
+                "scripts/verify_release_manifest.py": digest(
+                    scripts / "verify_release_manifest.py"
+                ),
+                "reference/table1.json": digest(reference),
+            }
+            (release / "RELEASE_MANIFEST.json").write_text(json.dumps({
+                "file_count": len(files), "sha256": files,
+            }, indent=2, sort_keys=True) + "\n")
+            code = "\n".join((
+                "from pathlib import Path",
+                "import sys",
+                "from scripts.reproduce_l4dc_current import CurrentReproducer, run_wiring_smoke",
+                "root = Path.cwd()",
+                "custom = root / 'custom-run'",
+                "try:",
+                "    CurrentReproducer(custom, workers=1, resume=False)",
+                "except ValueError as error:",
+                "    assert 'outputs/<run-directory>' in str(error)",
+                "else:",
+                "    raise AssertionError('distributed custom output was accepted')",
+                "assert not custom.exists()",
+                "custom_smoke = root / 'custom-smoke'",
+                "try:",
+                "    run_wiring_smoke(custom_smoke, workers=1, resume=False)",
+                "except ValueError as error:",
+                "    assert 'outputs/<run-directory>' in str(error)",
+                "else:",
+                "    raise AssertionError('distributed custom smoke output was accepted')",
+                "assert not custom_smoke.exists()",
+                "output = root / 'outputs/tiny-run'",
+                "reproducer = CurrentReproducer(output, workers=1, resume=False)",
+                "artifact = output / 'tiny.txt'",
+                "child = [sys.executable, '-c', "
+                "         f\"from pathlib import Path; Path({str(artifact)!r}).write_text('ok\\\\n')\"]",
+                "reproducer.command('tiny', child, (artifact,))",
+                "assert artifact.read_text() == 'ok\\n'",
+            ))
+            result = subprocess.run(
+                [sys.executable, "-c", code], cwd=release,
+                check=False, capture_output=True, text=True,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertFalse((release / "custom-run").exists())
+            self.assertFalse((release / "custom-smoke").exists())
+            self.assertTrue((release / "outputs/tiny-run/state.json").is_file())
+
+    def test_distributed_source_contract_verifies_payload_and_hashes_manifest_itself(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            reference = root / "reference/table1.json"
+            reference.parent.mkdir()
+            reference.write_text("{\"value\": 1}\n")
+            manifest = root / "RELEASE_MANIFEST.json"
+            payload = {
+                "file_count": 1,
+                "sha256": {"reference/table1.json": digest(reference)},
+            }
+            manifest.write_text(json.dumps(payload, sort_keys=True) + "\n")
+            before = numerical_source_contract(root)
+            self.assertEqual(before["mode"], "distributed_release_manifest")
+            self.assertEqual(before["files"]["RELEASE_MANIFEST.json"], digest(manifest))
+            payload["note"] = "manifest metadata changed"
+            manifest.write_text(json.dumps(payload, sort_keys=True) + "\n")
+            after = numerical_source_contract(root)
+            self.assertNotEqual(before["fingerprint_sha256"], after["fingerprint_sha256"])
+            reference.write_text("tampered\n")
+            with self.assertRaisesRegex(RuntimeError, "SHA-256 mismatch"):
+                numerical_source_contract(root)
+
+    def test_unchanged_resume_skips_child_and_preserves_state_and_artifacts(self):
+        with reproduction_temporary_directory() as directory:
+            output = Path(directory) / "current-run"
+            arguments, expected = self._run_tiny_completed_stage(output)
+            state_before = (output / "state.json").read_bytes()
+            artifact_before = [path.read_bytes() for path in expected]
+            resumed = CurrentReproducer(output, workers=7, resume=True)
+            with patch("scripts.reproduce_l4dc_current.subprocess.run") as child:
+                resumed.command("tiny", arguments, expected)
+            child.assert_not_called()
+            self.assertEqual((output / "state.json").read_bytes(), state_before)
+            self.assertEqual([path.read_bytes() for path in expected], artifact_before)
+
+    def test_resume_rejects_missing_empty_extra_and_malformed_artifact_records(self):
+        cases = ("missing", "empty", "extra", "malformed", "malformed_expected")
+        for case in cases:
+            with self.subTest(case=case), reproduction_temporary_directory() as directory:
+                output = Path(directory) / "current-run"
+                self._run_tiny_completed_stage(output)
+                state_path = output / "state.json"
+                state = json.loads(state_path.read_text())
+                record = state["stages"]["tiny"]
+                if case == "missing":
+                    record.pop("artifacts")
+                elif case == "empty":
+                    record["artifacts"] = {}
+                elif case == "extra":
+                    extra = output / "tiny/extra.txt"
+                    extra.write_text("extra\n")
+                    record["artifacts"][str(extra.relative_to(ROOT))] = digest(extra)
+                elif case == "malformed":
+                    first = next(iter(record["artifacts"]))
+                    record["artifacts"][first] = "not-a-sha256"
+                else:
+                    record["expected_artifacts"] = [["nested-not-a-path"]]
+                state_path.write_text(json.dumps(state, indent=2, sort_keys=True) + "\n")
+                before = state_path.read_bytes()
+                error_pattern = (
+                    "expected_artifacts must contain only strings"
+                    if case == "malformed_expected" else "artifact|SHA-256"
+                )
+                with self.assertRaisesRegex(ValueError, error_pattern):
+                    CurrentReproducer(output, workers=2, resume=True)
+                self.assertEqual(state_path.read_bytes(), before)
+
+    def test_resume_rejects_corrupt_deleted_unsafe_and_symlink_artifacts(self):
+        cases = ("corrupt", "deleted", "unsafe", "symlink")
+        for case in cases:
+            with self.subTest(case=case), reproduction_temporary_directory() as directory:
+                output = Path(directory) / "current-run"
+                _, expected = self._run_tiny_completed_stage(output)
+                state_path = output / "state.json"
+                if case == "corrupt":
+                    expected[0].write_text("corrupt\n")
+                elif case == "deleted":
+                    expected[0].unlink()
+                elif case == "symlink":
+                    expected[0].unlink()
+                    expected[0].symlink_to(expected[1])
+                else:
+                    state = json.loads(state_path.read_text())
+                    record = state["stages"]["tiny"]
+                    old = next(iter(record["artifacts"]))
+                    value = record["artifacts"].pop(old)
+                    record["artifacts"]["../escape.txt"] = value
+                    record["expected_artifacts"].remove(old)
+                    record["expected_artifacts"].append("../escape.txt")
+                    state_path.write_text(json.dumps(state, indent=2, sort_keys=True) + "\n")
+                with self.assertRaisesRegex(ValueError, "artifact|unsafe|SHA-256"):
+                    CurrentReproducer(output, workers=2, resume=True)
+
+    def test_resume_rejects_missing_malformed_and_old_state(self):
+        for case in ("missing", "malformed", "old"):
+            with self.subTest(case=case), reproduction_temporary_directory() as directory:
+                output = Path(directory) / "current-run"
+                output.mkdir()
+                state = output / "state.json"
+                if case == "malformed":
+                    state.write_text("{not json\n")
+                elif case == "old":
+                    state.write_text(json.dumps({
+                        "task": "reproduce_current_l4dc_from_scratch", "stages": {},
+                    }) + "\n")
+                with self.assertRaisesRegex(ValueError, "state|migration"):
+                    CurrentReproducer(output, workers=2, resume=True)
+
+    def test_completed_artifact_changed_after_initialization_is_rechecked_before_skip(self):
+        with reproduction_temporary_directory() as directory:
+            output = Path(directory) / "current-run"
+            arguments, expected = self._run_tiny_completed_stage(output)
+            resumed = CurrentReproducer(output, workers=2, resume=True)
+            state_before = (output / "state.json").read_bytes()
+            expected[0].write_text("changed after init\n")
+            with patch("scripts.reproduce_l4dc_current.subprocess.run") as child:
+                with self.assertRaisesRegex(ValueError, "SHA-256 mismatch"):
+                    resumed.command("tiny", arguments, expected)
+            child.assert_not_called()
+            self.assertEqual((output / "state.json").read_bytes(), state_before)
+
+    def test_resume_rejects_expected_path_coverage_change(self):
+        with reproduction_temporary_directory() as directory:
+            output = Path(directory) / "current-run"
+            arguments, expected = self._run_tiny_completed_stage(output)
+            resumed = CurrentReproducer(output, workers=2, resume=True)
+            with self.assertRaisesRegex(ValueError, "cover the current expected paths"):
+                resumed.command("tiny", arguments, expected[:1])
+
+    def test_smoke_facade_resume_skips_child_and_rejects_output_mismatch(self):
+        with reproduction_temporary_directory() as directory:
+            output = Path(directory) / "smoke"
+            with patch(
+                "scripts.reproduce_l4dc_current.subprocess.run",
+                side_effect=lambda *_args, **_kwargs: self._fake_legacy_smoke_child(output),
+            ) as child:
+                run_wiring_smoke(output, workers=2, resume=False)
+            self.assertEqual(child.call_count, 1)
+            with patch("scripts.reproduce_l4dc_current.subprocess.run") as child:
+                result = run_wiring_smoke(output, workers=6, resume=True)
+            child.assert_not_called()
+            self.assertEqual(result["status"], "passed")
+            config = output / "current-configs/hat_sampled_p50.json"
+            config.write_text(config.read_text() + "tampered\n")
+            with patch("scripts.reproduce_l4dc_current.subprocess.run") as child:
+                with self.assertRaisesRegex(ValueError, "SHA-256 mismatch"):
+                    run_wiring_smoke(output, workers=2, resume=True)
+            child.assert_not_called()
+
+    def test_smoke_facade_rejects_source_and_legacy_artifact_mismatch(self):
+        with reproduction_temporary_directory() as directory:
+            output = Path(directory) / "smoke"
+            with patch(
+                "scripts.reproduce_l4dc_current.subprocess.run",
+                side_effect=lambda *_args, **_kwargs: self._fake_legacy_smoke_child(output),
+            ):
+                run_wiring_smoke(output, workers=2, resume=False)
+            facade_path = output / "current_smoke_state.json"
+            facade = json.loads(facade_path.read_text())
+            facade["source_contract"]["fingerprint_sha256"] = "0" * 64
+            facade_path.write_text(json.dumps(facade, indent=2, sort_keys=True) + "\n")
+            with self.assertRaisesRegex(ValueError, "source contract mismatch"):
+                run_wiring_smoke(output, workers=2, resume=True)
+
+        with reproduction_temporary_directory() as directory:
+            output = Path(directory) / "smoke"
+            with patch(
+                "scripts.reproduce_l4dc_current.subprocess.run",
+                side_effect=lambda *_args, **_kwargs: self._fake_legacy_smoke_child(output),
+            ):
+                run_wiring_smoke(output, workers=2, resume=False)
+            legacy_path = output / "base-smoke/state.json"
+            legacy = json.loads(legacy_path.read_text())
+            legacy["stages"]["fixture"]["artifacts"] = {}
+            legacy_path.write_text(json.dumps(legacy, indent=2, sort_keys=True) + "\n")
+            facade_path = output / "current_smoke_state.json"
+            facade = json.loads(facade_path.read_text())
+            key = str(legacy_path.relative_to(ROOT))
+            facade["stages"]["base_smoke"]["artifacts"][key] = digest(legacy_path)
+            facade_path.write_text(json.dumps(facade, indent=2, sort_keys=True) + "\n")
+            with self.assertRaisesRegex(ValueError, "legacy:fixture.*empty artifacts"):
+                run_wiring_smoke(output, workers=2, resume=True)
+
     def test_localized_sampled_config_can_bind_fresh_robustness_output(self):
-        with tempfile.TemporaryDirectory(dir=ROOT) as directory:
+        with reproduction_temporary_directory() as directory:
             directory = Path(directory)
             robustness = directory / "localized-robustness"
             for name in (
