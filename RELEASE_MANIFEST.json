@@ -1,6 +1,6 @@
 {
   "audit": {
-    "checked_text_files": 253,
+    "checked_text_files": 256,
     "language_scan": "passed",
     "manuscript_source_files": 0,
     "privacy_scan": "passed",
@@ -8,8 +8,8 @@
     "status": "passed"
   },
   "content_scope": "numerical_reproducibility",
-  "created_utc": "2026-11-16T13:06:37.412058+00:00",
-  "file_count": 267,
+  "created_utc": "2026-11-16T13:46:39.221577+00:00",
+  "file_count": 269,
   "sha256": {
     ".github/workflows/verify.yml": "136abd9f27c17a619c4eed6da4aed9fb7a7d9946070311cd0e78adc7c40636bf",
     ".gitignore": "7c49188c9305e012f0804edd599c5f23c6c1542908a2c7cd9a68bde3b65f6842",
@@ -235,6 +235,7 @@
     "scripts/verify_qanr_time_step_paired_R100.py": "7fa42dea074f7c40f71da0511098d4a83ccf6671211c4f0c4316d06568ebfacc",
     "scripts/verify_release_manifest.py": "ffa1a729d06ee5e7f21e0c876e8cb46a4036e5bde4f4ec768f9f1ef90832f1b4",
     "simulate.py": "eae0d4aed0c5b417117e6bf251a09e9b8d95e8a247173d030619d1b5988026f2",
+    "test/__init__.py": "6cf776a5355a9d50618f37cde68f320a1531a29a886c8a846365dca1885d586d",
     "test/test_1d_hat_sampled_p10n_preview.py": "8c64f37fa9107fa66971f7d6fcc9f3fb958e6290d50246f164c1516dbbff74d3",
     "test/test_1d_hat_sampled_p50n_R100.py": "04855fefeca72fb817103f6f60b445504f5da0ef47987c76ebf0f8e909b9851b",
     "test/test_1d_hat_sampled_pair_ratio_sweep_R5.py": "533f2a8ffb0b65fc2beb9c8508eb6a583f5995f5fa65bb713fa061ac9473cdef",
@@ -265,6 +266,7 @@
     "test/test_predator_prey_sampled_pair_preview.py": "bac8cf734804b00148656a9ea9dad38274f0370184e30e2d9f89ae729be0c08f",
     "test/test_predator_prey_strong_observation_noise.py": "33836bc935c6ab087ac3afab76e28d284f51ce86efa00919b99b684aba985bac",
     "test/test_predator_prey_sweeps.py": "3ee5d19a185482909d7e0e0b97486114b456596533aabaa5cf7e08132ff13756",
+    "test/test_project_test_package.py": "f0022eeb436b9da20aeb89519d3b467443a6410a8475811cbb40744d63d9a7cd",
     "test/test_qanr_matched_lasso_sweeps.py": "7b019f75e0388609880a163e3bfd9b23dd05842f6c155e999cb773dffeeabf39",
     "test/test_qanr_time_step_repetitions.py": "82e2ed886363746e2531576de059f637f0c27ddd5af6755344d607359062e5f5",
     "test/test_qanr_time_step_stochastic_p50n_R100.py": "1728816980ed0241a8cd862608afb6678922e6486b331d751aed8c01ae7561db",
