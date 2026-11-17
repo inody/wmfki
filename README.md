@@ -5,6 +5,11 @@ sanitized frozen inputs, reference values, and eight reference figure PDFs for
 the L4DC numerical results. Manuscript source and conference-template files are
 not part of this distribution.
 
+## Paper
+
+*Mesh-Free Weak-Form Regression for Learning Interaction Kernels from Particle
+Trajectories* — [arXiv:2611.18455](https://arxiv.org/abs/2611.18455).
+
 ## Setup and complete frozen verification
 
 ```bash
